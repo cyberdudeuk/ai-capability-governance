@@ -15,6 +15,7 @@ repository settings write (rename, settings, topics, rulesets, security), so eve
 | Pages | Source: GitHub Actions (the publish workflow, `pages.yml`, deploys only the site files after every check passes) | Settings, Pages | Owner to confirm: the Pages settings cannot be read or changed through the API from the build session |
 | Ruleset "Protect main" | Block deletion and force pushes; require linear history; require a pull request; require the Checks status | Settings, Rules | Owner to set |
 | Private vulnerability reporting | On | Settings, Security | Owner to set |
+| Dependency graph | On. Without it the Dependency review check fails on every pull request (seen on pull request #3, 8 November 2026) | Settings, Security | Owner to set |
 | Dependabot alerts and security updates | On | Settings, Security | Owner to set |
 | Secret scanning and push protection | On | Settings, Security | Owner to set |
 | CodeQL | Uses `.github/workflows/codeql.yml` (advanced setup); leave default setup off | Settings, Security | Owner to confirm default setup is off |
@@ -29,7 +30,7 @@ No email address belongs in any of these. Contact is by the contact form only.
 2. **Pages**: Settings, Pages, Source: GitHub Actions. Then merge the open pull request; the publish workflow deploys to
    https://cyberdudeuk.github.io/ai-capability-governance/ after every check passes.
 3. Description, website, topics, features and merge settings (this table).
-4. Security: private vulnerability reporting, Dependabot alerts and security updates (secret scanning and push protection
+4. Security: dependency graph (the Dependency review check fails until it is on), private vulnerability reporting, Dependabot alerts and security updates (secret scanning and push protection
    were already on, read on 8 November 2026).
 5. Ruleset "Protect main", then require the **Checks** status once it has run on main.
 6. Create a new public repository named `cyberdudeuk.github.io` for the launchpad (ADR 0001).
