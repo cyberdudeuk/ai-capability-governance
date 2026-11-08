@@ -1,6 +1,6 @@
 # Public AI Utility Toolkit
 
-[![Version](https://img.shields.io/badge/version-2.0.0-0b3d91)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.1.0-0b3d91)](CHANGELOG.md)
 [![Licence: MIT](https://img.shields.io/badge/code-MIT-green)](LICENSE)
 [![Content: OGL v3.0](https://img.shields.io/badge/content-OGL%20v3.0-blue)](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
 [![WCAG 2.2 AA](https://img.shields.io/badge/accessibility-WCAG%202.2%20AA-00703c)](ACCESSIBILITY.md)
@@ -126,7 +126,7 @@ first — the short version is that every factual claim needs a tiered, dated, a
 | | |
 | --- | --- |
 | Owner | Public AI Utility Toolkit working group |
-| Version | 2.0.0 |
+| Version | 2.1.0 |
 | Last reviewed | 2026-08-08 |
 | Next review due | 2026-11-08 |
 | Content licence | [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) |

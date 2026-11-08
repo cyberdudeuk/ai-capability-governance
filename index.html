@@ -11,7 +11,7 @@
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#0b3d91" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0e1116" media="(prefers-color-scheme: dark)">
-  <meta name="version" content="2.0.0">
+  <meta name="version" content="2.1.0">
   <meta name="last-reviewed" content="2026-08-08">
   <meta name="next-review" content="2026-11-08">
   <link rel="canonical" href="https://cyberdudeuk.github.io/">
@@ -33,7 +33,7 @@
     "inLanguage": "en-GB",
     "description": "A public-good toolkit for governing, assuring and delivering AI-assisted public services.",
     "license": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "dateModified": "2026-08-08",
     "isAccessibleForFree": true,
     "publisher": { "@type": "Organization", "name": "Public AI Utility Toolkit working group" }
@@ -60,6 +60,7 @@
       <a href="#ucd">UCD &amp; DEIA</a>
       <a href="#practice">Practice</a>
       <a href="#resources">Resources</a>
+      <a href="#signals">Signals</a>
       <a href="#roadmap">Roadmap</a>
       <a href="#contact">Contact</a>
       </nav>
@@ -514,7 +515,7 @@ asset_id: review-accessibility-govuk
 title: GOV.UK accessibility review assistant
 status: approved
 version: 2.1.0
-owner: a.patel@example.gov.uk
+owner: AI assurance lead (role, not a named person)
 authority_tier: 1
 human_review: H3
 specialist_review: [accessibility, content_design]
@@ -552,7 +553,7 @@ lifecycle:
   review_cadence: P3M
   next_review: 2026-11-01
   deprecation: null
-contact: ai-assurance@example.gov.uk</pre></div>
+contact: https://github.com/cyberdudeuk/cyberdudeuk.github.io/issues/new</pre></div>
    </div>
   </div>
   <div class="callout" style="margin-top:26px"><p><strong>Interoperability note:</strong> map these fields to <a href="https://www.w3.org/TR/vocab-dcat-3/" rel="noopener noreferrer">DCAT 3<span class="ext visually-hidden"> (opens an external website)</span></a> for cataloguing, <a href="https://www.w3.org/TR/prov-o/" rel="noopener noreferrer">PROV-O<span class="ext visually-hidden"> (opens an external website)</span></a> for evidence chains and <a href="https://cyclonedx.org/capabilities/mlbom/" rel="noopener noreferrer">CycloneDX ML-BOM<span class="ext visually-hidden"> (opens an external website)</span></a> for supply chain, so registries in different organisations can federate rather than fork.</p></div>
@@ -847,6 +848,165 @@ contact: ai-assurance@example.gov.uk</pre></div>
  </div>
 </section>
 
+<section id="signals" class="section" aria-labelledby="sec-h-signals">
+ <div class="wrap">
+  <span class="eyebrow">Horizon scan · AI and data governance</span>
+  <h2 id="sec-h-signals">What practitioners and regulators are saying</h2>
+  <p class="lede">21 signals on governing AI agents and the data they use, gathered from public LinkedIn content and refreshed weekly. Each names its author, links to where it was found and says how far it has been checked. Inclusion is not endorsement.</p>
+  <div class="callout"><p style="margin:0"><strong>Read with care.</strong> LinkedIn does not allow automated reading of posts, so every summary comes from search-indexed text and is paraphrased. 13 of 21 come from vendors, consultancies or law firms and are marked. Statistics without a primary source are flagged as unverified. Check the source before you quote anything. The register is open data: <a href="data/ai-data-governance-signals.json">ai-data-governance-signals.json</a> (scanned 2026-11-08, version 1.0.0).</p></div>
+  <div class="grid g2" style="margin-top:18px">
+<article class="card"><div class="tags"><span class="tag t-gov">S01</span><span class="tag">UK</span><span class="tag t-gov">UK public sector</span><span class="tag ">Data foundations</span><span class="tag">Commercial interest</span></div>
+ <h3>UK public sector data leaders on data in action for public services</h3>
+ <p style="font-size:.9rem;margin:0 0 6px"><strong>Lee Stockwell</strong>, Databricks · 2026</p>
+ <p>Activity highlights George Bettsworth, Head of Data Science at the Foreign, Commonwealth and Development Office, putting AI progress down to good governance, with the argument that governance should sit at the data layer rather than in each application. Also trails an Innovation 2026 panel with Sue Bateman (Defra CDO), Jacqui Leggetter (DWP) and Aimee Smith (Government Chief Data Officer).</p>
+ <p style="font-size:.85rem;margin:0"><strong>Why it matters:</strong> Direct UK government voices on governing AI through the data estate; supports BOT&#x27;s position that agent governance starts with data governance.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Caution:</strong> Vendor-hosted content; the FCDO view is relayed by the vendor, not quoted from FCDO.</p>
+ <p style="font-size:.85rem;margin:6px 0 0"><a href="https://www.linkedin.com/in/lee-stockwell-727889190/" rel="noopener noreferrer">Source on LinkedIn<span class="ext visually-hidden"> (opens an external website)</span></a> · evidence: search-indexed text, post not opened</p></article>
+<article class="card"><div class="tags"><span class="tag t-gov">S02</span><span class="tag">UK</span><span class="tag ">Assurance &amp; standards</span><span class="tag t-gov">UK public sector</span><span class="tag t-risk">Agent governance</span></div>
+ <h3>Trusted third-party AI assurance: from principles to implementation</h3>
+ <p style="font-size:.9rem;margin:0 0 6px"><strong>Elizabeth Seger</strong>, Tony Blair Institute for Global Change · 2026 (about one month before scan)</p>
+ <p>Argues AI governance is shifting from principles to implementation and that governance capacity is what lets organisations adopt AI agents safely. Points to the UK Government&#x27;s Trusted Third-Party AI Assurance Roadmap (September 2025), tied to commitment 29 of the AI Opportunities Action Plan.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Why it matters:</strong> Links BOT&#x27;s assurance pages to a named UK policy instrument and commitment number.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Caution:</strong> Roadmap and commitment number should be checked against GOV.UK before citing in BOT&#x27;s evidence base.</p>
+ <p style="font-size:.85rem;margin:6px 0 0"><a href="https://www.linkedin.com/in/elizabeth-seger-5209797b/" rel="noopener noreferrer">Source on LinkedIn<span class="ext visually-hidden"> (opens an external website)</span></a> · evidence: search-indexed text, post not opened</p></article>
+<article class="card"><div class="tags"><span class="tag t-gov">S03</span><span class="tag">UK</span><span class="tag t-risk">Agent governance</span><span class="tag t-gov">UK public sector</span></div>
+ <h3>Scaling the Responsible Adoption of Agentic AI (techUK report)</h3>
+ <p style="font-size:.9rem;margin:0 0 6px"><strong>Usman Ikhlaq</strong>, techUK (author); now University of Bath Institute for Policy Research · 21 July 2026</p>
+ <p>Profile lists a techUK report he authored on moving agentic AI beyond pilots to responsible deployment at scale across the UK economy, including how oversight and accountability keep pace.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Why it matters:</strong> UK industry baseline for agent oversight; a comparator for BOT&#x27;s agent governance playbook.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Caution:</strong> Report itself not read; summary is from the profile listing.</p>
+ <p style="font-size:.85rem;margin:6px 0 0"><a href="https://www.linkedin.com/in/usman-ikhlaq/" rel="noopener noreferrer">Source on LinkedIn<span class="ext visually-hidden"> (opens an external website)</span></a> · evidence: search-indexed text, post not opened</p></article>
+<article class="card"><div class="tags"><span class="tag t-gov">S04</span><span class="tag">UK</span><span class="tag t-risk">Agent governance</span><span class="tag ">Assurance &amp; standards</span><span class="tag t-gov">UK public sector</span></div>
+ <h3>AI Security Institute and NCSC advice on agentic AI cyber risk</h3>
+ <p style="font-size:.9rem;margin:0 0 6px"><strong>AI Security Institute (AISI)</strong>, UK Government · 2026</p>
+ <p>AISI&#x27;s page links to NCSC guidance on managing the cyber risk of agentic AI and to its Alignment Red Team work. The page describes AISI as part of the Cabinet Office.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Why it matters:</strong> Authoritative UK security sources BOT should cite for agent permissions and runtime controls.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Caution:</strong> Departmental home is as stated on the LinkedIn page; confirm on aisi.gov.uk given recent machinery of government changes.</p>
+ <p style="font-size:.85rem;margin:6px 0 0"><a href="https://www.linkedin.com/company/ai-security-institute" rel="noopener noreferrer">Source on LinkedIn<span class="ext visually-hidden"> (opens an external website)</span></a> · evidence: search-indexed text, post not opened</p></article>
+<article class="card"><div class="tags"><span class="tag t-gov">S05</span><span class="tag">UK</span><span class="tag t-risk">Agent governance</span><span class="tag t-risk">Regulation &amp; policy</span><span class="tag t-gov">UK public sector</span><span class="tag">Commercial interest</span></div>
+ <h3>Agent autonomy, accountability and control boundaries in financial services</h3>
+ <p style="font-size:.9rem;margin:0 0 6px"><strong>Keith Vincent (speaker); hosted by Ashurst Perkins Coie</strong>, Government Legal Department, Treasury Legal Advisers · 7 October 2026</p>
+ <p>Event activity frames AI agents around autonomy, accountability and where control boundaries sit, and notes that customers&#x27; own agents bring new liquidity and fraud risks.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Why it matters:</strong> Government legal perspective on the same question BOT answers: what an agent may do without a human.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Caution:</strong> Event summary written by the host firm, not by the speaker.</p>
+ <p style="font-size:.85rem;margin:6px 0 0"><a href="https://www.linkedin.com/in/keith-vincent-80063a4/" rel="noopener noreferrer">Source on LinkedIn<span class="ext visually-hidden"> (opens an external website)</span></a> · evidence: search-indexed text, post not opened</p></article>
+<article class="card"><div class="tags"><span class="tag t-gov">S06</span><span class="tag">UK</span><span class="tag t-risk">Regulation &amp; policy</span><span class="tag t-risk">Agent governance</span><span class="tag">Commercial interest</span></div>
+ <h3>FCA moving towards agentic supervision</h3>
+ <p style="font-size:.9rem;margin:0 0 6px"><strong>Sophie Sheldon (quoted in Law360 UK); liked by Devina Shah</strong>, Simmons &amp; Simmons · 2026</p>
+ <p>Activity reports the FCA&#x27;s plan to become an agentic regulator, with a warning about over-reliance on a single model, platform or provider, and separately references new FCA guidance on AI in financial services.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Why it matters:</strong> A UK regulator itself adopting agents: a live case for BOT&#x27;s concentration-risk and vendor-neutrality guidance.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Caution:</strong> Secondary report via Law360; check the FCA&#x27;s own statement.</p>
+ <p style="font-size:.85rem;margin:6px 0 0"><a href="https://www.linkedin.com/in/devina-shah-80742a11a/" rel="noopener noreferrer">Source on LinkedIn<span class="ext visually-hidden"> (opens an external website)</span></a> · evidence: search-indexed text, post not opened</p></article>
+<article class="card"><div class="tags"><span class="tag t-gov">S07</span><span class="tag">UK</span><span class="tag t-gov">UK public sector</span><span class="tag ">Data foundations</span><span class="tag ">Assurance &amp; standards</span></div>
+ <h3>Responsible AI governance: beyond the &#x27;Department of No&#x27;</h3>
+ <p style="font-size:.9rem;margin:0 0 6px"><strong>Yasmin Liverpool</strong>, Chief Data Office, National Highways · Undated (likely 2025)</p>
+ <p>LinkedIn article proposing shared accountability for AI governance (for example the CDO with the CSO) or a cross-executive AI steering group, citing the NAO finding that poor data quality is a barrier to AI in government and the Generative AI Framework for HM Government as a starting point.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Why it matters:</strong> A practising government CDO&#x27;s operating-model view; maps onto BOT&#x27;s roles and accountability pages.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Caution:</strong> Predates later UK guidance that replaced the Generative AI Framework; treat as historical context.</p>
+ <p style="font-size:.85rem;margin:6px 0 0"><a href="https://www.linkedin.com/pulse/responsible-ai-governance-beyond-department-yasmin-liverpool-feqpe" rel="noopener noreferrer">Source on LinkedIn<span class="ext visually-hidden"> (opens an external website)</span></a> · evidence: search-indexed text, post not opened</p></article>
+<article class="card"><div class="tags"><span class="tag t-gov">S08</span><span class="tag">UK</span><span class="tag t-risk">Agent governance</span><span class="tag">Commercial interest</span></div>
+ <h3>Most organisations will adopt agents before they can govern them</h3>
+ <p style="font-size:.9rem;margin:0 0 6px"><strong>Melvyn White</strong>, Agentic AI strategy, governance and management (independent, London) · Current profile</p>
+ <p>Profile thesis: the gap between agent adoption and the ability to govern agents is the core risk.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Why it matters:</strong> A crisp framing of the governance-debt problem BOT exists to close.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Caution:</strong> Opinion; no evidence attached in the indexed text.</p>
+ <p style="font-size:.85rem;margin:6px 0 0"><a href="https://www.linkedin.com/in/melvyn-white-44450011/" rel="noopener noreferrer">Source on LinkedIn<span class="ext visually-hidden"> (opens an external website)</span></a> · evidence: search-indexed text, post not opened</p></article>
+<article class="card"><div class="tags"><span class="tag t-gov">S09</span><span class="tag">International</span><span class="tag ">Data foundations</span><span class="tag t-risk">Regulation &amp; policy</span></div>
+ <h3>Data governance must scale with AI adoption</h3>
+ <p style="font-size:.9rem;margin:0 0 6px"><strong>Jake Boudsocq</strong>, Department of Government Services (Victoria, Australia) · 2026 (about five months before scan)</p>
+ <p>Takeaways from the 2026 Melbourne Data Protection and Security Summit: data governance is the operating model that makes responsible AI possible at scale; uncatalogued legacy data compounds risk; Digital Transformation Agency model clauses are becoming a public sector baseline; AI governance is not set-and-forget.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Why it matters:</strong> Peer-government evidence for BOT&#x27;s &#x27;know your data before AI&#x27; gate and for catalogue-first sequencing.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Caution:</strong> Australian context; DTA clauses are not UK instruments.</p>
+ <p style="font-size:.85rem;margin:6px 0 0"><a href="https://www.linkedin.com/in/jakeboudsocq/" rel="noopener noreferrer">Source on LinkedIn<span class="ext visually-hidden"> (opens an external website)</span></a> · evidence: search-indexed text, post not opened</p></article>
+<article class="card"><div class="tags"><span class="tag t-gov">S10</span><span class="tag">International</span><span class="tag t-risk">Agent governance</span><span class="tag ">Assurance &amp; standards</span></div>
+ <h3>2026 AI governance priorities, including governing AI agents</h3>
+ <p style="font-size:.9rem;margin:0 0 6px"><strong>Partnership on AI (reposted by Stephanie Ifayemi)</strong>, Partnership on AI · 2026 (about eight months before scan)</p>
+ <p>Sets out priorities led by governing AI agents with accountability, security and privacy, plus stronger documentation and public reporting across the AI value chain and shared international baselines. Also notes work on how public sector AI governance differs from private sector approaches.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Why it matters:</strong> Multi-stakeholder agenda that BOT&#x27;s agent registry and transparency pages already address.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Caution:</strong> Agenda-setting piece; not guidance.</p>
+ <p style="font-size:.85rem;margin:6px 0 0"><a href="https://www.linkedin.com/in/stephanie-ifayemi-2065081b0/" rel="noopener noreferrer">Source on LinkedIn<span class="ext visually-hidden"> (opens an external website)</span></a> · evidence: search-indexed text, post not opened</p></article>
+<article class="card"><div class="tags"><span class="tag t-gov">S11</span><span class="tag">International</span><span class="tag t-risk">Agent governance</span><span class="tag ">Assurance &amp; standards</span><span class="tag">Commercial interest</span></div>
+ <h3>From governance decisions to enforceable authority at runtime</h3>
+ <p style="font-size:.9rem;margin:0 0 6px"><strong>Patrick Upmann</strong>, AIGN Global · 2026</p>
+ <p>As agents move from generating information to taking actions across data, tools and systems, the question becomes how governance decisions are enforced at runtime. Situates this against ISO/IEC 42001, the NIST AI Risk Management Framework and the EU AI Act.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Why it matters:</strong> Matches BOT&#x27;s &#x27;the app is the leash&#x27; principle: permissions enforced by scope, not policy text.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Caution:</strong> Author markets a proprietary governance framework.</p>
+ <p style="font-size:.85rem;margin:6px 0 0"><a href="https://www.linkedin.com/in/upmann/" rel="noopener noreferrer">Source on LinkedIn<span class="ext visually-hidden"> (opens an external website)</span></a> · evidence: search-indexed text, post not opened</p></article>
+<article class="card"><div class="tags"><span class="tag t-gov">S12</span><span class="tag">International</span><span class="tag ">Agent registries &amp; metadata</span><span class="tag t-risk">Agent governance</span><span class="tag">Commercial interest</span></div>
+ <h3>Agent scanners and an agent registry built on agent-card metadata</h3>
+ <p style="font-size:.9rem;margin:0 0 6px"><strong>Roberto Mandiola</strong>, Amazon Web Services (post about MuleSoft and Google Cloud) · 2026</p>
+ <p>Describes scanners that find AI agents and capture metadata on what each can do, its underlying model and its data access rights, mapped to the agent-to-agent protocol&#x27;s agent card so organisations hold one registry of agents, including home-built agents and MCP servers.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Why it matters:</strong> Strongest metadata link in this scan: an agent register is a metadata problem, which ties BOT to the Metadata Exchange Model and DCAT work.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Caution:</strong> Vendor announcement relayed in another person&#x27;s activity feed (indexed under Andrea Radojicic&#x27;s profile).</p>
+ <p style="font-size:.85rem;margin:6px 0 0"><a href="https://www.linkedin.com/in/andrearadojicic/" rel="noopener noreferrer">Source on LinkedIn<span class="ext visually-hidden"> (opens an external website)</span></a> · evidence: search-indexed text, post not opened</p></article>
+<article class="card"><div class="tags"><span class="tag t-gov">S13</span><span class="tag">International</span><span class="tag ">Data foundations</span><span class="tag t-risk">Agent governance</span><span class="tag">Commercial interest</span></div>
+ <h3>Governing AI agents as data consumers</h3>
+ <p style="font-size:.9rem;margin:0 0 6px"><strong>Bigeye (and others in the feed)</strong>, Bigeye · 2026</p>
+ <p>Argues that governing agents that read enterprise data differs from human-era data governance because agents fail at different points in the pipeline; recommends knowing data quality signals and what data agents access before rollout. The feed also cites a Sinch survey of 2,527 senior decision-makers in which 74% had rolled back a live agent after a governance failure.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Why it matters:</strong> Useful framing for BOT&#x27;s data-access controls; the rollback figure is a candidate indicator.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Caution:</strong> Survey figure is vendor-reported and unverified; do not use in BOT&#x27;s evidence base until the Sinch source is read.</p>
+ <p style="font-size:.85rem;margin:6px 0 0"><a href="https://www.linkedin.com/posts/trg-screen_reducing-manual-effort-is-only-part-of-the-activity-7468648666879115265-B-At" rel="noopener noreferrer">Source on LinkedIn<span class="ext visually-hidden"> (opens an external website)</span></a> · evidence: search-indexed text, post not opened</p></article>
+<article class="card"><div class="tags"><span class="tag t-gov">S14</span><span class="tag">International</span><span class="tag t-risk">Agent governance</span><span class="tag ">Agent registries &amp; metadata</span><span class="tag">Commercial interest</span></div>
+ <h3>Unsanctioned agents as governance debt</h3>
+ <p style="font-size:.9rem;margin:0 0 6px"><strong>Subeer Sehgal</strong>, Grazitti Interactive · 2026</p>
+ <p>A playbook for governing agents: where risk concentrates, which controls hold and how to prove compliance as agent numbers grow. Warns that unvalidated feedback loops, where agents treat their own inferences as fact, are the real blind spot. The company feed claims 54% of organisations have between 1 and 100 unsanctioned agents.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Why it matters:</strong> Supports BOT&#x27;s agent inventory and lineage controls.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Caution:</strong> The 54% figure has no stated source; treat as unverified.</p>
+ <p style="font-size:.85rem;margin:6px 0 0"><a href="https://www.linkedin.com/in/subeer-sehgal-60488211/" rel="noopener noreferrer">Source on LinkedIn<span class="ext visually-hidden"> (opens an external website)</span></a> · evidence: search-indexed text, post not opened</p></article>
+<article class="card"><div class="tags"><span class="tag t-gov">S15</span><span class="tag">International</span><span class="tag ">Data foundations</span><span class="tag ">Agent registries &amp; metadata</span></div>
+ <h3>Context engines and a knowledge layer for agents</h3>
+ <p style="font-size:.9rem;margin:0 0 6px"><strong>Robert Noyce</strong>, Shell · 2026</p>
+ <p>Agents need business context, semantic definitions, governance, memory and trusted data; a knowledge layer linking business definitions to data gives agents that context.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Why it matters:</strong> Endorses the glossary, ontology and knowledge-graph layer the govukOS build standard already requires.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Caution:</strong> Practitioner reflection after an event; no evidence attached.</p>
+ <p style="font-size:.85rem;margin:6px 0 0"><a href="https://www.linkedin.com/in/robert-noyce-85303512/" rel="noopener noreferrer">Source on LinkedIn<span class="ext visually-hidden"> (opens an external website)</span></a> · evidence: search-indexed text, post not opened</p></article>
+<article class="card"><div class="tags"><span class="tag t-gov">S16</span><span class="tag">International</span><span class="tag ">Data foundations</span><span class="tag">Commercial interest</span></div>
+ <h3>AI-ready data goes beyond data quality</h3>
+ <p style="font-size:.9rem;margin:0 0 6px"><strong>Joyce Goh</strong>, Salesforce (Informatica) · 2026</p>
+ <p>Data readiness affects AI economics, and governance must evolve as AI moves from generating insight to agents taking action, needing more visibility, accountability and control.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Why it matters:</strong> Corroborates S01 and S09 from the platform side.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Caution:</strong> Vendor promotional content.</p>
+ <p style="font-size:.85rem;margin:6px 0 0"><a href="https://www.linkedin.com/in/joycegohhm/" rel="noopener noreferrer">Source on LinkedIn<span class="ext visually-hidden"> (opens an external website)</span></a> · evidence: search-indexed text, post not opened</p></article>
+<article class="card"><div class="tags"><span class="tag t-gov">S17</span><span class="tag">International</span><span class="tag ">Data foundations</span><span class="tag">Commercial interest</span></div>
+ <h3>Agents stretch the old data quality problem</h3>
+ <p style="font-size:.9rem;margin:0 0 6px"><strong>Herman Yu</strong>, Teeup Data Technology · 2026</p>
+ <p>Data governance and data quality issues are long-standing; the non-deterministic behaviour of LLMs and agents stretches them further, so enterprise architecture must join governance dimensions into one framework.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Why it matters:</strong> Supports treating agent governance as an extension of data governance, not a new silo.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Caution:</strong> Opinion.</p>
+ <p style="font-size:.85rem;margin:6px 0 0"><a href="https://www.linkedin.com/in/hermanyu/" rel="noopener noreferrer">Source on LinkedIn<span class="ext visually-hidden"> (opens an external website)</span></a> · evidence: search-indexed text, post not opened</p></article>
+<article class="card"><div class="tags"><span class="tag t-gov">S18</span><span class="tag">EU</span><span class="tag t-risk">Regulation &amp; policy</span><span class="tag">Commercial interest</span></div>
+ <h3>EU AI Act in force but enforcement readiness uneven</h3>
+ <p style="font-size:.9rem;margin:0 0 6px"><strong>Robert Gasparovic</strong>, HAVEL &amp; PARTNERS, Slovak Republic · 2026</p>
+ <p>Notes the EU AI Act has applied since 2 August 2026 but Member States differ in enforcement readiness; Europe is also revisiting text-and-data-mining rules.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Why it matters:</strong> Cross-border context for BOT&#x27;s regulatory crosswalk.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Caution:</strong> Applicability dates differ by obligation under the Act; check the specific article before citing.</p>
+ <p style="font-size:.85rem;margin:6px 0 0"><a href="https://www.linkedin.com/in/robertgasparovic/" rel="noopener noreferrer">Source on LinkedIn<span class="ext visually-hidden"> (opens an external website)</span></a> · evidence: search-indexed text, post not opened</p></article>
+<article class="card"><div class="tags"><span class="tag t-gov">S19</span><span class="tag">International</span><span class="tag t-risk">Regulation &amp; policy</span><span class="tag t-risk">Agent governance</span><span class="tag">Commercial interest</span></div>
+ <h3>China&#x27;s July 2026 framework for governing AI agents</h3>
+ <p style="font-size:.9rem;margin:0 0 6px"><strong>Pascal Jiang (post by Rimon PC)</strong>, Dacheng Law Offices / Rimon PC · July 2026</p>
+ <p>Three measures effective July 2026 move China from principles to operational governance, including AI ethics guidance, a framework for anthropomorphic AI services and a policy framework for governing AI agents.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Why it matters:</strong> One of the first national-level agent governance frameworks; a comparator for BOT.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Caution:</strong> Law-firm summary; the primary texts are not read.</p>
+ <p style="font-size:.85rem;margin:6px 0 0"><a href="https://www.linkedin.com/in/pascaljiang/" rel="noopener noreferrer">Source on LinkedIn<span class="ext visually-hidden"> (opens an external website)</span></a> · evidence: search-indexed text, post not opened</p></article>
+<article class="card"><div class="tags"><span class="tag t-gov">S20</span><span class="tag">International</span><span class="tag t-gov">UK public sector</span><span class="tag ">Assurance &amp; standards</span></div>
+ <h3>Institutional readiness for responsible AI in the public sector</h3>
+ <p style="font-size:.9rem;margin:0 0 6px"><strong>Anthony Akpan</strong>, Tizee Consult; Institutional AI Governance newsletter · April and July 2026</p>
+ <p>An SSRN preprint (April 2026) on institutional readiness as a condition for responsible AI in the public sector, and a newsletter launched in July 2026 on institutional responsibility in AI governance.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Why it matters:</strong> Academic framing of readiness that maps onto BOT&#x27;s maturity and adoption model.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Caution:</strong> Preprint, not peer reviewed; focus is developing countries.</p>
+ <p style="font-size:.85rem;margin:6px 0 0"><a href="https://www.linkedin.com/in/anthonyanthonyakpan/" rel="noopener noreferrer">Source on LinkedIn<span class="ext visually-hidden"> (opens an external website)</span></a> · evidence: search-indexed text, post not opened</p></article>
+<article class="card"><div class="tags"><span class="tag t-gov">S21</span><span class="tag">International</span><span class="tag ">Assurance &amp; standards</span><span class="tag ">Data foundations</span><span class="tag">Commercial interest</span></div>
+ <h3>Five AI governance platforms compared</h3>
+ <p style="font-size:.9rem;margin:0 0 6px"><strong>Brad Martineau</strong>, LinkedIn article · Undated</p>
+ <p>Compares Credo AI, IBM watsonx.governance, Holistic AI, Fiddler AI and Atlan, noting that a data governance and metadata platform such as Atlan supplies the lineage regulators expect.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Why it matters:</strong> Market scan only; useful for BOT&#x27;s tooling landscape, not for recommendations.</p>
+ <p style="font-size:.85rem;margin:0"><strong>Caution:</strong> Listicle; possible commercial interest. BOT stays vendor-neutral.</p>
+ <p style="font-size:.85rem;margin:6px 0 0"><a href="https://www.linkedin.com/pulse/top-5-ai-governance-platforms-meeting-strictest-brad-martineau-hr8nc" rel="noopener noreferrer">Source on LinkedIn<span class="ext visually-hidden"> (opens an external website)</span></a> · evidence: search-indexed text, post not opened</p></article>
+  </div>
+  <p class="count-note">Credit belongs to the named authors. To correct or remove an item, use the contact routes below.</p>
+ </div>
+</section>
+
 <section id="transparency" class="section" aria-labelledby="sec-h-11">
  <div class="wrap">
   <span class="eyebrow">Trust and transparency</span>
@@ -854,7 +1014,7 @@ contact: ai-assurance@example.gov.uk</pre></div>
   <p class="lede">A guidance utility that cannot be questioned is not trustworthy. Here is how this one is governed, and how you hold it to account.</p>
   <div class="grid g3">
    <div class="card"><h3>Provenance of this content</h3><p>Every substantive claim links to a tiered source. Where this portal expresses an opinion or a house rule rather than a legal requirement, it says so.</p></div>
-   <div class="card"><h3>Ownership and review</h3><p><strong>Owner:</strong> Public AI Utility Toolkit working group<br><strong>Version:</strong> 2.0.0<br><strong>Last reviewed:</strong> 2026-08-08<br><strong>Next review due:</strong> 2026-11-08</p></div>
+   <div class="card"><h3>Ownership and review</h3><p><strong>Owner:</strong> Public AI Utility Toolkit working group<br><strong>Version:</strong> 2.1.0<br><strong>Last reviewed:</strong> 2026-08-08<br><strong>Next review due:</strong> 2026-11-08</p></div>
    <div class="card"><h3>Licence and reuse</h3><p>Open Government Licence v3.0 (content) / MIT (code). Fork it, adapt it for your organisation, and tell us what you changed so others benefit.</p></div>
    <div class="card"><h3>Data and privacy</h3><p>This site is static and client-side. It sets no tracking cookies, runs no analytics that identify you, and sends nothing you type in the tools to any server. Preferences are stored locally in your browser and you can clear them at any time.</p></div>
    <div class="card"><h3>Known limitations</h3><p>This is a concept portal, not a statutory instrument. It does not replace your organisation's policies, your DPO, your security team or your legal advice. Some linked standards sit behind paywalls.</p></div>
@@ -863,6 +1023,7 @@ contact: ai-assurance@example.gov.uk</pre></div>
   <h3 style="margin-top:34px">Changelog</h3>
   <div class="table-scroll"><table><caption>Recent changes to this portal</caption>
    <thead><tr><th scope="col">Version</th><th scope="col">Date</th><th scope="col">Change</th></tr></thead><tbody>
+   <tr><td>2.1.0</td><td>2026-11-08</td><td>Added the Signals section: a weekly horizon scan of AI and data governance content with attribution, evidence labels and an open JSON register. Replaced the two email addresses in the worked metadata example with a role and a contact form, in line with the contact-form-only rule. Added an automated site check.</td></tr>
    <tr><td>2.0.0</td><td>2026-08-08</td><td>Added task-first entry points, six interactive tools, a tiered resource library, H0–H5 review table, RACI, transparency and redress commitments, MoSCoW roadmap, glossary and FAQ. Added dark, high-contrast and large-text modes, site search, on-page navigation and a print stylesheet.</td></tr>
    <tr><td>1.0.0</td><td>Initial</td><td>Concept portal: mission, knowledge corpus, toolkit, assurance workflow, catalogue, UCD and code of practice.</td></tr>
   </tbody></table></div>
@@ -998,7 +1159,7 @@ contact: ai-assurance@example.gov.uk</pre></div>
  </div>
  <div class="meta-bar">
   <span>Public AI Utility Toolkit — a concept portal for public-good AI governance, skills and agent assurance.</span>
-  <span>Version 2.0.0</span><span>Reviewed 2026-08-08</span><span>Next review 2026-11-08</span>
+  <span>Version 2.1.0</span><span>Reviewed 2026-08-08</span><span>Next review 2026-11-08</span>
   <span>Open Government Licence v3.0 (content) / MIT (code)</span>
   <a href="#main">Return to main content</a>
  </div>
