@@ -87,6 +87,10 @@ def problems(root):
         for u in re.findall(r'uses:\s*(\S+)', t):
             check(re.search(r'@[0-9a-f]{40}$', u) is not None, f'S13 pages.yml action not pinned to a full commit: {u}')
         check('path: _site' in t and 'python tools/check_site.py' in t, 'S13 pages.yml must check first and publish only _site')
+    # S15 (D-13): the Signals section was written by a one-off script, so a weekly update could drift from the register.
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import build_signals
+    check(build_signals.rebuilt(s, d) == s, 'S15 Signals section is out of step with the register: run python3 tools/build_signals.py')
     # S14 (D-12): the licence named its holder as "Em", cut off.
     lic = (root / 'LICENSE').read_text(encoding='utf-8')
     m = re.search(r'Copyright \(c\) \d{4} (.+)', lic)
@@ -101,7 +105,7 @@ def main(argv=None):
     root = (argv or sys.argv[1:] or ['.'])[0]
     p = problems(root)
     n = len(json.loads((Path(root) / 'data' / 'ai-data-governance-signals.json').read_text(encoding='utf-8'))['items'])
-    print('FAIL\n' + '\n'.join(p) if p else f'PASS: 14 checks, {n} signals')
+    print('FAIL\n' + '\n'.join(p) if p else f'PASS: 15 checks, {n} signals')
     return 1 if p else 0
 
 
