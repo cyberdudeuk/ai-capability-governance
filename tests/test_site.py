@@ -101,6 +101,11 @@ class Site(unittest.TestCase):
         self.fails_with('S14')
 
 
+    def test_S15_signals_section_edited_by_hand(self):
+        self.edit('index.html', 'What practitioners and regulators are saying</h2>', 'Hand-edited</h2>')
+        self.fails_with('S15')
+
+
 class Health(unittest.TestCase):
     HTML = '<meta name="next-review" content="2027-02-08">'
 
