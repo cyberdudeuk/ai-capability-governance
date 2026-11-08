@@ -1,0 +1,32 @@
+name: Release
+# Tier 3: only a person starts it, by pushing a version tag (for example v3.0.0). Checks the tagged version and attaches
+# the site as a zip to a GitHub release. Plain commands only (ADR 0002).
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out the commit (plain git; the repository allows no third-party actions)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git init -q .
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git fetch -q --depth 1 origin "${GITHUB_SHA}"
+          git checkout -q FETCH_HEAD
+          git remote set-url origin "https://github.com/${GITHUB_REPOSITORY}.git"
+      - name: Python environment
+        run: |
+          python3 -m venv "$RUNNER_TEMP/venv"
+          echo "$RUNNER_TEMP/venv/bin" >> "$GITHUB_PATH"
+      - run: pip install -r requirements.txt
+      - run: python tools/check_site.py && python -m unittest discover -s tests && node --check app.js
+      - run: zip -qr "ai-capability-governance-${GITHUB_REF_NAME}.zip" index.html styles.css app.js data .nojekyll LICENSE
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" "ai-capability-governance-${GITHUB_REF_NAME}.zip" --generate-notes --title "$GITHUB_REF_NAME"

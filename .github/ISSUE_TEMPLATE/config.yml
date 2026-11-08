@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security problem privately
+    url: https://github.com/cyberdudeuk/ai-capability-governance/security/advisories/new
+    about: Never open a public issue for a vulnerability.
+  - name: Ask the community
+    url: https://github.com/cyberdudeuk/ai-capability-governance/discussions
+    about: Questions, ideas and shared practice that are not yet a change.

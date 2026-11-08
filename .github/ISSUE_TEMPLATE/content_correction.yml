@@ -1,0 +1,35 @@
+name: Content is wrong or out of date
+description: Superseded guidance, a withdrawn standard, a mis-stated duty or a dead authority link
+title: "[Content] "
+labels: ["content"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This form is public. Do not include personal data, names of colleagues, case details or anything above OFFICIAL.
+        There is no email route: this form is the way to contact the maintainers.
+  - type: input
+    id: where
+    attributes:
+      label: Which section or item?
+    validations:
+      required: true
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What is wrong, and what should it say?
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: The source that proves it (address of the authoritative page)
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy
+      options:
+        - label: I have not included personal data, case details or anything above OFFICIAL
+          required: true
