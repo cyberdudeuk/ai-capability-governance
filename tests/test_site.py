@@ -92,8 +92,26 @@ class Site(unittest.TestCase):
 
 
     def test_S13_unpinned_pages_action(self):
-        self.edit('.github/workflows/pages.yml', 'actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e', 'actions/deploy-pages@v4')
+        # Matches whatever commit the action is pinned to, so a Dependabot update does not break the test (D-14).
+        import re
+        p = self.tmp / '.github' / 'workflows' / 'pages.yml'
+        t, n = re.subn(r'actions/deploy-pages@[0-9a-f]{40}', 'actions/deploy-pages@v4', p.read_text(encoding='utf-8'))
+        self.assertEqual(n, 1)
+        p.write_text(t, encoding='utf-8')
         self.fails_with('S13')
+
+    def test_S16_duplicate_pin(self):
+        p = self.tmp / 'requirements.txt'
+        p.write_text((ROOT / 'requirements.txt').read_text(encoding='utf-8') + 'PyYAML==6.0.1\n', encoding='utf-8')
+        self.fails_with('S16')
+
+    def test_S17_duplicate_step(self):
+        import re
+        p = self.tmp / '.github' / 'workflows' / 'pages.yml'
+        t = p.read_text(encoding='utf-8')
+        line = re.search(r'      - uses: actions/configure-pages@[^\n]+\n', t).group(0)
+        p.write_text(t.replace(line, line + line, 1), encoding='utf-8')
+        self.fails_with('S17')
 
 
     def test_S14_truncated_licence(self):
