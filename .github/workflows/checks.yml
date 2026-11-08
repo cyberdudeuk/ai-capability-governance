@@ -45,12 +45,16 @@ jobs:
         run: python tools/check_browser.py
       - name: Browser check vaccinations (each must catch its deliberate break)
         run: for b in overflow consoleerror contact; do python tools/check_browser.py --break "$b"; done
-      - name: Health run (review date, signals freshness)
+      - name: Health run (review date, signals freshness; on Mondays, resource links)
         id: health
         run: |
           set +e
           python tools/health.py > health.txt
-          echo "code=$?" >> "$GITHUB_OUTPUT"
+          code=$?
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            python tools/check_links.py >> health.txt || code=2
+          fi
+          echo "code=$code" >> "$GITHUB_OUTPUT"
           cat health.txt
       - name: Open or update a health issue for a person to act on
         if: steps.health.outputs.code == '2' && github.event_name == 'schedule'

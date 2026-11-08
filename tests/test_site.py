@@ -55,7 +55,12 @@ class Site(unittest.TestCase):
         self.fails_with('S3')
 
     def test_S5_versions_disagree(self):
-        self.edit('index.html', '<span>Version 3.0.0</span>', '<span>Version 2.0.0</span>')
+        # Reads the current version, so a version bump does not break the test (D-16).
+        import re
+        p = self.tmp / 'index.html'
+        t, n = re.subn(r'<span>Version [\d.]+</span>', '<span>Version 0.0.1</span>', p.read_text(encoding='utf-8'))
+        self.assertEqual(n, 1)
+        p.write_text(t, encoding='utf-8')
         self.fails_with('S5')
 
     def test_S6_nav_without_target(self):
@@ -122,6 +127,22 @@ class Site(unittest.TestCase):
     def test_S15_signals_section_edited_by_hand(self):
         self.edit('index.html', 'What practitioners and regulators are saying</h2>', 'Hand-edited</h2>')
         self.fails_with('S15')
+
+
+class Links(unittest.TestCase):
+    def test_classification(self):
+        import check_links
+        self.assertEqual(check_links.classify('https://a/x', '200', 'https://a/x/'), 'ok')
+        self.assertEqual(check_links.classify('https://a/x', '404', 'https://a/x'), 'broken')
+        self.assertEqual(check_links.classify('https://a/x', '000', 'https://a/x'), 'broken')
+        self.assertEqual(check_links.classify('https://a/x', '403', 'https://a/x'), 'blocked')
+        self.assertEqual(check_links.classify('https://a/x', '200', 'https://b/y'), 'moved')
+        self.assertEqual(check_links.classify('https://a/', '200', 'https://a/docs/intro'), 'ok')
+        self.assertEqual(check_links.classify('https://a/', '200', 'https://b/'), 'moved')
+
+    def test_finds_all_68_resource_links(self):
+        import check_links
+        self.assertEqual(len(check_links.links((ROOT / 'index.html').read_text(encoding='utf-8'))), 68)
 
 
 class Health(unittest.TestCase):

@@ -2,6 +2,12 @@
 
 The site's own changelog, with fuller wording, is in its Transparency section.
 
+## 3.0.1 — 8 November 2026
+
+- Replaced the broken NCSC post-quantum guidance link and four moved links, after an automated check of all 68 resource links (`docs/link-review-2026-11-08.md`). 11 sites refuse automated checks and are still to be checked by hand; the content review is still due.
+- The Monday health run now checks every resource link and opens a health issue for any that break or move.
+- Fixed the duplicate pins and steps left by Dependabot updates, with checks so they cannot return.
+
 ## 3.0.0 — 8 November 2026
 
 - Renamed from the Public AI Utility Toolkit to **AI Capability Governance and Implementation**, the public edition of the BOT AI governance toolkit, and moved from the account's root address to its own repository and address. The root address becomes the owner's project launchpad.
