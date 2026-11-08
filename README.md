@@ -115,7 +115,7 @@ flagged as unverified. [Suggest a signal](https://github.com/cyberdudeuk/ai-capa
 | --- | --- |
 | `index.html`, `styles.css`, `app.js` | The site. All content is in the HTML and readable without JavaScript |
 | `data/ai-data-governance-signals.json` | The open signals register, shared with the internal BOT toolkit |
-| `tools/check_site.py` | 13 static checks, each naming the defect it prevents ([defect register](docs/defect-register.md)) |
+| `tools/check_site.py` | 14 static checks, each naming the defect it prevents ([defect register](docs/defect-register.md)) |
 | `tools/check_browser.py` | Browser checks in Chrome at 1280, 390 and 320px: no sideways scroll, no console errors, contact form opens the GitHub form |
 | `tools/health.py` | Weekly health run: review date and signals freshness |
 | `tools/digest.py`, `tools/triage.py`, `tools/trials.py` | Estate routines: they report and label, never change content |

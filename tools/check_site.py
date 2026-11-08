@@ -87,6 +87,10 @@ def problems(root):
         for u in re.findall(r'uses:\s*(\S+)', t):
             check(re.search(r'@[0-9a-f]{40}$', u) is not None, f'S13 pages.yml action not pinned to a full commit: {u}')
         check('path: _site' in t and 'python tools/check_site.py' in t, 'S13 pages.yml must check first and publish only _site')
+    # S14 (D-12): the licence named its holder as "Em", cut off.
+    lic = (root / 'LICENSE').read_text(encoding='utf-8')
+    m = re.search(r'Copyright \(c\) \d{4} (.+)', lic)
+    check(m is not None and len(m.group(1).strip()) >= 4, 'S14 LICENSE copyright holder is missing or cut off')
     # S12: the workflow inventory matches the files.
     wf = {p.name for p in (root / '.github' / 'workflows').glob('*.y*ml')} if (root / '.github' / 'workflows').exists() else set()
     check(wf == EXPECTED_WORKFLOWS, f'S12 workflows differ from the inventory: {sorted(wf ^ EXPECTED_WORKFLOWS)}')
@@ -97,7 +101,7 @@ def main(argv=None):
     root = (argv or sys.argv[1:] or ['.'])[0]
     p = problems(root)
     n = len(json.loads((Path(root) / 'data' / 'ai-data-governance-signals.json').read_text(encoding='utf-8'))['items'])
-    print('FAIL\n' + '\n'.join(p) if p else f'PASS: 13 checks, {n} signals')
+    print('FAIL\n' + '\n'.join(p) if p else f'PASS: 14 checks, {n} signals')
     return 1 if p else 0
 
 

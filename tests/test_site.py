@@ -96,6 +96,11 @@ class Site(unittest.TestCase):
         self.fails_with('S13')
 
 
+    def test_S14_truncated_licence(self):
+        self.edit('LICENSE', 'Copyright (c) 2026 cyberdudeuk and contributors', 'Copyright (c) 2026 Em')
+        self.fails_with('S14')
+
+
 class Health(unittest.TestCase):
     HTML = '<meta name="next-review" content="2027-02-08">'
 
