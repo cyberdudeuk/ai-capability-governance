@@ -1,0 +1,37 @@
+name: Suggest a signal
+description: Point us to public content on AI and data governance for the weekly signals register
+title: "[Signal] "
+labels: ["signal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This form is public. Do not include personal data, names of colleagues, case details or anything above OFFICIAL.
+        There is no email route: this form is the way to contact the maintainers.
+  - type: input
+    id: url
+    attributes:
+      label: Address of the public post, article or report
+    validations:
+      required: true
+  - type: input
+    id: author
+    attributes:
+      label: Who wrote it, and for which organisation?
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why does it matter for governing AI or the data it uses?
+    validations:
+      required: true
+  - type: checkboxes
+    id: rules
+    attributes:
+      label: Before you post
+      options:
+        - label: It is public, professional content and credits a named author or organisation
+          required: true
+        - label: I have not included personal data or anything above OFFICIAL
+          required: true

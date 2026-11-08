@@ -1,0 +1,55 @@
+name: Contact the maintainers
+description: Ask a question, give feedback or raise anything that does not fit the other forms
+title: "[Contact] "
+labels: ["contact"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This form is public. Do not include personal data, names of colleagues, case details or anything above OFFICIAL.
+        There is no email route: this form is the way to contact the maintainers.
+  - type: input
+    id: subject
+    attributes:
+      label: Subject
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What is this about?
+      options:
+        - A question
+        - Feedback
+        - Reuse or adaptation in my organisation
+        - Partnership or contribution
+        - Data protection or privacy question
+        - Something else
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: Which page or section? (optional)
+  - type: textarea
+    id: detail
+    attributes:
+      label: Your message
+    validations:
+      required: true
+  - type: dropdown
+    id: level
+    attributes:
+      label: How would you describe yourself?
+      options:
+        - Beginner (new to AI in public services, or to this site)
+        - Intermediate (using, buying or approving AI in my work)
+        - Advanced (building, assuring or reusing this guidance)
+        - Prefer not to say
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy
+      options:
+        - label: I have not included personal data, case details or anything above OFFICIAL
+          required: true

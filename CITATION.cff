@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: If you reuse this guidance or its tools, please cite it as below.
+title: AI Capability Governance and Implementation
+type: software
+authors:
+  - name: AI Capability Governance working group
+version: 3.0.0
+date-released: 2026-11-08
+license: MIT
+repository-code: https://github.com/cyberdudeuk/ai-capability-governance
+url: https://cyberdudeuk.github.io/ai-capability-governance/
+keywords: [AI governance, AI assurance, AI agents, human review, transparency, data governance, public sector, UK government]

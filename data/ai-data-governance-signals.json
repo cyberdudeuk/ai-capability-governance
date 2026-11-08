@@ -1,0 +1,382 @@
+{
+  "register": "BOT AI and data governance signals",
+  "version": "1.0.0",
+  "scanned": "2026-11-08",
+  "method": "WebSearch restricted to linkedin.com; LinkedIn refuses automated page fetches, so every entry is drawn from search-indexed text of a public profile, post or article, not from the opened post.",
+  "pending": [
+    {
+      "id": "S00",
+      "title": "Post shared by Emanuel Silva for inclusion in BOT",
+      "url": "https://lnkd.in/p/enT_A3jJ",
+      "status": "Pending: content not retrieved",
+      "note": "LinkedIn refused the automated fetch (robots disallowed) and no browser was reachable. Author, date and content are unknown and are not guessed. Complete this entry from the post text or a screenshot."
+    }
+  ],
+  "items": [
+    {
+      "id": "S01",
+      "title": "UK public sector data leaders on data in action for public services",
+      "who": "Lee Stockwell",
+      "org": "Databricks",
+      "date": "2026",
+      "themes": [
+        "UK public sector",
+        "Data foundations"
+      ],
+      "region": "UK",
+      "url": "https://www.linkedin.com/in/lee-stockwell-727889190/",
+      "summary": "Activity highlights George Bettsworth, Head of Data Science at the Foreign, Commonwealth and Development Office, putting AI progress down to good governance, with the argument that governance should sit at the data layer rather than in each application. Also trails an Innovation 2026 panel with Sue Bateman (Defra CDO), Jacqui Leggetter (DWP) and Aimee Smith (Government Chief Data Officer).",
+      "relevance": "Direct UK government voices on governing AI through the data estate; supports BOT's position that agent governance starts with data governance.",
+      "caution": "Vendor-hosted content; the FCDO view is relayed by the vendor, not quoted from FCDO.",
+      "commercialInterest": true
+    },
+    {
+      "id": "S02",
+      "title": "Trusted third-party AI assurance: from principles to implementation",
+      "who": "Elizabeth Seger",
+      "org": "Tony Blair Institute for Global Change",
+      "date": "2026 (about one month before scan)",
+      "themes": [
+        "Assurance & standards",
+        "UK public sector",
+        "Agent governance"
+      ],
+      "region": "UK",
+      "url": "https://www.linkedin.com/in/elizabeth-seger-5209797b/",
+      "summary": "Argues AI governance is shifting from principles to implementation and that governance capacity is what lets organisations adopt AI agents safely. Points to the UK Government's Trusted Third-Party AI Assurance Roadmap (September 2025), tied to commitment 29 of the AI Opportunities Action Plan.",
+      "relevance": "Links BOT's assurance pages to a named UK policy instrument and commitment number.",
+      "caution": "Roadmap and commitment number should be checked against GOV.UK before citing in BOT's evidence base.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S03",
+      "title": "Scaling the Responsible Adoption of Agentic AI (techUK report)",
+      "who": "Usman Ikhlaq",
+      "org": "techUK (author); now University of Bath Institute for Policy Research",
+      "date": "21 July 2026",
+      "themes": [
+        "Agent governance",
+        "UK public sector"
+      ],
+      "region": "UK",
+      "url": "https://www.linkedin.com/in/usman-ikhlaq/",
+      "summary": "Profile lists a techUK report he authored on moving agentic AI beyond pilots to responsible deployment at scale across the UK economy, including how oversight and accountability keep pace.",
+      "relevance": "UK industry baseline for agent oversight; a comparator for BOT's agent governance playbook.",
+      "caution": "Report itself not read; summary is from the profile listing.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S04",
+      "title": "AI Security Institute and NCSC advice on agentic AI cyber risk",
+      "who": "AI Security Institute (AISI)",
+      "org": "UK Government",
+      "date": "2026",
+      "themes": [
+        "Agent governance",
+        "Assurance & standards",
+        "UK public sector"
+      ],
+      "region": "UK",
+      "url": "https://www.linkedin.com/company/ai-security-institute",
+      "summary": "AISI's page links to NCSC guidance on managing the cyber risk of agentic AI and to its Alignment Red Team work. The page describes AISI as part of the Cabinet Office.",
+      "relevance": "Authoritative UK security sources BOT should cite for agent permissions and runtime controls.",
+      "caution": "Departmental home is as stated on the LinkedIn page; confirm on aisi.gov.uk given recent machinery of government changes.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S05",
+      "title": "Agent autonomy, accountability and control boundaries in financial services",
+      "who": "Keith Vincent (speaker); hosted by Ashurst Perkins Coie",
+      "org": "Government Legal Department, Treasury Legal Advisers",
+      "date": "7 October 2026",
+      "themes": [
+        "Agent governance",
+        "Regulation & policy",
+        "UK public sector"
+      ],
+      "region": "UK",
+      "url": "https://www.linkedin.com/in/keith-vincent-80063a4/",
+      "summary": "Event activity frames AI agents around autonomy, accountability and where control boundaries sit, and notes that customers' own agents bring new liquidity and fraud risks.",
+      "relevance": "Government legal perspective on the same question BOT answers: what an agent may do without a human.",
+      "caution": "Event summary written by the host firm, not by the speaker.",
+      "commercialInterest": true
+    },
+    {
+      "id": "S06",
+      "title": "FCA moving towards agentic supervision",
+      "who": "Sophie Sheldon (quoted in Law360 UK); liked by Devina Shah",
+      "org": "Simmons & Simmons",
+      "date": "2026",
+      "themes": [
+        "Regulation & policy",
+        "Agent governance"
+      ],
+      "region": "UK",
+      "url": "https://www.linkedin.com/in/devina-shah-80742a11a/",
+      "summary": "Activity reports the FCA's plan to become an agentic regulator, with a warning about over-reliance on a single model, platform or provider, and separately references new FCA guidance on AI in financial services.",
+      "relevance": "A UK regulator itself adopting agents: a live case for BOT's concentration-risk and vendor-neutrality guidance.",
+      "caution": "Secondary report via Law360; check the FCA's own statement.",
+      "commercialInterest": true
+    },
+    {
+      "id": "S07",
+      "title": "Responsible AI governance: beyond the 'Department of No'",
+      "who": "Yasmin Liverpool",
+      "org": "Chief Data Office, National Highways",
+      "date": "Undated (likely 2025)",
+      "themes": [
+        "UK public sector",
+        "Data foundations",
+        "Assurance & standards"
+      ],
+      "region": "UK",
+      "url": "https://www.linkedin.com/pulse/responsible-ai-governance-beyond-department-yasmin-liverpool-feqpe",
+      "summary": "LinkedIn article proposing shared accountability for AI governance (for example the CDO with the CSO) or a cross-executive AI steering group, citing the NAO finding that poor data quality is a barrier to AI in government and the Generative AI Framework for HM Government as a starting point.",
+      "relevance": "A practising government CDO's operating-model view; maps onto BOT's roles and accountability pages.",
+      "caution": "Predates later UK guidance that replaced the Generative AI Framework; treat as historical context.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S08",
+      "title": "Most organisations will adopt agents before they can govern them",
+      "who": "Melvyn White",
+      "org": "Agentic AI strategy, governance and management (independent, London)",
+      "date": "Current profile",
+      "themes": [
+        "Agent governance"
+      ],
+      "region": "UK",
+      "url": "https://www.linkedin.com/in/melvyn-white-44450011/",
+      "summary": "Profile thesis: the gap between agent adoption and the ability to govern agents is the core risk.",
+      "relevance": "A crisp framing of the governance-debt problem BOT exists to close.",
+      "caution": "Opinion; no evidence attached in the indexed text.",
+      "commercialInterest": true
+    },
+    {
+      "id": "S09",
+      "title": "Data governance must scale with AI adoption",
+      "who": "Jake Boudsocq",
+      "org": "Department of Government Services (Victoria, Australia)",
+      "date": "2026 (about five months before scan)",
+      "themes": [
+        "Data foundations",
+        "Regulation & policy"
+      ],
+      "region": "International",
+      "url": "https://www.linkedin.com/in/jakeboudsocq/",
+      "summary": "Takeaways from the 2026 Melbourne Data Protection and Security Summit: data governance is the operating model that makes responsible AI possible at scale; uncatalogued legacy data compounds risk; Digital Transformation Agency model clauses are becoming a public sector baseline; AI governance is not set-and-forget.",
+      "relevance": "Peer-government evidence for BOT's 'know your data before AI' gate and for catalogue-first sequencing.",
+      "caution": "Australian context; DTA clauses are not UK instruments.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S10",
+      "title": "2026 AI governance priorities, including governing AI agents",
+      "who": "Partnership on AI (reposted by Stephanie Ifayemi)",
+      "org": "Partnership on AI",
+      "date": "2026 (about eight months before scan)",
+      "themes": [
+        "Agent governance",
+        "Assurance & standards"
+      ],
+      "region": "International",
+      "url": "https://www.linkedin.com/in/stephanie-ifayemi-2065081b0/",
+      "summary": "Sets out priorities led by governing AI agents with accountability, security and privacy, plus stronger documentation and public reporting across the AI value chain and shared international baselines. Also notes work on how public sector AI governance differs from private sector approaches.",
+      "relevance": "Multi-stakeholder agenda that BOT's agent registry and transparency pages already address.",
+      "caution": "Agenda-setting piece; not guidance.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S11",
+      "title": "From governance decisions to enforceable authority at runtime",
+      "who": "Patrick Upmann",
+      "org": "AIGN Global",
+      "date": "2026",
+      "themes": [
+        "Agent governance",
+        "Assurance & standards"
+      ],
+      "region": "International",
+      "url": "https://www.linkedin.com/in/upmann/",
+      "summary": "As agents move from generating information to taking actions across data, tools and systems, the question becomes how governance decisions are enforced at runtime. Situates this against ISO/IEC 42001, the NIST AI Risk Management Framework and the EU AI Act.",
+      "relevance": "Matches BOT's 'the app is the leash' principle: permissions enforced by scope, not policy text.",
+      "caution": "Author markets a proprietary governance framework.",
+      "commercialInterest": true
+    },
+    {
+      "id": "S12",
+      "title": "Agent scanners and an agent registry built on agent-card metadata",
+      "who": "Roberto Mandiola",
+      "org": "Amazon Web Services (post about MuleSoft and Google Cloud)",
+      "date": "2026",
+      "themes": [
+        "Agent registries & metadata",
+        "Agent governance"
+      ],
+      "region": "International",
+      "url": "https://www.linkedin.com/in/andrearadojicic/",
+      "summary": "Describes scanners that find AI agents and capture metadata on what each can do, its underlying model and its data access rights, mapped to the agent-to-agent protocol's agent card so organisations hold one registry of agents, including home-built agents and MCP servers.",
+      "relevance": "Strongest metadata link in this scan: an agent register is a metadata problem, which ties BOT to the Metadata Exchange Model and DCAT work.",
+      "caution": "Vendor announcement relayed in another person's activity feed (indexed under Andrea Radojicic's profile).",
+      "commercialInterest": true
+    },
+    {
+      "id": "S13",
+      "title": "Governing AI agents as data consumers",
+      "who": "Bigeye (and others in the feed)",
+      "org": "Bigeye",
+      "date": "2026",
+      "themes": [
+        "Data foundations",
+        "Agent governance"
+      ],
+      "region": "International",
+      "url": "https://www.linkedin.com/posts/trg-screen_reducing-manual-effort-is-only-part-of-the-activity-7468648666879115265-B-At",
+      "summary": "Argues that governing agents that read enterprise data differs from human-era data governance because agents fail at different points in the pipeline; recommends knowing data quality signals and what data agents access before rollout. The feed also cites a Sinch survey of 2,527 senior decision-makers in which 74% had rolled back a live agent after a governance failure.",
+      "relevance": "Useful framing for BOT's data-access controls; the rollback figure is a candidate indicator.",
+      "caution": "Survey figure is vendor-reported and unverified; do not use in BOT's evidence base until the Sinch source is read.",
+      "commercialInterest": true
+    },
+    {
+      "id": "S14",
+      "title": "Unsanctioned agents as governance debt",
+      "who": "Subeer Sehgal",
+      "org": "Grazitti Interactive",
+      "date": "2026",
+      "themes": [
+        "Agent governance",
+        "Agent registries & metadata"
+      ],
+      "region": "International",
+      "url": "https://www.linkedin.com/in/subeer-sehgal-60488211/",
+      "summary": "A playbook for governing agents: where risk concentrates, which controls hold and how to prove compliance as agent numbers grow. Warns that unvalidated feedback loops, where agents treat their own inferences as fact, are the real blind spot. The company feed claims 54% of organisations have between 1 and 100 unsanctioned agents.",
+      "relevance": "Supports BOT's agent inventory and lineage controls.",
+      "caution": "The 54% figure has no stated source; treat as unverified.",
+      "commercialInterest": true
+    },
+    {
+      "id": "S15",
+      "title": "Context engines and a knowledge layer for agents",
+      "who": "Robert Noyce",
+      "org": "Shell",
+      "date": "2026",
+      "themes": [
+        "Data foundations",
+        "Agent registries & metadata"
+      ],
+      "region": "International",
+      "url": "https://www.linkedin.com/in/robert-noyce-85303512/",
+      "summary": "Agents need business context, semantic definitions, governance, memory and trusted data; a knowledge layer linking business definitions to data gives agents that context.",
+      "relevance": "Endorses the glossary, ontology and knowledge-graph layer the govukOS build standard already requires.",
+      "caution": "Practitioner reflection after an event; no evidence attached.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S16",
+      "title": "AI-ready data goes beyond data quality",
+      "who": "Joyce Goh",
+      "org": "Salesforce (Informatica)",
+      "date": "2026",
+      "themes": [
+        "Data foundations"
+      ],
+      "region": "International",
+      "url": "https://www.linkedin.com/in/joycegohhm/",
+      "summary": "Data readiness affects AI economics, and governance must evolve as AI moves from generating insight to agents taking action, needing more visibility, accountability and control.",
+      "relevance": "Corroborates S01 and S09 from the platform side.",
+      "caution": "Vendor promotional content.",
+      "commercialInterest": true
+    },
+    {
+      "id": "S17",
+      "title": "Agents stretch the old data quality problem",
+      "who": "Herman Yu",
+      "org": "Teeup Data Technology",
+      "date": "2026",
+      "themes": [
+        "Data foundations"
+      ],
+      "region": "International",
+      "url": "https://www.linkedin.com/in/hermanyu/",
+      "summary": "Data governance and data quality issues are long-standing; the non-deterministic behaviour of LLMs and agents stretches them further, so enterprise architecture must join governance dimensions into one framework.",
+      "relevance": "Supports treating agent governance as an extension of data governance, not a new silo.",
+      "caution": "Opinion.",
+      "commercialInterest": true
+    },
+    {
+      "id": "S18",
+      "title": "EU AI Act in force but enforcement readiness uneven",
+      "who": "Robert Gasparovic",
+      "org": "HAVEL & PARTNERS, Slovak Republic",
+      "date": "2026",
+      "themes": [
+        "Regulation & policy"
+      ],
+      "region": "EU",
+      "url": "https://www.linkedin.com/in/robertgasparovic/",
+      "summary": "Notes the EU AI Act has applied since 2 August 2026 but Member States differ in enforcement readiness; Europe is also revisiting text-and-data-mining rules.",
+      "relevance": "Cross-border context for BOT's regulatory crosswalk.",
+      "caution": "Applicability dates differ by obligation under the Act; check the specific article before citing.",
+      "commercialInterest": true
+    },
+    {
+      "id": "S19",
+      "title": "China's July 2026 framework for governing AI agents",
+      "who": "Pascal Jiang (post by Rimon PC)",
+      "org": "Dacheng Law Offices / Rimon PC",
+      "date": "July 2026",
+      "themes": [
+        "Regulation & policy",
+        "Agent governance"
+      ],
+      "region": "International",
+      "url": "https://www.linkedin.com/in/pascaljiang/",
+      "summary": "Three measures effective July 2026 move China from principles to operational governance, including AI ethics guidance, a framework for anthropomorphic AI services and a policy framework for governing AI agents.",
+      "relevance": "One of the first national-level agent governance frameworks; a comparator for BOT.",
+      "caution": "Law-firm summary; the primary texts are not read.",
+      "commercialInterest": true
+    },
+    {
+      "id": "S20",
+      "title": "Institutional readiness for responsible AI in the public sector",
+      "who": "Anthony Akpan",
+      "org": "Tizee Consult; Institutional AI Governance newsletter",
+      "date": "April and July 2026",
+      "themes": [
+        "UK public sector",
+        "Assurance & standards"
+      ],
+      "region": "International",
+      "url": "https://www.linkedin.com/in/anthonyanthonyakpan/",
+      "summary": "An SSRN preprint (April 2026) on institutional readiness as a condition for responsible AI in the public sector, and a newsletter launched in July 2026 on institutional responsibility in AI governance.",
+      "relevance": "Academic framing of readiness that maps onto BOT's maturity and adoption model.",
+      "caution": "Preprint, not peer reviewed; focus is developing countries.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S21",
+      "title": "Five AI governance platforms compared",
+      "who": "Brad Martineau",
+      "org": "LinkedIn article",
+      "date": "Undated",
+      "themes": [
+        "Assurance & standards",
+        "Data foundations"
+      ],
+      "region": "International",
+      "url": "https://www.linkedin.com/pulse/top-5-ai-governance-platforms-meeting-strictest-brad-martineau-hr8nc",
+      "summary": "Compares Credo AI, IBM watsonx.governance, Holistic AI, Fiddler AI and Atlan, noting that a data governance and metadata platform such as Atlan supplies the lineage regulators expect.",
+      "relevance": "Market scan only; useful for BOT's tooling landscape, not for recommendations.",
+      "caution": "Listicle; possible commercial interest. BOT stays vendor-neutral.",
+      "commercialInterest": true
+    }
+  ],
+  "scanLog": [
+    {
+      "run": "1",
+      "date": "8 November 2026",
+      "added": "21",
+      "note": "First scan. Requested post S00 could not be read and is pending."
+    }
+  ]
+}
