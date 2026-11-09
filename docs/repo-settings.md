@@ -1,39 +1,32 @@
-# Repository settings: owner checklist
+# Repository settings
 
-The build sets everything it can as files in the repository. These settings can only be changed in the repository
-settings. Status as at 8 November 2026. The build session could not change any of them: the connection it used refuses every
-repository settings write (rename, settings, topics, rulesets, security), so every row below is for the owner.
+These settings live in the repository settings, not in files. They were applied in the browser on 8 and 9 November 2026
+and read back through the API or the settings pages on 9 November 2026. The build session cannot change them through the
+API (the connection refuses settings writes), so any later change is made by hand and recorded here.
 
-| Setting | Value | Where | Status |
-|---|---|---|---|
-| Rename | `ai-capability-governance` (ADR 0001). GitHub redirects the old repository address, not the old Pages root | Settings, General | Owner to set |
-| Description | AI Capability Governance and Implementation: public guidance, tools and weekly signals for governing AI and AI agents in UK public services. Prototype, not official guidance. | About | Owner to set |
-| Website | https://cyberdudeuk.github.io/ai-capability-governance/ | About | Owner to set |
-| Topics | ai, ai-governance, ai-assurance, responsible-ai, agentic-ai, ai-agents, data-governance, human-in-the-loop, transparency, public-sector, uk-government, open-standards, accessibility | About | Owner to set |
-| Features | Issues on; Discussions on; Wiki off | Settings, General | Owner to set |
-| Merge | Squash merging only; delete branches after merge; suggest updating branches | Settings, General | Owner to set |
-| Pages | Source: GitHub Actions (the publish workflow, `pages.yml`, deploys only the site files after every check passes) | Settings, Pages | Owner to confirm: the Pages settings cannot be read or changed through the API from the build session |
-| Ruleset "Protect main" | Block deletion and force pushes; require linear history; require a pull request; require the Checks status | Settings, Rules | Owner to set |
-| Private vulnerability reporting | On | Settings, Security | Owner to set |
-| Dependency graph | On. Without it the Dependency review check fails on every pull request (seen on pull request #3, 8 November 2026) | Settings, Security | Owner to set |
-| Dependabot alerts and security updates | On | Settings, Security | Owner to set |
-| Secret scanning and push protection | On | Settings, Security | Owner to set |
-| CodeQL | Uses `.github/workflows/codeql.yml` (advanced setup); leave default setup off | Settings, Security | Owner to confirm default setup is off |
-| Actions permissions | Allow GitHub-owned actions and `ossf/scorecard-action`, pinned to a full commit (ADR 0002) | Settings, Actions | Owner to set: not reachable through the API from the build session |
-| Labels | Run the Labels workflow once | Actions, Labels | Runs automatically when `.github/labels.yml` reaches main |
+| Setting | Value | Status (9 November 2026) |
+|---|---|---|
+| Rename | `ai-capability-governance` (ADR 0001). GitHub redirects the old repository address, not the old Pages root | Done |
+| Description | AI Capability Governance and Implementation: public guidance, tools and weekly signals for governing AI and AI agents in UK public services. Prototype, not official guidance. | Read back |
+| Website | https://cyberdudeuk.github.io/ai-capability-governance/ | Read back |
+| Topics | accessibility, agentic-ai, ai, ai-agents, ai-assurance, ai-governance, data-governance, human-in-the-loop, open-standards, public-sector, responsible-ai, transparency, uk-government | Read back |
+| Features | Issues on; Discussions on; Wiki off | Read back |
+| Merge | Squash only; delete branches after merge | Read back |
+| Pages | Source: GitHub Actions. `pages.yml` deploys only the site files after every check passes | Read back |
+| Ruleset "Protect main" | Default branch: block deletion and force pushes; require a pull request (no approvals, as the owner is the only maintainer); require the `check` status from GitHub Actions; no bypass. Linear history is not a separate rule: squash-only merging already gives it | Read back (ruleset 26820030) |
+| Security | Dependency graph (the Dependency review check fails without it), Dependabot alerts, Dependabot security updates, private vulnerability reporting, secret scanning and push protection all on | Read back |
+| CodeQL | `.github/workflows/codeql.yml` (advanced setup); default setup off | Read back |
+| Actions | Allow GitHub-owned actions and `ossf/scorecard-action@*` only; require actions pinned to a full commit SHA (ADR 0002); default token read-only; Actions may not create or approve pull requests | Read back |
+| Labels | Run by the Labels workflow when `.github/labels.yml` changes on main | Automatic |
 
 No email address belongs in any of these. Contact is by the contact form only.
 
-## Order to do them in
+## If a workflow is blocked
 
-1. **Rename** the repository to `ai-capability-governance` (Settings, General, Repository name).
-2. **Pages**: Settings, Pages, Source: GitHub Actions. Then merge the open pull request; the publish workflow deploys to
-   https://cyberdudeuk.github.io/ai-capability-governance/ after every check passes.
-3. Description, website, topics, features and merge settings (this table).
-4. Security: dependency graph (the Dependency review check fails until it is on), private vulnerability reporting, Dependabot alerts and security updates (secret scanning and push protection
-   were already on, read on 8 November 2026).
-5. Ruleset "Protect main", then require the **Checks** status once it has run on main.
-6. Create a new public repository named `cyberdudeuk.github.io` for the launchpad (ADR 0001).
+A new third-party action fails to start until it is added to the allowed list in Settings, Actions. Add it there and
+in ADR 0002 in the same change. Every workflow declares its own permissions, so the read-only default token does not
+limit them. The release workflow asks for `contents: write` itself, and the ruleset only covers the default branch, so
+version tags and releases still work.
 
 ## Read back on 8 November 2026, before any change
 
