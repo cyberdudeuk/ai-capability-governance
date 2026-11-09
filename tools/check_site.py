@@ -95,6 +95,18 @@ def problems(root):
     lic = (root / 'LICENSE').read_text(encoding='utf-8')
     m = re.search(r'Copyright \(c\) \d{4} (.+)', lic)
     check(m is not None and len(m.group(1).strip()) >= 4, 'S14 LICENSE copyright holder is missing or cut off')
+    # S16 (D-14): on the launchpad, Dependabot pull requests merged one after another left two pins per package and
+    # pip refused to install. One pin per package.
+    req = root / 'requirements.txt'
+    if req.exists():
+        names = [re.split(r'[=<>~!\[ ]', l.strip())[0].lower() for l in req.read_text(encoding='utf-8').splitlines() if l.strip() and not l.startswith('#')]
+        check(len(names) == len(set(names)), f'S16 requirements.txt pins a package more than once: {sorted({n for n in names if names.count(n) > 1})}')
+    # S17 (D-14): the same merges left two copies of the Pages configure and upload steps. One use of an action per job.
+    for w in sorted((root / '.github' / 'workflows').glob('*.y*ml')):
+        for job in re.split(r'\n  [\w-]+:\n', w.read_text(encoding='utf-8')):
+            uses = re.findall(r'uses:\s*([^@\s]+)@', job)
+            dup = sorted({u for u in uses if uses.count(u) > 1})
+            check(not dup, f'S17 {w.name}: the same action is used twice in one job: {dup}')
     # S12: the workflow inventory matches the files.
     wf = {p.name for p in (root / '.github' / 'workflows').glob('*.y*ml')} if (root / '.github' / 'workflows').exists() else set()
     check(wf == EXPECTED_WORKFLOWS, f'S12 workflows differ from the inventory: {sorted(wf ^ EXPECTED_WORKFLOWS)}')
@@ -105,7 +117,7 @@ def main(argv=None):
     root = (argv or sys.argv[1:] or ['.'])[0]
     p = problems(root)
     n = len(json.loads((Path(root) / 'data' / 'ai-data-governance-signals.json').read_text(encoding='utf-8'))['items'])
-    print('FAIL\n' + '\n'.join(p) if p else f'PASS: 15 checks, {n} signals')
+    print('FAIL\n' + '\n'.join(p) if p else f'PASS: 17 checks, {n} signals')
     return 1 if p else 0
 
 

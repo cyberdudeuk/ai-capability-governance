@@ -15,7 +15,7 @@ For you if you build, assure, integrate or reuse this guidance, including in cod
 |---|---|
 | `index.html`, `styles.css`, `app.js` | The site. The publish workflow deploys it after every check passes |
 | `data/` | Open data the page is built from |
-| `tools/check_site.py` | 15 static checks; each names the defect it prevents |
+| `tools/check_site.py` | 17 static checks; each names the defect it prevents |
 | `tools/check_browser.py` | Browser checks in Chrome at 1280, 390 and 320px: no sideways scroll, no console errors, contact form opens the GitHub form |
 | `tools/build_signals.py` | Rebuilds the Signals section from the register; never edit that section by hand |
 | `tools/health.py` | Weekly health run: review date and signals freshness |
