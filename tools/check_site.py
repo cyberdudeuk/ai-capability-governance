@@ -107,6 +107,16 @@ def problems(root):
             uses = re.findall(r'uses:\s*([^@\s]+)@', job)
             dup = sorted({u for u in uses if uses.count(u) > 1})
             check(not dup, f'S17 {w.name}: the same action is used twice in one job: {dup}')
+    # S18 (D-17): compiled Python caches were committed from 3.0.0 on, and merges conflicted on binary .pyc files.
+    # The ignore file must cover them, and git must track none.
+    gi = root / '.gitignore'
+    ignored = gi.read_text(encoding='utf-8').split() if gi.exists() else []
+    check('__pycache__/' in ignored and '*.py[cod]' in ignored, 'S18 .gitignore must list __pycache__/ and *.py[cod]')
+    if (root / '.git').exists():
+        import subprocess
+        tracked = subprocess.run(['git', '-C', str(root), 'ls-files'], capture_output=True, text=True).stdout.split('\n')
+        caches = [f for f in tracked if '__pycache__/' in f or f.endswith(('.pyc', '.pyo'))]
+        check(not caches, f'S18 git tracks compiled Python caches: {caches[:3]}')
     # S12: the workflow inventory matches the files.
     wf = {p.name for p in (root / '.github' / 'workflows').glob('*.y*ml')} if (root / '.github' / 'workflows').exists() else set()
     check(wf == EXPECTED_WORKFLOWS, f'S12 workflows differ from the inventory: {sorted(wf ^ EXPECTED_WORKFLOWS)}')
@@ -117,7 +127,7 @@ def main(argv=None):
     root = (argv or sys.argv[1:] or ['.'])[0]
     p = problems(root)
     n = len(json.loads((Path(root) / 'data' / 'ai-data-governance-signals.json').read_text(encoding='utf-8'))['items'])
-    print('FAIL\n' + '\n'.join(p) if p else f'PASS: 17 checks, {n} signals')
+    print('FAIL\n' + '\n'.join(p) if p else f'PASS: 18 checks, {n} signals')
     return 1 if p else 0
 
 

@@ -14,7 +14,7 @@ sys.path.insert(0, str(ROOT / 'tools'))
 import check_site  # noqa: E402
 import health  # noqa: E402
 
-FILES = ['index.html', 'app.js', 'README.md', 'CHANGELOG.md', 'ACCESSIBILITY.md', 'SECURITY.md', 'CONTRIBUTING.md', 'LICENSE', 'data', '.github', 'docs']
+FILES = ['index.html', 'app.js', 'README.md', 'CHANGELOG.md', 'ACCESSIBILITY.md', 'SECURITY.md', 'CONTRIBUTING.md', 'LICENSE', 'data', '.github', 'docs', '.gitignore']
 
 
 class Site(unittest.TestCase):
@@ -118,6 +118,21 @@ class Site(unittest.TestCase):
         p.write_text(t.replace(line, line + line, 1), encoding='utf-8')
         self.fails_with('S17')
 
+
+    def test_S18_cache_not_ignored(self):
+        p = self.tmp / '.gitignore'
+        p.write_text(p.read_text(encoding='utf-8').replace('__pycache__/\n', ''), encoding='utf-8')
+        self.fails_with('S18')
+
+    def test_S18_cache_tracked(self):
+        import subprocess
+        for a in (['init', '-q'], ['add', '-A']):
+            subprocess.run(['git', '-C', str(self.tmp)] + a, check=True)
+        d = self.tmp / 'tools' / '__pycache__'
+        d.mkdir(parents=True)
+        (d / 'x.cpython-313.pyc').write_bytes(b'\0')
+        subprocess.run(['git', '-C', str(self.tmp), 'add', '-f', str(d / 'x.cpython-313.pyc')], check=True)
+        self.fails_with('S18')
 
     def test_S14_truncated_licence(self):
         self.edit('LICENSE', 'Copyright (c) 2026 cyberdudeuk and contributors', 'Copyright (c) 2026 Em')

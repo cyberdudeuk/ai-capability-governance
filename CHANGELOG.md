@@ -7,6 +7,7 @@ The site's own changelog, with fuller wording, is in its Transparency section.
 - Replaced the broken NCSC post-quantum guidance link and four moved links, after an automated check of all 68 resource links (`docs/link-review-2026-11-08.md`). 11 sites refuse automated checks and are still to be checked by hand; the content review is still due.
 - The Monday health run now checks every resource link and opens a health issue for any that break or move.
 - Fixed the duplicate pins and steps left by Dependabot updates, with checks so they cannot return.
+- Stopped committing compiled Python cache files. They had been in the repository since 3.0.0 and made merges conflict; a `.gitignore` and check S18 keep them out.
 
 ## 3.0.0 — 8 November 2026
 
