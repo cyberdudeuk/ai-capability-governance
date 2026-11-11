@@ -54,9 +54,8 @@ Two rules keep this honest:
 2. Certified means the definition is endorsed **and** reviewed at H2 or above. Endorsement alone is not review.
 
 An open implementation of rule 2 is `term_lookup` in
-[ndl-pubsec-mcp](https://github.com/cyberdudeuk/ndl-pubsec-mcp) (`src/lib/vocab.ts`, function `certify`, in
-[pull request 18](https://github.com/cyberdudeuk/ndl-pubsec-mcp/pull/18) until it merges). It returns not certified
-for any unknown value.
+[ndl-pubsec-mcp](https://github.com/cyberdudeuk/ndl-pubsec-mcp) ([`src/lib/vocab.ts`](https://github.com/cyberdudeuk/ndl-pubsec-mcp/blob/main/src/lib/vocab.ts), function `certify`).
+It returns not certified for any unknown value.
 
 ## Routines, and how a person stays in control
 
