@@ -34,6 +34,30 @@ node --check app.js
 python3 tools/check_browser.py         # needs Chrome; set CHROME to its path
 ```
 
+## Worked example: certifying a definition an agent will serve
+
+Agents increasingly answer questions from a shared glossary served over MCP. Many semantic-layer products mark each
+definition as certified or not (for example NVIDIA Auto Ontology's per-field flag). The H-levels give that flag a
+basis: it records which review the definition passed.
+
+| Situation | H-level | Evidence | May an agent call it certified? |
+|---|---|---|---|
+| An AI drafted the definition and nobody has checked it | H0 or H1 | AI-use note at most | No |
+| A second competent person checked it against its source | H2 | Reviewer, date, issues found | Yes, for internal use |
+| It will feed public answers, or a named standard rests on it | H3 | Specialist sign-off (for example the data standards owner) | Yes |
+| It affects entitlements or decisions about people | H4 or H5 | Panel record, or board approval and a transparency record | Yes, once that evidence exists |
+
+Two rules keep this honest:
+
+1. Record two fields with every definition: who drafted it (`human`, `ai-assisted` or `unknown`) and the review it
+   passed (`H0` to `H5`, or `unknown`). A missing value means not certified, never "probably fine".
+2. Certified means the definition is endorsed **and** reviewed at H2 or above. Endorsement alone is not review.
+
+An open implementation of rule 2 is `term_lookup` in
+[ndl-pubsec-mcp](https://github.com/cyberdudeuk/ndl-pubsec-mcp) (`src/lib/vocab.ts`, function `certify`, in
+[pull request 18](https://github.com/cyberdudeuk/ndl-pubsec-mcp/pull/18) until it merges). It returns not certified
+for any unknown value.
+
 ## Routines, and how a person stays in control
 
 Every workflow is listed in `ops/automation.yaml` with a tier from 0 (observe) to 3 (person only). Nothing merges
