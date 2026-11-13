@@ -39,11 +39,22 @@ def problems(root):
         for f in ('title', 'who', 'org', 'url', 'summary', 'caution'):
             check(bool(i.get(f)), f"S2 {i['id']} missing {f}")
         check(htmllib.escape(i['url']) in s, f"S3 {i['id']} source link not on the page (page out of step with register)")
-    check(s.count('evidence: search-indexed text') == len(ids), 'S4 evidence label count does not match register')
+    import build_signals
+    for label in {build_signals.evidence(i) for i in d['items']}:
+        want = sum(1 for i in d['items'] if build_signals.evidence(i) == label)
+        check(s.count('evidence: ' + build_signals.e(label)) == want, f'S4 evidence label "{label}" count does not match register')
     # S5 (D-03): version strings agree across the page, JSON-LD, footer and app.js metadata.
     vers = (set(re.findall(r'<meta name="version" content="([\d.]+)"', s)) | set(re.findall(r'"version": "([\d.]+)"', s))
             | set(re.findall(r'<span>Version ([\d.]+)</span>', s)) | set(re.findall(r'"meta":\{"version":"([\d.]+)"', js)))
+    # D-18: CITATION.cff stayed at 3.0.0 after 3.0.1 shipped, because S5 did not look at it or the README.
+    cff, rd = root / 'CITATION.cff', root / 'README.md'
+    if cff.exists():
+        vers |= set(re.findall(r'^version: ([\d.]+)', cff.read_text(encoding='utf-8'), re.M))
+    vers |= set(re.findall(r'badge/version-([\d.]+)-', readme)) | set(re.findall(r'\| \*\*Version\*\* \| ([\d.]+),', readme))
     check(len(vers) == 1, f'S5 version strings disagree: {sorted(vers)}')
+    # S19 (D-18): the no-JavaScript copies of the toolkit cards and resource table match the data in app.js.
+    import build_static
+    check(build_static.build(s, js) == s, 'S19 index.html is out of step with app.js: run python3 tools/build_static.py')
     # S6: every in-page navigation link has a target.
     nav = re.findall(r'<nav class="top-nav"[^>]*>(.*?)</nav>', s, re.S)
     check(bool(nav), 'S6 primary navigation not found')
@@ -127,7 +138,7 @@ def main(argv=None):
     root = (argv or sys.argv[1:] or ['.'])[0]
     p = problems(root)
     n = len(json.loads((Path(root) / 'data' / 'ai-data-governance-signals.json').read_text(encoding='utf-8'))['items'])
-    print('FAIL\n' + '\n'.join(p) if p else f'PASS: 18 checks, {n} signals')
+    print('FAIL\n' + '\n'.join(p) if p else f'PASS: 19 checks, {n} signals')
     return 1 if p else 0
 
 

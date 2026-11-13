@@ -4,8 +4,8 @@ title: AI Capability Governance and Implementation
 type: software
 authors:
   - name: AI Capability Governance working group
-version: 3.0.0
-date-released: 2026-11-08
+version: 3.1.0
+date-released: 2026-11-13
 license: MIT
 repository-code: https://github.com/cyberdudeuk/ai-capability-governance
 url: https://cyberdudeuk.github.io/ai-capability-governance/

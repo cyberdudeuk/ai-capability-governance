@@ -1,6 +1,6 @@
 # AI Capability Governance and Implementation
 
-[![Version](https://img.shields.io/badge/version-3.0.1-0b3d91)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-3.1.0-0b3d91)](CHANGELOG.md)
 [![Checks](https://github.com/cyberdudeuk/ai-capability-governance/actions/workflows/checks.yml/badge.svg)](https://github.com/cyberdudeuk/ai-capability-governance/actions/workflows/checks.yml)
 [![Licence: MIT](https://img.shields.io/badge/code-MIT-green)](LICENSE)
 [![Content: OGL v3.0](https://img.shields.io/badge/content-OGL%20v3.0-blue)](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
@@ -16,8 +16,8 @@ Toolkit**; now the public edition of the BOT AI governance toolkit, in its own r
 | | |
 |---|---|
 | **Status** | Prototype. Not official GOV.UK guidance; it does not replace your organisation's policies, data protection officer, security team or legal advice |
-| **Version** | 3.0.1, 8 November 2026 ([changelog](CHANGELOG.md)) |
-| **Review** | Last reviewed 8 August 2026. **The quarterly review is due**: the 68 resource links have not been re-verified since then |
+| **Version** | 3.1.0, 13 November 2026 ([changelog](CHANGELOG.md)) |
+| **Review** | Last reviewed 13 November 2026 ([record](docs/content-review-2026-11-13.md)). Next review due 13 February 2027 |
 | **Contact** | By [contact form](https://github.com/cyberdudeuk/ai-capability-governance/issues/new?template=contact.yml) only. There is no email route |
 
 ## Choose your way in
@@ -100,7 +100,7 @@ flagged as unverified. [Suggest a signal](https://github.com/cyberdudeuk/ai-capa
 | Catalogue | Minimum viable metadata for any AI asset, with a worked YAML example |
 | UCD and DEIA | Design and research practice, accessibility commitments and AI-specific equity risks |
 | Practice | Code of practice: core duties, prohibited behaviours, agent rules, code rules, speaking up |
-| Resources | 68 tiered sources, searchable and filterable |
+| Resources | 69 tiered sources, searchable and filterable |
 | Signals | The weekly AI and data governance horizon scan |
 | Transparency | Ownership, versioning, licence, privacy, limitations and changelog |
 | Roadmap | Identified gaps prioritised with MoSCoW |

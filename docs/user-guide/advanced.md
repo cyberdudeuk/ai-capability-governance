@@ -58,6 +58,29 @@ An open implementation of rule 2 is `term_lookup` in
 [pull request 18](https://github.com/cyberdudeuk/ndl-pubsec-mcp/pull/18) until it merges). It returns not certified
 for any unknown value.
 
+## Worked example: reviewing an answer an agent built from those definitions
+
+A certified definition does not make the answer certified. An agent that writes a query from definitions (text-to-SQL)
+can still choose the wrong join, filter or time period. Review the answer at a level set by what it will be used for.
+This mapping is proposed, not policy (issue 16); the working group should confirm it.
+
+| What the answer is used for | Suggested minimum | Why |
+|---|---|---|
+| Exploring inside the team | H1, self-check | Low impact, easy to reverse |
+| Analysis that leaves the team | H2, peer check | Someone other than the asker checks the query |
+| Published statistics, or answers released outside the organisation | H3, statistical specialist review | It is a statistical product |
+| Casework or decisions about people | H4, or H5 with a transparency record | Decisions about people trigger the top levels |
+
+**Keep the evidence path.** The evidence pack has a field for the data definitions the answer relied on: for each,
+record the term, the column it maps to and its review level. Any definition below H2, or with an unknown level, makes
+the answer unverified on that point. This is the toolkit's provenance rule, applied to agent answers.
+
+**Transparency and the law.** Screen any text-to-SQL agent used in a public service for an Algorithmic Transparency
+Recording Standard record. If its answers feed significant decisions about people, the UK GDPR's automated
+decision-making rules (Articles 22A to 22D, in force from 5 February 2026) apply unless a person with the authority
+and understanding to change the outcome genuinely considers it. A reviewer who only approves what the agent produced
+is not meaningful human involvement. See the ICO's guidance on automated decision-making in the Resources section.
+
 ## Routines, and how a person stays in control
 
 Every workflow is listed in `ops/automation.yaml` with a tier from 0 (observe) to 3 (person only). Nothing merges
