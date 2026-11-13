@@ -1,8 +1,8 @@
 {
   "register": "BOT AI and data governance signals",
-  "version": "1.1.0",
-  "scanned": "2026-11-08",
-  "method": "WebSearch restricted to linkedin.com; LinkedIn refuses automated page fetches, so every entry is drawn from search-indexed text of a public profile, post or article, not from the opened post.",
+  "version": "1.2.0",
+  "scanned": "2026-11-09",
+  "method": "WebSearch restricted to linkedin.com; LinkedIn refuses automated page fetches, so every entry is drawn from search-indexed text of a public profile, post or article, not from the opened post. Exception: an item whose evidence field says it was read at its own source (S28) was.",
   "pending": [
     {
       "id": "S00",
@@ -377,6 +377,107 @@
     },
     {
       "id": "S22",
+      "title": "AI Security Institute publishes its inaugural Frontier AI Trends Report",
+      "who": "Tess Buckley",
+      "org": "Post about the AI Security Institute (DSIT)",
+      "date": "18 December 2025 (derived from the post's activity ID)",
+      "themes": [
+        "UK public sector",
+        "Assurance & standards"
+      ],
+      "region": "UK",
+      "url": "https://www.linkedin.com/posts/tesssbuckley_today-uks-ai-security-institute-of-department-activity-7407352566029828097-ZTJf",
+      "summary": "Post announcing that the UK AI Security Institute, part of DSIT, published its first Frontier AI Trends Report.",
+      "relevance": "A UK government evidence source on frontier AI capability and risk that BOT's assurance material can cite once read at source.",
+      "caution": "Only the headline and URL were indexed; LinkedIn refuses page fetches, so the body was not read. Read the report on GOV.UK before citing any finding. Older than the last scan date; indexed only now.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S23",
+      "title": "AI governance as the next frontier of data governance",
+      "who": "Khyati Thakkar",
+      "org": "LinkedIn article",
+      "date": "Undated",
+      "themes": [
+        "Data foundations",
+        "Regulation & policy"
+      ],
+      "region": "International",
+      "url": "https://www.linkedin.com/pulse/ai-governance-next-frontier-data-khyati-thakkar",
+      "summary": "Article framing AI governance as an extension of existing data governance practice.",
+      "relevance": "Supports BOT's premise that AI and agent governance should be built on data governance foundations.",
+      "caution": "Only the headline and URL were indexed; LinkedIn refuses page fetches, so the body was not read. Author name taken from the article URL; organisation and date unknown.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S24",
+      "title": "Developing AI assurance frameworks",
+      "who": "Heather Dawe",
+      "org": "LinkedIn article",
+      "date": "Undated",
+      "themes": [
+        "Assurance & standards"
+      ],
+      "region": "International",
+      "url": "https://www.linkedin.com/pulse/developing-ai-assurance-frameworks-heather-dawe",
+      "summary": "Article on how organisations can build AI assurance frameworks.",
+      "relevance": "Possible practitioner input to BOT's assurance pillar.",
+      "caution": "Only the headline and URL were indexed; LinkedIn refuses page fetches, so the body was not read. Author name taken from the article URL; organisation, region and date not confirmed.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S25",
+      "title": "AI control planes for governing models, agents and decisions at scale",
+      "who": "Mahmoud Abufadda",
+      "org": "LinkedIn article",
+      "date": "Undated",
+      "themes": [
+        "Agent governance",
+        "Agent registries & metadata"
+      ],
+      "region": "International",
+      "url": "https://www.linkedin.com/pulse/rise-ai-control-planes-governing-models-agents-scale-mahmoud-abufadda-d1f5f",
+      "summary": "Article on the rise of AI control planes as a way to govern models, agents and their decisions centrally.",
+      "relevance": "Relates to BOT's control-tower and agent-registry thinking: one governed layer over many agents.",
+      "caution": "Only the headline and URL were indexed; LinkedIn refuses page fetches, so the body was not read. Author name taken from the article URL; organisation and date unknown. Check for vendor interest before citing.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S26",
+      "title": "UK introduction to AI assurance",
+      "who": "Katharina Koerner",
+      "org": "LinkedIn post",
+      "date": "15 February 2024 (derived from the post's activity ID)",
+      "themes": [
+        "UK public sector",
+        "Assurance & standards"
+      ],
+      "region": "UK",
+      "url": "https://www.linkedin.com/posts/katharina-koerner-privacyengineering_uk-introduction-to-ai-assurance-activity-7163699729539747841-YGt8",
+      "summary": "Post sharing the UK government's Introduction to AI assurance guidance.",
+      "relevance": "Points to the baseline UK assurance guidance BOT should align with.",
+      "caution": "Only the headline and URL were indexed; LinkedIn refuses page fetches, so the body was not read. Dated 2024, so background rather than new signal; check GOV.UK for the current edition.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S27",
+      "title": "CETaS paper on assurance of third-party AI systems for UK national security",
+      "who": "The Alan Turing Institute (CETaS)",
+      "org": "The Alan Turing Institute",
+      "date": "17 January 2024 (derived from the post's activity ID)",
+      "themes": [
+        "UK public sector",
+        "Assurance & standards"
+      ],
+      "region": "UK",
+      "url": "https://www.linkedin.com/posts/the-alan-turing-institute_assurance-of-third-party-ai-systems-for-uk-activity-7153362000301989914-uv1Z",
+      "summary": "Turing Institute post on a CETaS paper about AI risk management and assuring third-party AI systems in a UK national security setting.",
+      "relevance": "Complements S02 on third-party assurance with a public-sector research source.",
+      "caution": "Only the headline and URL were indexed; LinkedIn refuses page fetches, so the body was not read. Full paper title is truncated in the URL; dated 2024, so background rather than new signal.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S28",
       "title": "Semantic layer for agents: AI drafts business definitions, people certify them, agents answer in SQL",
       "who": "NVIDIA",
       "org": "Auto Ontology (open source, Apache 2.0)",
@@ -404,9 +505,15 @@
     },
     {
       "run": "2",
+      "date": "9 November 2026",
+      "added": "6",
+      "note": "Weekly scan, 11 LinkedIn-restricted searches. Search returned titles and URLs only (no snippets), so entries are headline-level; most hits were profiles with no content and were skipped. S00 still pending."
+    },
+    {
+      "run": "3",
       "date": "13 November 2026",
       "added": "1",
-      "note": "S00 partly read (opening line, author handle, date from its ID). Still pending: the full text is behind LinkedIn's security check. Added S22 (NVIDIA Auto Ontology), read from its repository, for issue 16."
+      "note": "Not a full scan. S00 partly read in the owner's browser (opening line, author handle, date from its ID); the rest is behind LinkedIn's security check, so it stays pending. Added S28 (NVIDIA Auto Ontology), read from its repository's README, for issue 16 on the toolkit."
     }
   ]
 }
