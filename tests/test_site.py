@@ -14,7 +14,7 @@ sys.path.insert(0, str(ROOT / 'tools'))
 import check_site  # noqa: E402
 import health  # noqa: E402
 
-FILES = ['index.html', 'app.js', 'README.md', 'CHANGELOG.md', 'ACCESSIBILITY.md', 'SECURITY.md', 'CONTRIBUTING.md', 'LICENSE', 'data', '.github', 'docs', '.gitignore']
+FILES = ['index.html', 'app.js', 'README.md', 'CHANGELOG.md', 'ACCESSIBILITY.md', 'SECURITY.md', 'CONTRIBUTING.md', 'LICENSE', 'data', '.github', 'docs', '.gitignore', 'CITATION.cff']
 
 
 class Site(unittest.TestCase):
@@ -134,6 +134,31 @@ class Site(unittest.TestCase):
         subprocess.run(['git', '-C', str(self.tmp), 'add', '-f', str(d / 'x.cpython-313.pyc')], check=True)
         self.fails_with('S18')
 
+    def test_S5_citation_version_behind(self):
+        # D-18: CITATION.cff left a release behind.
+        import re
+        p = self.tmp / 'CITATION.cff'
+        p.write_text(re.sub(r'^version: .*$', 'version: 0.0.1', p.read_text(encoding='utf-8'), flags=re.M), encoding='utf-8')
+        self.fails_with('S5')
+
+    def test_S19_static_copy_out_of_step(self):
+        # D-18: a resource changed in app.js but not in the no-JavaScript copy.
+        self.edit('app.js', '"t":"Data (Use and Access) Act 2025"', '"t":"Data (Use and Access) Act 2025 (edited)"')
+        self.fails_with('S19')
+
+    def test_S19_static_glossary_out_of_step(self):
+        self.edit('app.js', '["Meaningful human involvement",', '["Meaningful human involvement (edited)",')
+        self.fails_with('S19')
+
+    def test_S4_evidence_label_out_of_step(self):
+        # D-21: a signal read from its primary source must not be shown as search-indexed text.
+        import json
+        p = self.tmp / 'data' / 'ai-data-governance-signals.json'
+        d = json.loads(p.read_text(encoding='utf-8'))
+        d['items'][-1]['evidence'] = 'something else'
+        p.write_text(json.dumps(d), encoding='utf-8')
+        self.fails_with('S4')
+
     def test_S14_truncated_licence(self):
         self.edit('LICENSE', 'Copyright (c) 2026 cyberdudeuk and contributors', 'Copyright (c) 2026 Em')
         self.fails_with('S14')
@@ -155,9 +180,32 @@ class Links(unittest.TestCase):
         self.assertEqual(check_links.classify('https://a/', '200', 'https://a/docs/intro'), 'ok')
         self.assertEqual(check_links.classify('https://a/', '200', 'https://b/'), 'moved')
 
-    def test_finds_all_68_resource_links(self):
+    def test_finds_every_resource_link(self):
+        # Counts from the data, not a literal, so adding a resource does not break the test (D-16, D-18).
         import check_links
-        self.assertEqual(len(check_links.links((ROOT / 'index.html').read_text(encoding='utf-8'))), 68)
+        import build_static
+        d = build_static.data((ROOT / 'app.js').read_text(encoding='utf-8'))[0]
+        self.assertEqual(len(check_links.links((ROOT / 'index.html').read_text(encoding='utf-8'))), len(d['resources']))
+
+    def test_retry_before_broken(self):
+        # D-20: a timeout followed by a good answer is ok; two timeouts are broken.
+        import check_links
+        answers = iter([('u', '000', 'u', None), ('u', '200', 'u', None)])
+        real = check_links._probe
+        check_links._probe = lambda url: next(answers)
+        try:
+            self.assertEqual(check_links.probe('u')[1], '200')
+            answers = iter([('u', '000', 'u', None), ('u', '000', 'u', None)])
+            self.assertEqual(check_links.probe('u')[1], '000')
+        finally:
+            check_links._probe = real
+
+    def test_withdrawal_notice(self):
+        # D-19: GOV.UK's withdrawn banner, as served for the Generative AI Framework for HMG.
+        import check_links
+        page = '<div class="gem-c-notice"><h2>This publication was withdrawn on 10 February 2025</h2><p>This guidance document has been superseded by the new AI Playbook.</p></div>'
+        self.assertIn('withdrawn on 10 February 2025', check_links.withdrawal_notice(page))
+        self.assertIsNone(check_links.withdrawal_notice('<h1>AI Playbook for the UK Government</h1><p>Updated 10 February 2025</p>'))
 
 
 class Health(unittest.TestCase):

@@ -14,6 +14,14 @@ TAG = {'UK public sector': 't-gov', 'Agent governance': 't-risk', 'Regulation & 
 e = html.escape
 
 
+DEFAULT_EVIDENCE = 'search-indexed text, post not opened'
+
+
+def evidence(i):
+    """D-21: each signal says how it was read. Search-indexed LinkedIn text is the default; a source read directly says so."""
+    return i.get('evidence', DEFAULT_EVIDENCE)
+
+
 def section(d):
     cards = []
     for i in d['items']:
@@ -25,7 +33,7 @@ def section(d):
  <p>{e(i["summary"])}</p>
  <p style="font-size:.85rem;margin:0"><strong>Why it matters:</strong> {e(i["relevance"])}</p>
  <p style="font-size:.85rem;margin:0"><strong>Caution:</strong> {e(i["caution"])}</p>
- <p style="font-size:.85rem;margin:6px 0 0"><a href="{e(i["url"])}" rel="noopener noreferrer">Source on LinkedIn<span class="ext visually-hidden"> (opens an external website)</span></a> · evidence: search-indexed text, post not opened</p></article>''')
+ <p style="font-size:.85rem;margin:6px 0 0"><a href="{e(i["url"])}" rel="noopener noreferrer">{e(i.get("sourceLabel", "Source on LinkedIn"))}<span class="ext visually-hidden"> (opens an external website)</span></a> · evidence: {e(evidence(i))}</p></article>''')
     n = len(d['items'])
     comm = sum(1 for i in d['items'] if i.get('commercialInterest'))
     return f'''<section id="signals" class="section" aria-labelledby="sec-h-signals">

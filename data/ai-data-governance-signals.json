@@ -1,15 +1,20 @@
 {
   "register": "BOT AI and data governance signals",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "scanned": "2026-11-08",
   "method": "WebSearch restricted to linkedin.com; LinkedIn refuses automated page fetches, so every entry is drawn from search-indexed text of a public profile, post or article, not from the opened post.",
   "pending": [
     {
       "id": "S00",
-      "title": "Post shared by Emanuel Silva for inclusion in BOT",
+      "title": "AI governance as four questions: the law, the proof, the accountability, and what runs in production",
       "url": "https://lnkd.in/p/enT_A3jJ",
-      "status": "Pending: content not retrieved",
-      "note": "LinkedIn refused the automated fetch (robots disallowed) and no browser was reachable. Author, date and content are unknown and are not guessed. Complete this entry from the post text or a screenshot."
+      "resolvedUrl": "https://www.linkedin.com/posts/lfrodrigues_ai-governance-looks-complicated-it-comes-share-7524815829671198720-gcus/",
+      "who": "LinkedIn member with the profile handle lfrodrigues (name not confirmed)",
+      "date": "7 November 2026 (decoded from the post's activity ID, not read from the page)",
+      "status": "Pending: opening line and author handle read on 13 November 2026; the rest of the post sits behind LinkedIn's security check",
+      "summary": "Opens by framing AI governance as four questions: what the law requires, how compliance is proved, who is accountable, and what actually runs in production. The rest of the post, which also promotes the author's newsletter, has not been read.",
+      "relevance": "The four questions map onto this toolkit: the law (Resources, tier 0), proof (evidence pack builder, TK-04), accountability (the accountable owner and H4 to H5 review) and production (agent registry, TK-03, and incident reporting, TK-12).",
+      "note": "Read in the owner's browser on 13 November 2026. LinkedIn showed a security check, which an assistant must not complete, so only the page title (the post's first line) and the address were read. To finish this entry, open the post yourself or paste its text."
     }
   ],
   "items": [
@@ -369,6 +374,25 @@
       "relevance": "Market scan only; useful for BOT's tooling landscape, not for recommendations.",
       "caution": "Listicle; possible commercial interest. BOT stays vendor-neutral.",
       "commercialInterest": true
+    },
+    {
+      "id": "S22",
+      "title": "Semantic layer for agents: AI drafts business definitions, people certify them, agents answer in SQL",
+      "who": "NVIDIA",
+      "org": "Auto Ontology (open source, Apache 2.0)",
+      "date": "November 2026 (repository read on 13 November 2026)",
+      "themes": [
+        "Agent registries & metadata",
+        "Data foundations"
+      ],
+      "region": "International",
+      "url": "https://github.com/NVIDIA/auto-ontology",
+      "sourceLabel": "Source repository on GitHub",
+      "evidence": "primary source, the repository's README (summary and how it works)",
+      "summary": "An open-source service that drafts an ontology from database metadata: business terms mapped to columns, reviewed SQL expressions, and the joins between tables. People then test it with real questions and certify the names, descriptions and SQL. An agent answers questions by writing SQL from those definitions, checks the query against the database, and returns the answer with its SQL and the steps it took. It serves this context to other agents over MCP, and says when a question cannot be answered from the data.",
+      "relevance": "It makes certification a separate human step from drafting, which is where this toolkit's H0 to H5 review levels apply: see the advanced guide's worked examples on certifying a definition and reviewing an agent's answer, and the evidence pack's field for the definitions an answer relied on.",
+      "caution": "Vendor project, and it does not accept outside contributions. Accuracy is measured with a separate text-to-SQL benchmark repository; this review did not run it or the software.",
+      "commercialInterest": true
     }
   ],
   "scanLog": [
@@ -377,6 +401,12 @@
       "date": "8 November 2026",
       "added": "21",
       "note": "First scan. Requested post S00 could not be read and is pending."
+    },
+    {
+      "run": "2",
+      "date": "13 November 2026",
+      "added": "1",
+      "note": "S00 partly read (opening line, author handle, date from its ID). Still pending: the full text is behind LinkedIn's security check. Added S22 (NVIDIA Auto Ontology), read from its repository, for issue 16."
     }
   ]
 }
