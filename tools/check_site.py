@@ -117,6 +117,14 @@ def problems(root):
         tracked = subprocess.run(['git', '-C', str(root), 'ls-files'], capture_output=True, text=True).stdout.split('\n')
         caches = [f for f in tracked if '__pycache__/' in f or f.endswith(('.pyc', '.pyo'))]
         check(not caches, f'S18 git tracks compiled Python caches: {caches[:3]}')
+    # S19 (D-18, 2026-11-13): the advanced guide pointed at code "in pull request 18 until it merges"; the pull request
+    # merged and the guide went stale. Published docs link to code on main, never to a pending pull request.
+    for md in sorted((root / 'docs').rglob('*.md')):
+        if md.name == 'defect-register.md':  # records the defect, so it quotes the wording
+            continue
+        t = md.read_text(encoding='utf-8')
+        check(re.search(r'until (it|this|that) (merges|is merged)', t, re.I) is None,
+              f'S19 {md.relative_to(root)} refers to a pull request "until it merges"; link to the code on main instead')
     # S12: the workflow inventory matches the files.
     wf = {p.name for p in (root / '.github' / 'workflows').glob('*.y*ml')} if (root / '.github' / 'workflows').exists() else set()
     check(wf == EXPECTED_WORKFLOWS, f'S12 workflows differ from the inventory: {sorted(wf ^ EXPECTED_WORKFLOWS)}')
@@ -127,7 +135,7 @@ def main(argv=None):
     root = (argv or sys.argv[1:] or ['.'])[0]
     p = problems(root)
     n = len(json.loads((Path(root) / 'data' / 'ai-data-governance-signals.json').read_text(encoding='utf-8'))['items'])
-    print('FAIL\n' + '\n'.join(p) if p else f'PASS: 18 checks, {n} signals')
+    print('FAIL\n' + '\n'.join(p) if p else f'PASS: 19 checks, {n} signals')
     return 1 if p else 0
 
 

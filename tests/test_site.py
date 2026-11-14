@@ -43,6 +43,10 @@ class Site(unittest.TestCase):
     def test_the_real_site_passes(self):
         self.assertEqual(check_site.problems(ROOT), [])
 
+    def test_S19_doc_points_at_a_pending_pull_request(self):
+        self.edit('docs/user-guide/advanced.md', 'function `certify`)', 'function `certify`, in pull request 18 until it merges)')
+        self.fails_with('S19')
+
     def test_S1_email_on_page(self):
         self.edit('index.html', 'AI assurance lead (role, not a named person)', 'someone@example.gov.uk')
         self.fails_with('S1')
