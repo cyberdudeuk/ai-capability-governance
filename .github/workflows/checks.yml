@@ -44,7 +44,7 @@ jobs:
       - name: Browser checks (runner's own Chrome; no browser download)
         run: python tools/check_browser.py
       - name: Browser check vaccinations (each must catch its deliberate break)
-        run: for b in overflow consoleerror contact; do python tools/check_browser.py --break "$b"; done
+        run: for b in overflow consoleerror contact evidence; do python tools/check_browser.py --break "$b"; done
       - name: Health run (review date, signals freshness; on Mondays, resource links)
         id: health
         run: |

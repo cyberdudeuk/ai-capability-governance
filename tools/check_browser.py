@@ -4,7 +4,7 @@
 - a console error or uncaught exception,
 - the contact form not opening the GitHub contact form.
 
-Run: python3 tools/check_browser.py [--break overflow|consoleerror|contact]
+Run: python3 tools/check_browser.py [--break overflow|consoleerror|contact|evidence]
 --break injects a deliberate fault so CI proves each check fails when it should (a vaccination).
 Uses the Chrome installed on the runner (CHROME env var, default /usr/bin/google-chrome); no browser download.
 """
@@ -23,6 +23,7 @@ BREAKS = {
     'overflow': "document.querySelector('#start-here').insertAdjacentHTML('beforeend','<div style=\"width:2000px;height:2px\"></div>')",
     'consoleerror': "console.error('deliberate break')",
     'contact': "document.getElementById('cfIssue').replaceWith(document.getElementById('cfIssue').cloneNode(true))",
+    'evidence': "document.getElementById('evGo').replaceWith(document.getElementById('evGo').cloneNode(true))",
 }
 
 
@@ -62,6 +63,15 @@ async def run(brk):
                 opened = await pg.evaluate('window.__opened') or ''
                 if not opened.startswith(CONTACT):
                     found.append(f'B3 contact form opened {opened[:80] or "nothing"}, not the GitHub contact form')
+                # B4: the evidence pack records the data definitions an agent's answer relied on, and only when given.
+                await pg.evaluate("document.getElementById('tool-evidence').open = true")
+                await pg.click('#evGo')
+                empty = await pg.inner_text('#evOut')
+                await pg.fill('#ev-defs', 'Household - person_household - unknown')
+                await pg.click('#evGo')
+                given = await pg.inner_text('#evOut')
+                if 'Data definitions relied on' in empty or 'Household' not in given or 'not certified' not in given:
+                    found.append('B4 evidence pack does not record the data definitions relied on')
             await pg.close()
         await b.close()
     srv.shutdown()
@@ -74,11 +84,11 @@ def main(argv=None):
     a = ap.parse_args(argv)
     found = asyncio.run(run(a.brk))
     if a.brk:
-        code = {'overflow': 'B1', 'consoleerror': 'B2', 'contact': 'B3'}[a.brk]
+        code = {'overflow': 'B1', 'consoleerror': 'B2', 'contact': 'B3', 'evidence': 'B4'}[a.brk]
         ok = any(x.startswith(code) for x in found)
         print(f'Vaccination {a.brk}: {"caught" if ok else "NOT CAUGHT"}')
         return 0 if ok else 1
-    print('FAIL\n' + '\n'.join(found) if found else 'PASS: 3 browser checks at 3 widths')
+    print('FAIL\n' + '\n'.join(found) if found else 'PASS: 4 browser checks at 3 widths')
     return 1 if found else 0
 
 
