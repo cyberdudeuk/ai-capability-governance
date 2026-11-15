@@ -1,0 +1,37 @@
+{
+  "upload_type": "software",
+  "title": "AI Capability Governance and Implementation",
+  "creators": [
+    {
+      "name": "Silva, Emanuel",
+      "orcid": "0009-0000-5880-7219"
+    }
+  ],
+  "description": "Guidance you can act on for governing AI and AI agents in public services: a six-level human review model, evidence and transparency record generators, an agent registry pattern and a weekly signals scan.",
+  "keywords": [
+    "AI governance",
+    "AI assurance",
+    "AI agents",
+    "human review",
+    "transparency",
+    "data governance",
+    "public sector",
+    "UK government"
+  ],
+  "notes": "Prototype or personal project, not an official GOV.UK service or endorsed standard unless its README says otherwise. Status at release: Prototype.",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/cyberdudeuk/ai-capability-governance",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
+  "version": "3.1.0",
+  "contributors": [
+    {
+      "name": "AI Capability Governance working group",
+      "type": "Other"
+    }
+  ],
+  "license": "mit"
+}
