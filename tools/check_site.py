@@ -47,7 +47,7 @@ def problems(root):
     vers = (set(re.findall(r'<meta name="version" content="([\d.]+)"', s)) | set(re.findall(r'"version": "([\d.]+)"', s))
             | set(re.findall(r'<span>Version ([\d.]+)</span>', s)) | set(re.findall(r'"meta":\{"version":"([\d.]+)"', js)))
     # D-19: CITATION.cff stayed at 3.0.0 after 3.0.1 shipped, because S5 did not look at it or the README.
-    cff, rd = root / 'CITATION.cff', root / 'README.md'
+    cff = root / 'CITATION.cff'
     if cff.exists():
         vers |= set(re.findall(r'^version: ([\d.]+)', cff.read_text(encoding='utf-8'), re.M))
     vers |= set(re.findall(r'badge/version-([\d.]+)-', readme)) | set(re.findall(r'\| \*\*Version\*\* \| ([\d.]+),', readme))

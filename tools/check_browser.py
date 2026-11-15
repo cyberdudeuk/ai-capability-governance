@@ -46,8 +46,8 @@ async def run(brk):
         for w, h, name in ((1280, 900, 'desktop'), (390, 844, 'phone'), (320, 640, 'small phone')):
             pg = await b.new_page(viewport={'width': w, 'height': h})
             errs = []
-            pg.on('console', lambda m: errs.append(m.text) if m.type == 'error' else None)
-            pg.on('pageerror', lambda e: errs.append(str(e)))
+            pg.on('console', lambda m, errs=errs: errs.append(m.text) if m.type == 'error' else None)
+            pg.on('pageerror', lambda e, errs=errs: errs.append(str(e)))
             await pg.goto(url, wait_until='load')
             if brk in BREAKS:
                 await pg.evaluate(BREAKS[brk])
