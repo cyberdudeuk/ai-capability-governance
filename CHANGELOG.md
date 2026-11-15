@@ -2,6 +2,12 @@
 
 The site's own changelog, with fuller wording, is in its Transparency section.
 
+## Since 3.1.0 (not yet released)
+
+- Checks now run Ruff (Python) and ESLint (JavaScript) and fail on any finding (D-24). Eleven findings fixed, including
+  browser-check listeners that could record an error against the wrong page. Part of applying the secure development
+  standard to every project.
+
 ## 3.1.0 — 13 November 2026
 
 Content review, due since 8 November 2026 (`docs/content-review-2026-11-13.md`).

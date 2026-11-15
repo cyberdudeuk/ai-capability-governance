@@ -40,8 +40,8 @@
    * 4. USER PREFERENCES — theme, contrast, text size. Stored locally only.
    * ------------------------------------------------------------------ */
   var store = {
-    get: function (k, d) { try { return localStorage.getItem('paut.' + k) || d; } catch (e) { return d; } },
-    set: function (k, v) { try { localStorage.setItem('paut.' + k, v); } catch (e) {} }
+    get: function (k, d) { try { return localStorage.getItem('paut.' + k) || d; } catch { return d; } },
+    set: function (k, v) { try { localStorage.setItem('paut.' + k, v); } catch { /* storage blocked: kept for this page only */ } }
   };
   var root = document.documentElement;
 
@@ -529,14 +529,14 @@
       var t = $('rdText').value.trim();
       if (!t) { $('rdOut').innerHTML = '<p style="margin:0">Paste some content first.</p>'; return; }
       var sents = t.split(/[.!?]+(?:\s|$)/).filter(function (x) { return x.trim().length > 1; });
-      var words = t.match(/[A-Za-z’'\-]+/g) || [];
+      var words = t.match(/[A-Za-z’'-]+/g) || [];
       var syl = words.reduce(function (a, w) { return a + syllables(w); }, 0);
       var W = words.length || 1, S = sents.length || 1;
       var fre = 206.835 - 1.015 * (W / S) - 84.6 * (syl / W);
       var fk = 0.39 * (W / S) + 11.8 * (syl / W) - 15.59;
       var raw = Math.max(5, Math.round(fk + 5));
       var ageTxt = raw >= 21 ? '21+' : String(raw);
-      var longS = sents.filter(function (x) { return (x.match(/[A-Za-z’'\-]+/g) || []).length > 25; }).length;
+      var longS = sents.filter(function (x) { return (x.match(/[A-Za-z’'-]+/g) || []).length > 25; }).length;
       var lc = t.toLowerCase();
       var jHits = JARGON.filter(function (j) { return lc.indexOf(j) !== -1; });
       var nHits = NON_INCLUSIVE.filter(function (p) { return lc.indexOf(p[0]) !== -1; });

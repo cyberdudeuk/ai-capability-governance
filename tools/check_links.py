@@ -78,11 +78,11 @@ def main():
         found[kind].append((url, code, notice or final))
     print(f"Resource links: {len(urls)} checked; {len(found['ok'])} ok, {len(found['blocked'])} refuse automated checks, "
           f"{len(found['moved'])} moved, {len(found['withdrawn'])} withdrawn, {len(found['broken'])} broken")
-    for url, code, final in found['broken']:
+    for url, code, _final in found['broken']:
         print(f'- Broken ({code}): {url}')
-    for url, code, final in found['moved']:
+    for url, _code, final in found['moved']:
         print(f'- Moved: {url} -> {final}')
-    for url, code, notice in found['withdrawn']:
+    for url, _code, notice in found['withdrawn']:
         print(f'- Withdrawn: {url} says "{notice}"')
     return 2 if found['broken'] or found['moved'] or found['withdrawn'] else 0
 
