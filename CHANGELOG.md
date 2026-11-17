@@ -4,6 +4,16 @@ The site's own changelog, with fuller wording, is in its Transparency section.
 
 ## Since 3.1.0 (not yet released)
 
+### Added (repository standards for the move to gds-dtx, 17 November 2026)
+
+- The Cabinet Office vulnerability disclosure route in `SECURITY.md`.
+- Pre-commit hooks: detect-secrets against a new `.secrets.baseline`, YAML and JSON checks, whitespace fixes, and gitlint for GDS Way commit messages (`.gitlint`).
+- `.secrets.baseline` with every candidate audited, and the audit recorded in `docs/compliance/secrets-audit.md`.
+
+### Changed
+
+- Replaced the old directorate name with Government Data Directorate in `ops/signals-scan-prompt.md`.
+
 - Checks now run Ruff (Python) and ESLint (JavaScript) and fail on any finding (D-24). Eleven findings fixed, including
   browser-check listeners that could record an error against the wrong page. Part of applying the secure development
   standard to every project.
