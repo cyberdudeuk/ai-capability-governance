@@ -3,20 +3,7 @@
   "version": "1.2.0",
   "scanned": "2026-11-09",
   "method": "WebSearch restricted to linkedin.com; LinkedIn refuses automated page fetches, so every entry is drawn from search-indexed text of a public profile, post or article, not from the opened post. Exception: an item whose evidence field says it was read at its own source (S28) was.",
-  "pending": [
-    {
-      "id": "S00",
-      "title": "AI governance as four questions: the law, the proof, the accountability, and what runs in production",
-      "url": "https://lnkd.in/p/enT_A3jJ",
-      "resolvedUrl": "https://www.linkedin.com/posts/lfrodrigues_ai-governance-looks-complicated-it-comes-share-7524815829671198720-gcus/",
-      "who": "LinkedIn member with the profile handle lfrodrigues (name not confirmed)",
-      "date": "7 November 2026 (decoded from the post's activity ID, not read from the page)",
-      "status": "Pending: opening line and author handle read on 13 November 2026; the rest of the post sits behind LinkedIn's security check",
-      "summary": "Opens by framing AI governance as four questions: what the law requires, how compliance is proved, who is accountable, and what actually runs in production. The rest of the post, which also promotes the author's newsletter, has not been read.",
-      "relevance": "The four questions map onto this toolkit: the law (Resources, tier 0), proof (evidence pack builder, TK-04), accountability (the accountable owner and H4 to H5 review) and production (agent registry, TK-03, and incident reporting, TK-12).",
-      "note": "Read in the owner's browser on 13 November 2026. LinkedIn showed a security check, which an assistant must not complete, so only the page title (the post's first line) and the address were read. To finish this entry, open the post yourself or paste its text."
-    }
-  ],
+  "pending": [],
   "items": [
     {
       "id": "S01",
@@ -494,6 +481,25 @@
       "relevance": "It makes certification a separate human step from drafting, which is where this toolkit's H0 to H5 review levels apply: see the advanced guide's worked examples on certifying a definition and reviewing an agent's answer, and the evidence pack's field for the definitions an answer relied on.",
       "caution": "Vendor project, and it does not accept outside contributions. Accuracy is measured with a separate text-to-SQL benchmark repository; this review did not run it or the software.",
       "commercialInterest": true
+    },
+    {
+      "id": "S00",
+      "title": "AI governance as four questions: the law, the proof, the accountability, and what runs in production",
+      "who": "Luís Rodrigues",
+      "org": "Not stated on the post (the author's headline describes him as a CPTO; he writes the newsletter Build What Matters)",
+      "date": "About 7 November 2026 (the post showed '1w' when read on 17 November; the date is decoded from its activity ID)",
+      "themes": [
+        "Regulation & policy",
+        "Assurance & standards",
+        "Agent governance"
+      ],
+      "region": "International",
+      "url": "https://www.linkedin.com/posts/lfrodrigues_ai-governance-looks-complicated-it-comes-share-7524815829671198720-gcus/",
+      "summary": "Frames AI governance as four layers: regulation (the EU AI Act, plus GDPR, sector rules, NIS2 and DORA), standards and frameworks (ISO/IEC 42001 and the NIST AI RMF), roles (a named owner for every AI system) and controls. Argues that controls are where most organisations fall short, and lists them: risk-rate every system, give agents only the tools they need, train people in AI literacy, keep a human able to stop the system, keep an inventory, log everything, and test continuously. Suggests starting with an inventory of every AI tool in use.",
+      "relevance": "The four questions map onto this toolkit: the law (Resources, tier 0), proof (evidence pack builder, TK-04), accountability (the accountable owner and H4 to H5 review) and production (agent registry, TK-03, and incident reporting, TK-12).",
+      "caution": "A practitioner's opinion post that also promotes the author's newsletter. The legal points (for example AI literacy as an EU duty) and the standards named should be checked against the primary texts before citing.",
+      "commercialInterest": true,
+      "evidence": "post read in full in the owner's signed-in browser on 17 November 2026"
     }
   ],
   "scanLog": [
@@ -514,6 +520,12 @@
       "date": "13 November 2026",
       "added": "1",
       "note": "Not a full scan. S00 partly read in the owner's browser (opening line, author handle, date from its ID); the rest is behind LinkedIn's security check, so it stays pending. Added S28 (NVIDIA Auto Ontology), read from its repository's README, for issue 16 on the toolkit."
+    },
+    {
+      "run": "4",
+      "date": "17 November 2026",
+      "added": "0",
+      "note": "Not a full scan. S00 completed: the post was read in full in the owner's signed-in browser (no security check this time) and moved from pending to the register."
     }
   ]
 }
