@@ -29,4 +29,12 @@ jobs:
       - run: zip -qr "ai-capability-governance-${GITHUB_REF_NAME}.zip" index.html styles.css app.js data .nojekyll LICENSE
       - env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" "ai-capability-governance-${GITHUB_REF_NAME}.zip" --generate-notes --title "$GITHUB_REF_NAME"
+        # A person may already have made the release by hand (v3.1.0, 15 November 2026: "a release with the same tag
+        # name already exists", and the zip was never attached). If it exists, attach the zip to it; if not, create it.
+        run: |
+          zip_file="ai-capability-governance-${GITHUB_REF_NAME}.zip"
+          if gh release view "$GITHUB_REF_NAME" > /dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" "$zip_file" --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" "$zip_file" --generate-notes --title "$GITHUB_REF_NAME"
+          fi
