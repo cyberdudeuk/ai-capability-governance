@@ -7,8 +7,8 @@ authors:
     family-names: Silva
     orcid: "https://orcid.org/0009-0000-5880-7219"
   - name: AI Capability Governance working group
-version: 3.1.0
-date-released: 2026-11-13
+version: 3.2.0
+date-released: 2026-11-18
 license: MIT
 repository-code: https://github.com/cyberdudeuk/ai-capability-governance
 url: https://cyberdudeuk.github.io/ai-capability-governance/

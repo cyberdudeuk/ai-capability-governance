@@ -136,6 +136,46 @@ def problems(root):
         t = md.read_text(encoding='utf-8')
         check(re.search(r'until (it|this|that) (merges|is merged)', t, re.I) is None,
               f'S19 {md.relative_to(root)} refers to a pull request "until it merges"; link to the code on main instead')
+    # S21 (D-25, 2026-11-18): the playbook page is generated from data/playbook.json. A hand edit, or a data change
+    # without a rebuild, would publish content that the classification record does not describe.
+    pb = root / 'playbook.html'
+    pbd_path = root / 'data' / 'playbook.json'
+    if pbd_path.exists():
+        import build_playbook
+        for path, want in build_playbook.outputs(root).items():
+            check(path.exists() and path.read_text(encoding='utf-8') == want,
+                  f'S21 {path.name} is out of step with data/playbook.json: run python3 tools/build_playbook.py')
+        pbd = json.loads(pbd_path.read_text(encoding='utf-8'))
+        # S23 (D-27): every chapter is classified exactly once, every withheld chapter has a reason, and every link the
+        # drawer, the map and the route tool make lands on something that exists.
+        ids = [c['id'] for c in pbd['chapters']]
+        wids = [w['id'] for w in pbd['withheld']]
+        check(len(ids) == len(set(ids)), 'S23 a playbook chapter appears twice')
+        check(not set(ids) & set(wids), f'S23 chapters both published and withheld: {sorted(set(ids) & set(wids))}')
+        check(all(len(w.get('reason', '')) >= 20 for w in pbd['withheld']), 'S23 a withheld chapter has no reason')
+        check(sorted(ids) == sorted(c for p in pbd['parts'] for c in p['chapters']), 'S23 parts and chapters disagree')
+        check(pbd['meta']['version'] == re.search(r'<meta name="version" content="([^"]+)"', s).group(1),
+              'S23 playbook version differs from the site version')
+        if pb.exists():
+            ph = pb.read_text(encoding='utf-8')
+            targets = set(re.findall(r'id="([\w-]+)"', ph))
+            pjs = (root / 'playbook.js').read_text(encoding='utf-8') if (root / 'playbook.js').exists() else ''
+            for h in sorted(set(re.findall(r'href="#([\w-]+)"', ph)) | set(re.findall(r"go: '#([\w-]+)'", pjs))):
+                check(h in targets, f'S23 playbook links to #{h}, which does not exist')
+            check('playbook.html' in s, 'S23 the home page does not link to the playbook')
+    # S22 (D-26, 2026-11-18): the source of the playbook is an internal toolkit. No published file may name an
+    # internal page, the former office name, the team, or carry an email address.
+    banned = re.compile(r'\bOCDO\b|Office of the Chief Data Officer|Data Management Team|Work IQ|Private Office|\bPMO\b|Claude Portal|\.dc\.html', re.I)
+    for name in ('index.html', 'playbook.html', 'app.js', 'playbook.js', 'data/playbook.json', 'data/playbook-taxonomy.jsonld', 'README.md'):
+        f = root / name
+        if f.exists():
+            t = f.read_text(encoding='utf-8')
+            m = banned.search(t) or (EMAIL.search(t) if name.startswith(('playbook', 'data/playbook')) else None)
+            check(m is None, f'S22 {name} contains withheld or internal wording: {m.group(0) if m else ""}')
+    # S24 (D-28, 2026-11-18): the masthead read "Formerly the AI Capability Governance and Implementation (formerly
+    # the Public AI Utility Toolkit)" - the old name was pasted into itself. The brand line names the old name once.
+    bm = re.search(r'class="brand".*?<small>(.*?)</small>', s, re.S)
+    check(bm is not None and bm.group(1).lower().count('formerly') <= 1, 'S24 the masthead brand line repeats "formerly"')
     # S12: the workflow inventory matches the files.
     wf = {p.name for p in (root / '.github' / 'workflows').glob('*.y*ml')} if (root / '.github' / 'workflows').exists() else set()
     check(wf == EXPECTED_WORKFLOWS, f'S12 workflows differ from the inventory: {sorted(wf ^ EXPECTED_WORKFLOWS)}')
@@ -146,7 +186,7 @@ def main(argv=None):
     root = (argv or sys.argv[1:] or ['.'])[0]
     p = problems(root)
     n = len(json.loads((Path(root) / 'data' / 'ai-data-governance-signals.json').read_text(encoding='utf-8'))['items'])
-    print('FAIL\n' + '\n'.join(p) if p else f'PASS: 20 checks, {n} signals')
+    print('FAIL\n' + '\n'.join(p) if p else f'PASS: 24 checks, {n} signals')
     return 1 if p else 0
 
 

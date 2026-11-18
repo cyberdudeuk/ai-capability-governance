@@ -14,7 +14,7 @@ sys.path.insert(0, str(ROOT / 'tools'))
 import check_site  # noqa: E402
 import health  # noqa: E402
 
-FILES = ['index.html', 'app.js', 'README.md', 'CHANGELOG.md', 'ACCESSIBILITY.md', 'SECURITY.md', 'CONTRIBUTING.md', 'LICENSE', 'data', '.github', 'docs', '.gitignore', 'CITATION.cff']
+FILES = ['index.html', 'app.js', 'playbook.html', 'playbook.js', 'playbook.css', 'README.md', 'CHANGELOG.md', 'ACCESSIBILITY.md', 'SECURITY.md', 'CONTRIBUTING.md', 'LICENSE', 'data', '.github', 'docs', '.gitignore', 'CITATION.cff']
 
 
 class Site(unittest.TestCase):
@@ -42,6 +42,40 @@ class Site(unittest.TestCase):
 
     def test_the_real_site_passes(self):
         self.assertEqual(check_site.problems(ROOT), [])
+
+    def test_S21_playbook_page_hand_edited(self):
+        self.edit('playbook.html', 'Agent governance playbook</h1>', 'Agent governance playbook (edited)</h1>')
+        self.fails_with('S21')
+
+    def test_S21_playbook_data_changed_without_rebuild(self):
+        p = self.tmp / 'data' / 'playbook.json'
+        d = json.loads(p.read_text(encoding='utf-8'))
+        d['chapters'][0]['title'] += ' (changed)'
+        p.write_text(json.dumps(d, ensure_ascii=False), encoding='utf-8')
+        self.fails_with('S21')
+
+    def test_S22_internal_page_named(self):
+        self.edit('playbook.html', '<h1 id="pbH1">', '<h1 id="pbH1">See the PMO portal ')
+        self.fails_with('S22')
+
+    def test_S22_former_office_name(self):
+        self.edit('index.html', 'Formerly the Public AI Utility Toolkit', 'Formerly the OCDO toolkit')
+        self.fails_with('S22')
+
+    def test_S23_withheld_chapter_without_reason(self):
+        p = self.tmp / 'data' / 'playbook.json'
+        d = json.loads(p.read_text(encoding='utf-8'))
+        d['withheld'][0]['reason'] = ''
+        p.write_text(json.dumps(d, ensure_ascii=False), encoding='utf-8')
+        self.fails_with('S23')
+
+    def test_S23_route_tool_links_nowhere(self):
+        self.edit('playbook.js', "go: '#ch-registers'", "go: '#ch-nowhere'")
+        self.fails_with('S23')
+
+    def test_S24_masthead_repeats_old_name(self):
+        self.edit('index.html', 'Formerly the Public AI Utility Toolkit', 'Formerly the AI Capability Governance (formerly the Public AI Utility Toolkit)')
+        self.fails_with('S24')
 
     def test_S19_doc_points_at_a_pending_pull_request(self):
         self.edit('docs/user-guide/advanced.md', 'function `certify`)', 'function `certify`, in pull request 18 until it merges)')

@@ -1,0 +1,1862 @@
+{
+ "@context": {
+  "skos": "http://www.w3.org/2004/02/skos/core#"
+ },
+ "@graph": [
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme",
+   "@type": "skos:ConceptScheme",
+   "skos:prefLabel": {
+    "@value": "Agent governance playbook",
+    "@language": "en-GB"
+   },
+   "skos:hasTopConcept": [
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-start-here"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-decide-and-prioritise"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-design-and-build"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-assure-and-govern"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-operate-and-oversee"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-fund-and-buy"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-people-and-adoption"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-live-pilot"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-product-documentation"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-knowledge-and-navigation"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-deploy-for-real"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-reference"
+    }
+   ]
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-start-here",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Start here",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:topConceptOf": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:narrower": [
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-overview"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-raistart"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-howto"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-playbook"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-domains"
+    }
+   ]
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-decide-and-prioritise",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Decide and prioritise",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:topConceptOf": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:narrower": [
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-evidence"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-usecases"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-raicases"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-raiassess"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-criticality"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-maturity"
+    }
+   ]
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-design-and-build",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Design and build",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:topConceptOf": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:narrower": [
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-railifecycle"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-capclasses"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-skills"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-raiagents"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-raiconnectors"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-architecture"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-knowledge"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-autonomy"
+    }
+   ]
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-assure-and-govern",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Assure and govern",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:topConceptOf": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:narrower": [
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-raicontrols"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-raidata"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-trust"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-govmodel"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-risks"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-registers"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-atrs"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-recovery"
+    }
+   ]
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-operate-and-oversee",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Operate and oversee",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:topConceptOf": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:narrower": [
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-tower"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-raioperate"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-agentjourney"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-employment"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-cascade"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-observatory"
+    }
+   ]
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-fund-and-buy",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Fund and buy",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:topConceptOf": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:narrower": [
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-value"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-finops"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-commercial"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-dependency"
+    }
+   ]
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-people-and-adoption",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "People and adoption",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:topConceptOf": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:narrower": [
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-teams"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-serviceteam"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-roles"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-academy"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-capability"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-inclusion"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-journeys"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-rollout"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-community"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-operating"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-raiadoption"
+    }
+   ]
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-live-pilot",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Live pilot",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:topConceptOf": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:narrower": [
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-pilotview"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-pilottest"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-pilotselect"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-pilotroles"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-pilotassurance"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-pilotjourney"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-pilotcomms"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-pilotsuccess"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-pilotdecision"
+    }
+   ]
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-product-documentation",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Product documentation",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:topConceptOf": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:narrower": [
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-docprd"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-docftir"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-docsad"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-dochld"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-doclld"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-doctoc"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-docresearch"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-docresources"
+    }
+   ]
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-knowledge-and-navigation",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Knowledge and navigation",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:topConceptOf": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:narrower": [
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-glossary"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-thesaurus"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-taxonomy"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-stack"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-federated"
+    }
+   ]
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-deploy-for-real",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Deploy for real",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:topConceptOf": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:narrower": [
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-atlas"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-casegen"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-worked"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-boundary"
+    }
+   ]
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-reference",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Reference",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:topConceptOf": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:narrower": [
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-nations"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-world"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-pace"
+    }
+   ]
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-overview",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Overview",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-start-here"
+   },
+   "skos:definition": {
+    "@value": "The guidance for deploying AI agents in the public sector, sequenced into one route — and the operating capability that turns experimentation into governed services. Crown-copyright sources are the government's own; every illustrative figure is labelled.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-raistart",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Can I use AI for this?",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-start-here"
+   },
+   "skos:definition": {
+    "@value": "Start from your task. This part of the playbook routes you to the proportionate tool, template, assessment or support. Governance follows what the AI can see, create and do, not which company made it.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-howto",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "How to use this guide",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-start-here"
+   },
+   "skos:definition": {
+    "@value": "87 chapters in 12 parts. Nobody needs all of it. Pick a reading mode, then a route.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-playbook",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "The playbook",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-start-here"
+   },
+   "skos:definition": {
+    "@value": "The AI Playbook for the UK Government (GDS, 10 February 2025) supersedes the Generative AI Framework and covers all AI: machine learning, NLP, computer vision, generative and agentic systems. The ten principles are paraphrased below; open each for its first moves.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-domains",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Capability domains",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-start-here"
+   },
+   "skos:definition": {
+    "@value": "Cyber, data, digital, technology, and the legal-ethical frame around them. Each domain has its own authoritative guidance; a deployment is ready only when all five say so. That is why the team is multidisciplinary.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-evidence",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Evidence before assertion",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-decide-and-prioritise"
+   },
+   "skos:definition": {
+    "@value": "What varies is method, not the tool. Uncontrolled self-report gives the highest figures; comparison-group econometrics gives mid-range; counterfactual-free evaluation of a short pilot gives the lowest. Role mix is the second driver.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-usecases",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Use cases & evidence",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-decide-and-prioritise"
+   },
+   "skos:definition": {
+    "@value": "Eighteen categories, from productivity tools to enterprise agents — supporting people, processes and public outcomes. Use AI and agents responsibly to enhance the work of public servants and improve outcomes for citizens.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-raicases",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Public sector case library",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-decide-and-prioritise"
+   },
+   "skos:definition": {
+    "@value": "Sourced cases from central government, councils, the Scottish, Welsh and Northern Ireland governments and health bodies. Each carries its source and an evidence grade. Supplier-published figures stay graded as reported.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-raiassess",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Classify & assess",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-decide-and-prioritise"
+   },
+   "skos:definition": {
+    "@value": "As AI can see more, do more and act more independently, the assurance required rises. Criticality & gates scores the service impact; this chapter sets the route from what the AI itself can do.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-criticality",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Criticality & gates",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-decide-and-prioritise"
+   },
+   "skos:definition": {
+    "@value": "Evaluate across ten dimensions to identify the agents that need stronger governance, assurance and operational support. Score each 1 (very low) to 5 (very high); the total sets the criticality tier and the action.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-maturity",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Assurance tiers",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-decide-and-prioritise"
+   },
+   "skos:definition": {
+    "@value": "Two illustrative frameworks from the capability report: a seven-stage maturity model for organisations, and six assurance tiers for agents. Neither scores named organisations; both are diagnostic tools to calibrate against evidence. Over-control halts adoption; under-control creates unmanaged exposure.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-railifecycle",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Lifecycle & templates",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-design-and-build"
+   },
+   "skos:definition": {
+    "@value": "Each stage answers one question, produces one artefact and passes one gate. Select a stage to filter the templates. The Agent journey chapter follows a single agent through the same path.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-capclasses",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Capability classes",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-design-and-build"
+   },
+   "skos:definition": {
+    "@value": "Three ways of using the same underlying models, with different failure modes and therefore different controls. Most real deployments combine all three, which is exactly why the class needs naming before the controls are chosen.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-skills",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Skill studio",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-design-and-build"
+   },
+   "skos:definition": {
+    "@value": "A reusable way to brief any assistant: seven parts, a directives layer that always applies, validation that is always on, and a library loop so good prompts get kept, shared and versioned — not rediscovered.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-raiagents",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Agent assurance X-ray",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-design-and-build"
+   },
+   "skos:definition": {
+    "@value": "What starts an agent, how it plans, what it can reach, where people stay in control, and what it leaves behind. Skill studio builds the instruction block; Autonomy boundaries sets the limits.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-raiconnectors",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Connectors, MCP & integrations",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-design-and-build"
+   },
+   "skos:definition": {
+    "@value": "MCP servers, connectors, plugins, add-ins and APIs turn a generative tool into one that can reach, and change, other systems. Each needs an owner, a scope and a log.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-architecture",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Architecture & quality",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-design-and-build"
+   },
+   "skos:definition": {
+    "@value": "A three-tier canon governs everything that influences how something is built — prototypes explicitly included, because most principle breaches enter the estate through prototypes that were never intended to survive, and then did.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-knowledge",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Knowledge foundation",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-design-and-build"
+   },
+   "skos:definition": {
+    "@value": "Transforming conversations into trusted, discoverable knowledge that drives action and public value. Capture once, reuse everywhere — the seven-step pipeline and the record it produces.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-autonomy",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Autonomy boundaries",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-design-and-build"
+   },
+   "skos:definition": {
+    "@value": "Autonomy is a privilege, not a default. Human oversight increases with risk, impact and consequence — and the human role is named at every level, not implied.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-raicontrols",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Control plane & evidence",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-assure-and-govern"
+   },
+   "skos:definition": {
+    "@value": "Consistent principles, proportionate assurance and reusable components. Evidence and transparency records sit with the controls because they are how each control is shown to work.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-raidata",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Data & information governance",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-assure-and-govern"
+   },
+   "skos:definition": {
+    "@value": "Whatever an AI tool can reach, it can surface, summarise and act on. Data and information governance sets what it should reach, and treats what it produces as records.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-trust",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Architecture of trust",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-assure-and-govern"
+   },
+   "skos:definition": {
+    "@value": "A continuous cycle that governs AI agents as digital workers to deliver trusted public services and outcomes. The agent at the centre is purpose driven, accountable, supervised, transparent, secure and ethical. Trust at every step: right agent, right authority, right outcome.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-govmodel",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Governance operating model",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-assure-and-govern"
+   },
+   "skos:definition": {
+    "@value": "A layered model for governing AI agents as digital workers to deliver trusted public services. Each layer answers one question — from why we do it, to the impact we create together.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-risks",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Risks & mitigations",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-assure-and-govern"
+   },
+   "skos:definition": {
+    "@value": "Proactive risk management so AI agents operate safely, lawfully and effectively as digital workers. Human accountability remains non-delegable. Residual ratings assume the controls listed are in place and effective.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-registers",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Registers & lifecycle",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-assure-and-govern"
+   },
+   "skos:definition": {
+    "@value": "A single source of truth for AI agents: discoverable, governed and actionable. The four-group record above is the minimum; this is the full blueprint, with an illustrative value for each field.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-atrs",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Internal ATRS registry",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-assure-and-govern"
+   },
+   "skos:definition": {
+    "@value": "Based on the principles of the Algorithmic Transparency Recording Standard. Purpose: to ensure transparency, accountability and responsible use of AI agents by recording key information about their purpose, authority, data, risks, controls and lifecycle. The registry integrates with enterprise systems for identity, security, monitoring, risk, audit and knowledge management.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-recovery",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Failure & recovery",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-assure-and-govern"
+   },
+   "skos:definition": {
+    "@value": "Turning errors into stronger systems and better outcomes. Nine stages, and the ninth feeds the first: every failure is a source of learning. Work a live issue through the loop and record where you are.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-tower",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Portfolio control tower",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-operate-and-oversee"
+   },
+   "skos:definition": {
+    "@value": "Govern. Assure. Monitor. Improve. Every figure below is illustrative, showing the dashboard a governed portfolio produces — last updated 20 May 2025 09:30.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-raioperate",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Monitoring & reassessment",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-operate-and-oversee"
+   },
+   "skos:definition": {
+    "@value": "Monitoring, incidents, the change watchlist, reassessment and retirement, run as one learning loop. The Portfolio control tower shows the estate view; this chapter defines what feeds it.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-agentjourney",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Agent journey",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-operate-and-oversee"
+   },
+   "skos:definition": {
+    "@value": "An agent that helps one person and an agent that decides a citizen's case are not the same thing, and should not carry the same controls. Eight stages, each with a gate question, the control that applies, the role accountable and the outcome expected.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-employment",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Agent employment",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-operate-and-oversee"
+   },
+   "skos:definition": {
+    "@value": "Agents go through a managed lifecycle — from intent to retirement — with controls, oversight and accountability at every stage. People remain accountable: agents augment human capability, they do not replace judgement, responsibility or accountability.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-cascade",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Public service impact",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-operate-and-oversee"
+   },
+   "skos:definition": {
+    "@value": "Seven links from capability to legitimacy — each with the elements that must hold and the risks that arise if they do not. Better governed AI agents lead to better decisions, better services, and better outcomes for everyone.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-observatory",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Observatory & barometer",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-operate-and-oversee"
+   },
+   "skos:definition": {
+    "@value": "The observatory tracks published signals of UK public-sector AI adoption; the model is the OECD.AI Policy Observatory, applied at home. Each figure carries its publisher and date. The barometer is your own assessment, stored on this device only.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-value",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Cost, value & investment",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-fund-and-buy"
+   },
+   "skos:definition": {
+    "@value": "A continuous cycle that connects business value, cost efficiency and responsible use. Align, optimise, govern — then deliver and reinvest. Figures on this page are illustrative: replace them with your own contract and telemetry data.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-finops",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "FinOps & models",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-fund-and-buy"
+   },
+   "skos:definition": {
+    "@value": "AI cost is a portfolio, not a licence line. You are billed per token, in and out — roughly four characters or three-quarters of a word each; an A4 page is 600–800 tokens. Micro-costs stack when an agent runs on repeat. Report by service, product, agent, owner, model and cost driver; showback before chargeback; no expenditure classification without finance-led assessment.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-commercial",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Commercial & suppliers",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-fund-and-buy"
+   },
+   "skos:definition": {
+    "@value": "Score each barrier by its impact and its likelihood in your context. Risk score is impact × likelihood; the band follows the published scale. The defaults are the sector-level assessment — change them and the bands move.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-dependency",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Dependency & exit",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-fund-and-buy"
+   },
+   "skos:definition": {
+    "@value": "AI-enabled services rely on a chain of suppliers, platforms, models, data sources and infrastructure. Visibility of these dependencies is what makes risk management, resilience, portability and value possible.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-teams",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Multidisciplinary teams",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-people-and-adoption"
+   },
+   "skos:definition": {
+    "@value": "The Service Manual's multidisciplinary team, extended for AI. Not every role is full-time, but every role is engaged from discovery, not summoned for sign-off. \"Critical at\" marks where each role's absence hurts most.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-serviceteam",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "AI service team",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-people-and-adoption"
+   },
+   "skos:definition": {
+    "@value": "Collaborating to design, build, govern and operate trustworthy AI services that deliver public value — through design and plan, build and enable, deploy and operate, measure and improve. The service at the centre is defined by user needs, public value, trust, safety and outcomes.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-roles",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Roles & pathways",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-people-and-adoption"
+   },
+   "skos:definition": {
+    "@value": "Role-specific learning journeys to build skills, confidence and impact at every stage of adoption. Pick the role you are supporting; the pathway shows what capability looks like at each of four levels.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-academy",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Capability academy",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-people-and-adoption"
+   },
+   "skos:definition": {
+    "@value": "Five learning pathways across four stages. Build confidence. Apply skills. Drive impact. Lead change.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-capability",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Capability & maturity",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-people-and-adoption"
+   },
+   "skos:definition": {
+    "@value": "Seven levels, from ad-hoc use to adaptive capability. Choose a level to see what it looks like across the dimensions and the twelve capability domains — then record the evidence you could actually show.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-inclusion",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Inclusive adoption",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-people-and-adoption"
+   },
+   "skos:definition": {
+    "@value": "AI tools should empower everyone by offering choice, clarity and support. The spectrum below runs from empowered and confident to apprehensive — and inclusion is not one size for all: listening, choice and support help everyone succeed with AI.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-journeys",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Adoption journey",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-people-and-adoption"
+   },
+   "skos:definition": {
+    "@value": "A system of people, processes and support, not a rollout. Leadership sets direction. Business owns outcomes. Communities enable change. Data and evidence drive continuous improvement.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-rollout",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Agent rollout",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-people-and-adoption"
+   },
+   "skos:definition": {
+    "@value": "The opportunity is significant, but ownership, risk and consistency matter.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-community",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Community engagement",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-people-and-adoption"
+   },
+   "skos:definition": {
+    "@value": "How a cross-government community matures: the engagement arc, the flywheel that turns experience into shared assets, and the honest exchange of what members give and get. Capability without community repeats mistakes; community without operationalisation produces discussion.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-operating",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Operating model",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-people-and-adoption"
+   },
+   "skos:definition": {
+    "@value": "One AI capability operating model — not separate Copilot, agent, data, assurance and FinOps programmes. Cognitive load down, recognition up, DEIA by default rather than afterthought.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-raiadoption",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Adoption & change model",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-people-and-adoption"
+   },
+   "skos:definition": {
+    "@value": "Eight segments that turn responsible AI into lasting value, with accessibility, guest access and ways-of-working impact. Teams, roles, the academy and the adoption journey in this part go deeper on each.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-pilotview",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "The pilot in one view",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-live-pilot"
+   },
+   "skos:definition": {
+    "@value": "We are not reviewing a document. We are using the playbook during a live AI deployment to determine whether it improves decisions, delivery, assurance and public-service outcomes, and whether there is sufficient evidence and appetite to establish a permanent, interactive toolkit.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-pilottest",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "What it tests",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-live-pilot"
+   },
+   "skos:definition": {
+    "@value": "Primary hypothesis: using the playbook during a live deployment will improve the clarity, consistency, traceability and proportionality of governance and assurance without imposing unjustified delivery burden.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-pilotselect",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Candidate selection",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-live-pilot"
+   },
+   "skos:definition": {
+    "@value": "Seven criteria, the evidence each needs, and the condition that turns a candidate into a rejection or an escalation.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-pilotroles",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Pilot roles",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-live-pilot"
+   },
+   "skos:definition": {
+    "@value": "The deployment SRO stays accountable for the live service throughout. The pilot adds evaluation and independent challenge; it does not take accountability away from delivery.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-pilotassurance",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Assurance model",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-live-pilot"
+   },
+   "skos:definition": {
+    "@value": "Each stage states what it is for, what evidence it reviews, and the opinions it can legitimately reach.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-pilotjourney",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Journey & ceremonies",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-live-pilot"
+   },
+   "skos:definition": {
+    "@value": "Ten steps from mobilise to share, each with its activities and the artefact it must produce.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-pilotcomms",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Communications",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-live-pilot"
+   },
+   "skos:definition": {
+    "@value": "Each moment names its audience, message, channel and owner. The framework is being assessed — not the teams taking part.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-pilotsuccess",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Success & feedback",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-live-pilot"
+   },
+   "skos:definition": {
+    "@value": "Each measure names its evidence, owner and cadence. Thresholds are agreed after the baseline is captured: a pre-set percentage without context would create false precision.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-pilotdecision",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Decision & toolkit",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-live-pilot"
+   },
+   "skos:definition": {
+    "@value": "Four options, the conditions that select each, and what each commits the organisation to. No option is pre-selected.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-docprd",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Product requirements",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-product-documentation"
+   },
+   "skos:definition": {
+    "@value": "What this guide is for, who it serves, what it must do and what it deliberately does not do. Derived from published guidance and community discussion; a proposal, not an adopted product mandate.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-docftir",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Functional & technical spec",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-product-documentation"
+   },
+   "skos:definition": {
+    "@value": "Numbered requirements with priority, traceable to the chapters that satisfy them. Must, should and could follow the usual prioritisation convention.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-docsad",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Solution architecture",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-product-documentation"
+   },
+   "skos:definition": {
+    "@value": "Principles, context, layers and the decisions that shaped them. The architecture is deliberately small: the guide holds interpretation, never the record of a live deployment.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-dochld",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "High-level design",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-product-documentation"
+   },
+   "skos:definition": {
+    "@value": "Components, the entities they work on, and the four flows that carry most of the value.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-doclld",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Low-level design",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-product-documentation"
+   },
+   "skos:definition": {
+    "@value": "Module responsibilities, the arithmetic behind every score, the validation rules and the accessibility implementation. Enough for someone else to rebuild the behaviour exactly.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-doctoc",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Theory of change",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-product-documentation"
+   },
+   "skos:definition": {
+    "@value": "From inputs to impact, with the assumptions each step rests on. Written so the chain can be falsified: if an assumption fails, the link it supports fails with it.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-docresearch",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Personas & journeys",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-product-documentation"
+   },
+   "skos:definition": {
+    "@value": "Drawn from the roles, frictions and lifecycle material in published guidance and community discussion. These are evidence-derived working personas, not research participants — they need validating with real users before they carry design decisions.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-docresources",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Gov.uk AI resources",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-product-documentation"
+   },
+   "skos:definition": {
+    "@value": "This guide interprets and sequences; these resources supply engineering practice, worked examples and published evaluation. Link to them rather than copying them — they move faster than any document.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-glossary",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Glossary",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-knowledge-and-navigation"
+   },
+   "skos:definition": {
+    "@value": "Every term as this guide uses it, with the chapter that explains it. Chapter numbers resolve live, so they stay correct when the guide is restructured.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-thesaurus",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Thesaurus",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-knowledge-and-navigation"
+   },
+   "skos:definition": {
+    "@value": "Preferred term, the variants you will hear, and why the distinction matters. Cross-government acronyms and loose synonyms are the main cause of transcripts and registers that cannot be searched.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-taxonomy",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Taxonomies & ontology",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-knowledge-and-navigation"
+   },
+   "skos:definition": {
+    "@value": "Eight facets to classify anything in the estate, and the relations that connect them. Use the same vocabulary in the register, the ATRS record and the assurance case, or none of the three can be joined up.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-stack",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Platforms & repositories",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-knowledge-and-navigation"
+   },
+   "skos:definition": {
+    "@value": "Links point to the vendors' own documentation. Nothing here is an endorsement or a procurement decision: platform choice sits with commercial colleagues, and the dependency and exit chapter applies to every entry on this page.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-federated",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Federated guidance service",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-knowledge-and-navigation"
+   },
+   "skos:definition": {
+    "@value": "One trusted discovery layer over many authoritative sources, with a clear path from need to assured deployment. A federated index that links to governed sources beats another copy repository — this is a proposed model synthesised from community discussion and existing guidance, not an authoritative standard.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-atlas",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Service atlas",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-deploy-for-real"
+   },
+   "skos:definition": {
+    "@value": "The highest-volume services across UK central government, local government and the NHS, placed on two axes that decide almost everything else: how much of it there is, and what happens when it is wrong. Select a quadrant or a factor to filter. Open any service to load it into the generator.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-casegen",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Case generator",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-deploy-for-real"
+   },
+   "skos:definition": {
+    "@value": "Two bands and ten factors in. Tier, autonomy cap, oversight regime, currency window, evaluation set, threat priorities, DPIA route, contract clauses, workforce actions, register fields and kill criteria out — with the rules that produced them, so the answer can be argued with rather than accepted.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-worked",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Worked examples",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-deploy-for-real"
+   },
+   "skos:definition": {
+    "@value": "Every artefact filled in, including the ones that are uncomfortable. Very high volume, moderate criticality — the case most departments would call easy. Named honestly it lands in Tier 3 · Enhanced, and that is the most useful thing in this chapter.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-boundary",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "What this does not cover",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-deploy-for-real"
+   },
+   "skos:definition": {
+    "@value": "A guide that does not state its boundary strands the team at the point where the interesting problems start. This chapter exists so nobody reaches gate 3 believing the architecture, the security testing or the legal advice was somewhere in the earlier parts.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-nations",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "UK nations",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-reference"
+   },
+   "skos:definition": {
+    "@value": "Counting strategies overstates maturity: a benchmark that measures published strategy ranks all four nations comparable. Only one has a published body of controlled evaluation of deployment. What each nation can borrow from the others is the point of comparing.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-world",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "International",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-reference"
+   },
+   "skos:definition": {
+    "@value": "Five reference jurisdictions, five different bets: from the EU's binding risk tiers to Singapore's testing-led pragmatism. Genuinely transferable: Canada's public assessment and inventory approach, Australia's named AI ownership and workforce model, Singapore's central adoption flywheel, US inventory discipline, and the EU's joint procurement direction.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-pace",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Pace & parity",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-reference"
+   },
+   "skos:definition": {
+    "@value": "Skill atrophy appears in this guide as a single sentence in the evidence chapter, credited to Canada. Nothing sits behind it: no control, no metric, no register field, no gate criterion, no owner. That is the honest answer to the question, and it is now backlog item PACE-01. This chapter closes it, then applies the same test to everything else the world has built that we have not.",
+    "@language": "en-GB"
+   }
+  }
+ ]
+}

@@ -11,8 +11,8 @@
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#0b3d91" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0e1116" media="(prefers-color-scheme: dark)">
-  <meta name="version" content="3.1.0">
-  <meta name="last-reviewed" content="2026-11-13">
+  <meta name="version" content="3.2.0">
+  <meta name="last-reviewed" content="2026-11-18">
   <meta name="next-review" content="2027-02-13">
   <link rel="canonical" href="https://cyberdudeuk.github.io/ai-capability-governance/">
   <meta property="og:type" content="website">
@@ -34,8 +34,8 @@
     "inLanguage": "en-GB",
     "description": "A public-good toolkit for governing, assuring and delivering AI-assisted public services.",
     "license": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
-    "version": "3.1.0",
-    "dateModified": "2026-11-13",
+    "version": "3.2.0",
+    "dateModified": "2026-11-18",
     "isAccessibleForFree": true,
     "publisher": { "@type": "Organization", "name": "AI Capability Governance working group" }
   }
@@ -48,11 +48,12 @@
     <div class="wrap hdr">
       <a class="brand" href="#top">
         <span class="mark" aria-hidden="true">AI</span>
-        <span>AI Capability Governance<small>Formerly the AI Capability Governance and Implementation (formerly the Public AI Utility Toolkit)</small></span>
+        <span>AI Capability Governance<small>Formerly the Public AI Utility Toolkit</small></span>
       </a>
       <button class="icon-btn nav-toggle js-only" id="navToggle" type="button" aria-expanded="false" aria-controls="primary-nav">☰ Menu</button>
       <nav class="top-nav" id="primary-nav" aria-label="Primary">
       <a href="#start-here">Start here</a>
+      <a href="playbook.html">Playbook</a>
       <a href="#knowledge">Knowledge</a>
       <a href="#toolkit">Toolkit</a>
       <a href="#tools">Tools</a>
@@ -96,6 +97,16 @@
         <li><strong>Evidence, metadata and provenance are mandatory</strong> for anything material or public-facing.</li>
       </ul>
     </div>
+  </div>
+</section>
+
+<section id="playbook" class="section" aria-labelledby="sec-h-pb">
+  <div class="wrap">
+    <span class="eyebrow">New in version 3.2.0</span>
+    <h2 id="sec-h-pb">Agent governance playbook</h2>
+    <p class="lede">77 chapters in 12 parts take a team from “can I use AI for this?” to a governed, monitored and eventually retired AI agent: criticality and assurance tiers, registers and transparency records, oversight, cost and value, people and adoption, a live-pilot method and the delivery documents behind it.</p>
+    <div class="actions"><a class="btn btn-primary" href="playbook.html">Open the playbook</a><a class="btn btn-secondary" href="playbook.html#tool-route">Can I use AI for this?</a><a class="btn btn-secondary" href="playbook.html#pb-method">What was withheld, and why</a></div>
+    <div class="grid g3"><a class="card card--link" href="playbook.html#part-start-here"><span class="tag">Part 1</span><h3>Start here</h3><p>5 chapters</p></a><a class="card card--link" href="playbook.html#part-decide-and-prioritise"><span class="tag">Part 2</span><h3>Decide and prioritise</h3><p>6 chapters</p></a><a class="card card--link" href="playbook.html#part-design-and-build"><span class="tag">Part 3</span><h3>Design and build</h3><p>8 chapters</p></a><a class="card card--link" href="playbook.html#part-assure-and-govern"><span class="tag">Part 4</span><h3>Assure and govern</h3><p>8 chapters</p></a><a class="card card--link" href="playbook.html#part-operate-and-oversee"><span class="tag">Part 5</span><h3>Operate and oversee</h3><p>6 chapters</p></a><a class="card card--link" href="playbook.html#part-fund-and-buy"><span class="tag">Part 6</span><h3>Fund and buy</h3><p>4 chapters</p></a><a class="card card--link" href="playbook.html#part-people-and-adoption"><span class="tag">Part 7</span><h3>People and adoption</h3><p>11 chapters</p></a><a class="card card--link" href="playbook.html#part-live-pilot"><span class="tag">Part 8</span><h3>Live pilot</h3><p>9 chapters</p></a><a class="card card--link" href="playbook.html#part-product-documentation"><span class="tag">Part 9</span><h3>Product documentation</h3><p>8 chapters</p></a><a class="card card--link" href="playbook.html#part-knowledge-and-navigation"><span class="tag">Part 10</span><h3>Knowledge and navigation</h3><p>5 chapters</p></a><a class="card card--link" href="playbook.html#part-deploy-for-real"><span class="tag">Part 11</span><h3>Deploy for real</h3><p>4 chapters</p></a><a class="card card--link" href="playbook.html#part-reference"><span class="tag">Part 12</span><h3>Reference</h3><p>3 chapters</p></a></div>
   </div>
 </section>
 
@@ -517,7 +528,7 @@ Household – link table person_household – unknown"></textarea></div>
    </div>
    <div>
     <h3>Example skill asset metadata</h3>
-    <div class="code-block"><button class="btn btn-secondary btn-sm copy no-print" data-copy="yamlEx">Copy</button><pre id="yamlEx">asset_type: ai_skill
+    <div class="code-block"><button class="btn btn-secondary btn-sm copy no-print" data-copy="yamlEx">Copy</button><pre id="yamlEx" tabindex="0" aria-label="Example YAML record">asset_type: ai_skill
 asset_id: review-accessibility-govuk
 title: GOV.UK accessibility review assistant
 status: approved
@@ -1079,7 +1090,7 @@ contact: https://github.com/cyberdudeuk/ai-capability-governance/issues/new</pre
   <p class="lede">A guidance utility that cannot be questioned is not trustworthy. Here is how this one is governed, and how you hold it to account.</p>
   <div class="grid g3">
    <div class="card"><h3>Provenance of this content</h3><p>Every substantive claim links to a tiered source. Where this portal expresses an opinion or a house rule rather than a legal requirement, it says so.</p></div>
-   <div class="card"><h3>Ownership and review</h3><p><strong>Owner:</strong> AI Capability Governance working group<br><strong>Version:</strong> 3.1.0<br><strong>Last reviewed:</strong> 2026-11-13<br><strong>Next review due:</strong> 2027-02-13</p></div>
+   <div class="card"><h3>Ownership and review</h3><p><strong>Owner:</strong> AI Capability Governance working group<br><strong>Version:</strong> 3.2.0<br><strong>Last reviewed:</strong> 2026-11-18<br><strong>Next review due:</strong> 2027-02-13</p></div>
    <div class="card"><h3>Licence and reuse</h3><p>Open Government Licence v3.0 (content) / MIT (code). Fork it, adapt it for your organisation, and tell us what you changed so others benefit.</p></div>
    <div class="card"><h3>Data and privacy</h3><p>This site is static and client-side. It sets no tracking cookies, runs no analytics that identify you, and sends nothing you type in the tools to any server. Preferences are stored locally in your browser and you can clear them at any time.</p></div>
    <div class="card"><h3>Known limitations</h3><p>This is a concept portal, not a statutory instrument. It does not replace your organisation's policies, your DPO, your security team or your legal advice. Some linked standards sit behind paywalls.</p></div>
@@ -1088,6 +1099,7 @@ contact: https://github.com/cyberdudeuk/ai-capability-governance/issues/new</pre
   <h3 style="margin-top:34px">Changelog</h3>
   <div class="table-scroll"><table><caption>Recent changes to this portal</caption>
    <thead><tr><th scope="col">Version</th><th scope="col">Date</th><th scope="col">Change</th></tr></thead><tbody>
+   <tr><td>3.2.0</td><td>2026-11-18</td><td>Added the agent governance playbook: 77 chapters in 12 parts ported from an internal AI agent governance toolkit, with a working “Can I use AI for this?” route tool, a knowledge map and a SKOS taxonomy. Ten chapters are withheld, each with its reason. New checks S21 to S24. Fixed the masthead line that repeated the old name.</td></tr>
    <tr><td>3.1.0</td><td>2026-11-13</td><td>Content review: replaced the withdrawn Generative AI Framework for HMG with the AI Playbook, added the Data (Use and Access) Act 2025 and the ICO's automated decision-making guidance, flagged ICO guidance now under review, and fixed four moved links. Added a field to the evidence pack for the data definitions an agent's answer relied on, and signals S22 to S28.</td></tr>
    <tr><td>3.0.1</td><td>2026-11-08</td><td>Replaced one broken and four moved resource links after an automated check of all 68; 11 sites refuse automated checks and are still to be checked by hand. The Monday health run now checks every link.</td></tr>
    <tr><td>3.0.0</td><td>2026-11-08</td><td>Renamed to AI Capability Governance and Implementation and moved to its own address. Added the Signals section (a weekly horizon scan of AI and data governance with attribution, evidence labels and an open JSON register). Added Beginner, Intermediate and Advanced levels to every persona, journey and common task, and a new data and AI governance lead persona. Contact is now by the GitHub contact form only: the email-client route and reply-address field are removed, and the two email addresses in the worked metadata example are replaced with a role and the form. Added the issue forms the contact links already pointed to, and automated checks, including browser checks, that run before anything is published. Fixed the page scrolling sideways on small phones.</td></tr>
@@ -1222,7 +1234,7 @@ contact: https://github.com/cyberdudeuk/ai-capability-governance/issues/new</pre
  </div>
  <div class="meta-bar">
   <span>AI Capability Governance and Implementation (formerly the Public AI Utility Toolkit) — a concept portal for public-good AI governance, skills and agent assurance.</span>
-  <span>Version 3.1.0</span><span>Reviewed 2026-11-13</span><span>Next review 2027-02-13</span>
+  <span>Version 3.2.0</span><span>Reviewed 2026-11-18</span><span>Next review 2027-02-13</span>
   <span>Open Government Licence v3.0 (content) / MIT (code)</span>
   <a href="#main">Return to main content</a>
  </div>
