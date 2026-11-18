@@ -6,8 +6,8 @@ publiccodeYmlVersion: '0'
 name: AI Capability Governance and Implementation
 url: https://github.com/cyberdudeuk/ai-capability-governance
 landingURL: https://cyberdudeuk.github.io/ai-capability-governance/
-softwareVersion: 3.1.0
-releaseDate: '2026-11-13'
+softwareVersion: 3.2.0
+releaseDate: '2026-11-18'
 platforms:
 - web
 categories:
@@ -27,6 +27,7 @@ description:
     - Evidence and transparency record generators
     - Agent registry pattern
     - Weekly signals scan
+    - Agent governance playbook with a route tool and SKOS taxonomy
 legal:
   license: MIT AND OGL-UK-3.0
 maintenance:
