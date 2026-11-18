@@ -1,0 +1,39 @@
+# publiccode.yml: machine-readable description for public sector software catalogues.
+# Standard: https://yml.publiccode.tools  Drafted from the launchpad card and CITATION.cff; checked by the official
+# parser (publiccode-parser-go). Version, release date and licence must agree with CITATION.cff.
+# No email address is given: contact is by the contact form only.
+publiccodeYmlVersion: '0'
+name: AI Capability Governance and Implementation
+url: https://github.com/cyberdudeuk/ai-capability-governance
+landingURL: https://cyberdudeuk.github.io/ai-capability-governance/
+softwareVersion: 3.1.0
+releaseDate: '2026-11-13'
+platforms:
+- web
+categories:
+- knowledge-management
+developmentStatus: development
+softwareType: standalone/web
+description:
+  en:
+    shortDescription: Guidance you can act on for governing AI and AI agents in public services.
+    longDescription: 'Guidance you can act on for governing AI and AI agents in public services: a six-level human
+      review model, evidence and transparency record generators, an agent registry pattern and a weekly signals
+      scan. It is for: Anyone using, buying, approving or assuring AI in public services. Status, as the project
+      states it: Prototype. Not official government guidance or policy unless the project says otherwise.'
+    documentation: https://cyberdudeuk.github.io/ai-capability-governance/
+    features:
+    - Six-level human review model
+    - Evidence and transparency record generators
+    - Agent registry pattern
+    - Weekly signals scan
+legal:
+  license: MIT AND OGL-UK-3.0
+maintenance:
+  type: community
+  contacts:
+  - name: AI Capability Governance and Implementation maintainers (contact form only)
+localisation:
+  localisationReady: false
+  availableLanguages:
+  - en
