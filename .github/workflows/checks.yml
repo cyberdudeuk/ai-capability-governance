@@ -40,16 +40,16 @@ jobs:
       - name: Vaccination and automation tests
         run: python -m unittest discover -s tests -v
       - name: Script syntax
-        run: node --check app.js
+        run: node --check app.js && node --check playbook.js
       - name: Linters (fail on any finding)
         run: |
           ruff check .
-          npm install --no-save --no-package-lock eslint@9.39.5 @eslint/js@9.39.5 globals@16.5.0
+          npm install --no-save --no-package-lock eslint@9.39.5 @eslint/js@9.39.5 globals@16.5.0 axe-core@4.10.3
           npx eslint .
       - name: Browser checks (runner's own Chrome; no browser download)
         run: python tools/check_browser.py
       - name: Browser check vaccinations (each must catch its deliberate break)
-        run: for b in overflow consoleerror contact evidence; do python tools/check_browser.py --break "$b"; done
+        run: for b in overflow consoleerror contact evidence route pboverflow contrast; do python tools/check_browser.py --break "$b"; done
       - name: Health run (review date, signals freshness; on Mondays, resource links)
         id: health
         run: |

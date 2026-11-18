@@ -1,6 +1,6 @@
 name: Publish
 # Tier 1 (ops/automation.yaml). On every push to main, runs every check again, then publishes only the site files
-# (index.html, styles.css, app.js, data/) to GitHub Pages. If any check fails, nothing is published.
+# (index.html, playbook.html, styles.css, playbook.css, app.js, playbook.js, data/) to GitHub Pages. If any check fails, nothing is published.
 # GitHub-owned Pages actions are the only actions used, each pinned to a full commit with its tag (ADR 0002).
 on:
   push:
@@ -37,11 +37,13 @@ jobs:
           python tools/check_site.py
           python -m unittest discover -s tests
           node --check app.js
+          node --check playbook.js
+          npm install --no-save --no-package-lock axe-core@4.10.3
           python tools/check_browser.py
       - name: Assemble the site files only
         run: |
           mkdir _site
-          cp -r index.html styles.css app.js data .nojekyll _site/
+          cp -r index.html styles.css app.js playbook.html playbook.css playbook.js data .nojekyll _site/
       - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with: {path: _site}

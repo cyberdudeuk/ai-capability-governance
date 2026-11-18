@@ -1,6 +1,6 @@
 # AI Capability Governance and Implementation
 
-[![Version](https://img.shields.io/badge/version-3.1.0-0b3d91)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-3.2.0-0b3d91)](CHANGELOG.md)
 [![Checks](https://github.com/cyberdudeuk/ai-capability-governance/actions/workflows/checks.yml/badge.svg)](https://github.com/cyberdudeuk/ai-capability-governance/actions/workflows/checks.yml)
 [![Licence: MIT](https://img.shields.io/badge/code-MIT-green)](LICENSE)
 [![Content: OGL v3.0](https://img.shields.io/badge/content-OGL%20v3.0-blue)](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
@@ -16,7 +16,7 @@ Toolkit**; now the public edition of the BOT AI governance toolkit, in its own r
 | | |
 |---|---|
 | **Status** | Prototype. Not official GOV.UK guidance; it does not replace your organisation's policies, data protection officer, security team or legal advice |
-| **Version** | 3.1.0, 13 November 2026 ([changelog](CHANGELOG.md)) |
+| **Version** | 3.2.0, 18 November 2026 ([changelog](CHANGELOG.md)) |
 | **Review** | Last reviewed 13 November 2026 ([record](docs/content-review-2026-11-13.md)). Next review due 13 February 2027 |
 | **Contact** | By [contact form](https://github.com/cyberdudeuk/ai-capability-governance/issues/new?template=contact.yml) only. There is no email route |
 
@@ -159,6 +159,13 @@ cannot be reproduced is labelled modelled, estimated or unconfirmed.
 | Correct out-of-date content | [Content correction](https://github.com/cyberdudeuk/ai-capability-governance/issues/new?template=content_correction.yml) |
 | Suggest a signal | [Signal suggestion](https://github.com/cyberdudeuk/ai-capability-governance/issues/new?template=signal_suggestion.yml) |
 | Report a vulnerability | [Security policy](SECURITY.md): private reporting, never a public issue |
+
+## Agent governance playbook
+
+[`playbook.html`](playbook.html) is the public edition of an internal AI agent governance toolkit: 77 chapters in
+12 parts, a working “Can I use AI for this?” route tool and a knowledge map. It is generated from
+[`data/playbook.json`](data/playbook.json) by `tools/build_playbook.py`; never edit the page by hand. Ten chapters
+are withheld; the reasons are in [the content classification](docs/content-classification-2026-11-18.md).
 
 ## Part of a wider set of projects
 

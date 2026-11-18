@@ -2,7 +2,9 @@
 """Browser checks (D-10): render the site in Chrome at desktop and phone widths and fail on
 - the page scrolling sideways (any width),
 - a console error or uncaught exception,
-- the contact form not opening the GitHub contact form.
+- the contact form not opening the GitHub contact form,
+- the playbook page scrolling sideways or erroring (B5), or its route tool giving the wrong route (B6),
+- any serious or critical axe-core WCAG 2.2 AA failure on either page in light or dark mode (B7).
 
 Run: python3 tools/check_browser.py [--break overflow|consoleerror|contact|evidence]
 --break injects a deliberate fault so CI proves each check fails when it should (a vaccination).
@@ -24,7 +26,14 @@ BREAKS = {
     'consoleerror': "console.error('deliberate break')",
     'contact': "document.getElementById('cfIssue').replaceWith(document.getElementById('cfIssue').cloneNode(true))",
     'evidence': "document.getElementById('evGo').replaceWith(document.getElementById('evGo').cloneNode(true))",
+    'route': "document.getElementById('routeForm').replaceWith(document.getElementById('routeForm').cloneNode(true))",
+    'pboverflow': "document.querySelector('.pb-hero').insertAdjacentHTML('beforeend','<div style=\"width:2000px;height:2px\"></div>')",
 }
+PB_BREAKS = {'route', 'pboverflow'}
+BREAKS['contrast'] = "document.querySelector('.btn-primary').style.color = '#d9e5ff'"
+AXE = ROOT / 'node_modules' / 'axe-core' / 'axe.min.js'
+AXE_RUN = ("async () => (await axe.run(document, {runOnly: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']}))"
+           ".violations.filter(v => v.impact === 'serious' || v.impact === 'critical').map(v => v.id + ' x' + v.nodes.length)")
 
 
 def serve():
@@ -49,7 +58,7 @@ async def run(brk):
             pg.on('console', lambda m, errs=errs: errs.append(m.text) if m.type == 'error' else None)
             pg.on('pageerror', lambda e, errs=errs: errs.append(str(e)))
             await pg.goto(url, wait_until='load')
-            if brk in BREAKS:
+            if brk in BREAKS and brk not in PB_BREAKS and brk != 'contrast':
                 await pg.evaluate(BREAKS[brk])
             sw = await pg.evaluate('document.documentElement.scrollWidth')
             if sw > w:
@@ -73,6 +82,45 @@ async def run(brk):
                 if 'Data definitions relied on' in empty or 'Household' not in given or 'not certified' not in given:
                     found.append('B4 evidence pack does not record the data definitions relied on')
             await pg.close()
+        # Playbook page (D-29): no sideways scroll, no console errors, and the route tool answers.
+        for w, h, name in ((1280, 900, 'desktop'), (390, 844, 'phone'), (320, 640, 'small phone')):
+            pg = await b.new_page(viewport={'width': w, 'height': h})
+            errs = []
+            pg.on('console', lambda m, errs=errs: errs.append(m.text) if m.type == 'error' else None)
+            pg.on('pageerror', lambda e, errs=errs: errs.append(str(e)))
+            await pg.goto(url.replace('index.html', 'playbook.html'), wait_until='load')
+            if brk in PB_BREAKS:
+                await pg.evaluate(BREAKS[brk])
+            sw = await pg.evaluate('document.documentElement.scrollWidth')
+            if sw > w:
+                found.append(f'B5 playbook {name}: page is {sw}px wide on a {w}px screen (scrolls sideways)')
+            if errs:
+                found.append(f'B5 playbook {name}: console errors: {errs[:3]}')
+            if name == 'desktop':
+                await pg.click('#tab-tool')
+                for i, v in enumerate('nnnyn'):
+                    await pg.check(f'input[name="rq{i}"][value="{v}"]')
+                got = await pg.inner_text('#routeOut')
+                if 'Go ahead with an approved tool' not in got:
+                    found.append(f'B6 playbook route tool gave "{got[:60]}" for an approved-tool case')
+            await pg.close()
+        # B7 (D-30): axe-core finds no serious or critical WCAG 2.2 AA failure on either page, light or dark. Fails closed
+        # if axe-core is not installed (CI installs the pinned version).
+        if not AXE.exists():
+            found.append('B7 axe-core is not installed: npm install --no-save axe-core@4.10.3')
+        else:
+            for page in ('index.html', 'playbook.html'):
+                for theme in ('light', 'dark'):
+                    pg = await b.new_page(viewport={'width': 1280, 'height': 900})
+                    await pg.add_init_script(f"try {{ localStorage.setItem('paut.theme', '{theme}') }} catch (e) {{}}")
+                    await pg.goto(url.replace('index.html', page), wait_until='load')
+                    if brk == 'contrast':
+                        await pg.evaluate(BREAKS[brk])
+                    await pg.add_script_tag(path=str(AXE))
+                    bad = await pg.evaluate(AXE_RUN)
+                    if bad:
+                        found.append(f'B7 {page} ({theme}): accessibility failures {bad[:4]}')
+                    await pg.close()
         await b.close()
     srv.shutdown()
     return found
@@ -84,11 +132,11 @@ def main(argv=None):
     a = ap.parse_args(argv)
     found = asyncio.run(run(a.brk))
     if a.brk:
-        code = {'overflow': 'B1', 'consoleerror': 'B2', 'contact': 'B3', 'evidence': 'B4'}[a.brk]
+        code = {'overflow': 'B1', 'consoleerror': 'B2', 'contact': 'B3', 'evidence': 'B4', 'route': 'B6', 'pboverflow': 'B5', 'contrast': 'B7'}[a.brk]
         ok = any(x.startswith(code) for x in found)
         print(f'Vaccination {a.brk}: {"caught" if ok else "NOT CAUGHT"}')
         return 0 if ok else 1
-    print('FAIL\n' + '\n'.join(found) if found else 'PASS: 4 browser checks at 3 widths')
+    print('FAIL\n' + '\n'.join(found) if found else 'PASS: 7 browser checks at 3 widths')
     return 1 if found else 0
 
 

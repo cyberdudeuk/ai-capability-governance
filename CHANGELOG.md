@@ -2,9 +2,28 @@
 
 The site's own changelog, with fuller wording, is in its Transparency section.
 
-## Since 3.1.0 (not yet released)
+## 3.2.0 — 18 November 2026
 
-### Added (repository standards for the move to gds-dtx, 17 November 2026)
+Includes the repository-standards work listed below under "Since 3.1.0".
+
+### Added
+
+- **Agent governance playbook** (`playbook.html`): the public edition of an internal AI agent governance toolkit.
+  77 chapters in 12 parts, rebuilt as plain semantic content that reads without JavaScript; a retractable contents
+  drawer with icons, counts and new flags; a chapter filter; tabs for reading, the route tool, the knowledge map and the
+  method; a working “Can I use AI for this?” route tool; a knowledge map; a QR and barcode colophon.
+- Open exchange: the full content as `data/playbook.json` and the part and chapter taxonomy as SKOS in JSON-LD
+  (`data/playbook-taxonomy.jsonld`).
+- `docs/content-classification-2026-11-18.md`: every chapter's decision. Ten chapters are withheld, each with a reason.
+- Checks S21 to S24 and browser checks B5 to B7 (axe-core, WCAG 2.2 AA, light and dark), each with a negative test.
+
+### Fixed
+
+- Masthead line that repeated the old name (D-28); dark-mode contrast on buttons, chips and badges (D-30); keyboard
+  access to the YAML example (D-31).
+
+
+### Since 3.1.0: repository standards for the move to gds-dtx, 17 November 2026
 
 - The Cabinet Office vulnerability disclosure route in `SECURITY.md`.
 - Pre-commit hooks: detect-secrets against a new `.secrets.baseline`, YAML and JSON checks, whitespace fixes, and gitlint for GDS Way commit messages (`.gitlint`).
