@@ -4,7 +4,7 @@
 - a console error or uncaught exception,
 - the contact form not opening the GitHub contact form,
 - the playbook page scrolling sideways or erroring (B5), or its route tool giving the wrong route (B6),
-- any serious or critical axe-core WCAG 2.2 AA failure on either page in light or dark mode (B7).
+- any serious or critical axe-core WCAG 2.2 AA failure on the portal in light or dark mode (B7).
 
 Run: python3 tools/check_browser.py [--break overflow|consoleerror|contact|evidence]
 --break injects a deliberate fault so CI proves each check fails when it should (a vaccination).
@@ -27,7 +27,7 @@ BREAKS = {
     'contact': "document.getElementById('cfIssue').replaceWith(document.getElementById('cfIssue').cloneNode(true))",
     'evidence': "document.getElementById('evGo').replaceWith(document.getElementById('evGo').cloneNode(true))",
     'route': "document.getElementById('routeForm').replaceWith(document.getElementById('routeForm').cloneNode(true))",
-    'pboverflow': "document.querySelector('.pb-hero').insertAdjacentHTML('beforeend','<div style=\"width:2000px;height:2px\"></div>')",
+    'pboverflow': "document.querySelector('#playbook').insertAdjacentHTML('beforeend','<div style=\"width:2000px;height:2px\"></div>')",
 }
 PB_BREAKS = {'route', 'pboverflow'}
 BREAKS['contrast'] = "document.querySelector('.btn-primary').style.color = '#d9e5ff'"
@@ -82,13 +82,13 @@ async def run(brk):
                 if 'Data definitions relied on' in empty or 'Household' not in given or 'not certified' not in given:
                     found.append('B4 evidence pack does not record the data definitions relied on')
             await pg.close()
-        # Playbook page (D-29): no sideways scroll, no console errors, and the route tool answers.
+        # The playbook inside the portal (D-29, D-32): no sideways scroll, no console errors, and the route tool answers.
         for w, h, name in ((1280, 900, 'desktop'), (390, 844, 'phone'), (320, 640, 'small phone')):
             pg = await b.new_page(viewport={'width': w, 'height': h})
             errs = []
             pg.on('console', lambda m, errs=errs: errs.append(m.text) if m.type == 'error' else None)
             pg.on('pageerror', lambda e, errs=errs: errs.append(str(e)))
-            await pg.goto(url.replace('index.html', 'playbook.html'), wait_until='load')
+            await pg.goto(url, wait_until='load')
             if brk in PB_BREAKS:
                 await pg.evaluate(BREAKS[brk])
             sw = await pg.evaluate('document.documentElement.scrollWidth')
@@ -109,7 +109,7 @@ async def run(brk):
         if not AXE.exists():
             found.append('B7 axe-core is not installed: npm install --no-save axe-core@4.10.3')
         else:
-            for page in ('index.html', 'playbook.html'):
+            for page in ('index.html',):
                 for theme in ('light', 'dark'):
                     pg = await b.new_page(viewport={'width': 1280, 'height': 900})
                     await pg.add_init_script(f"try {{ localStorage.setItem('paut.theme', '{theme}') }} catch (e) {{}}")

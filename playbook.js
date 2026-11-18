@@ -1,7 +1,8 @@
 /*!
  * AI Capability Governance and Implementation — playbook.js
- * Progressive enhancement for playbook.html: every chapter and rule is in the HTML and readable without JavaScript.
- * Adds the drawer switch, chapter filter, tabs, position marker, counters and the route tool.
+ * Progressive enhancement for the portal shell and the playbook: everything is in the HTML and readable without JavaScript.
+ * Adds the masthead menus, the guidance ticker, the drawer switch, the chapter filter, tabs, position and read marks,
+ * counters and the route tool. Preferences, theme and the mobile menu are in app.js.
  * No network calls; nothing typed leaves the browser. Licence: MIT (code) / Open Government Licence v3.0 (content).
  */
 (function () {
@@ -15,35 +16,46 @@
   };
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Theme: shared with the home page (same storage key). */
-  var THEMES = ['light', 'dark'];
-  function setTheme(t) {
-    if (THEMES.indexOf(t) < 0) { t = 'light'; }
-    doc.setAttribute('data-theme', t);
-    var b = $('pbTheme');
-    if (b) { b.setAttribute('aria-pressed', String(t === 'dark')); }
-  }
-  setTheme(store.get('theme', 'light'));
-  var contrast = store.get('contrast', 'normal');
-  doc.setAttribute('data-contrast', contrast === 'high' ? 'high' : 'normal');
-  if ($('pbTheme')) {
-    $('pbTheme').addEventListener('click', function () {
-      var t = doc.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      setTheme(t); store.set('theme', t);
-    });
-  }
+  /* Masthead menus: one open at a time; Escape or a click elsewhere closes them; choosing a link closes them. */
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.nav-group'));
+  function closeGroups(except) { groups.forEach(function (g) { if (g !== except) { g.open = false; } }); }
+  groups.forEach(function (g) {
+    g.addEventListener('toggle', function () { if (g.open) { closeGroups(g); } });
+    Array.prototype.forEach.call(g.querySelectorAll('a'), function (a) { a.addEventListener('click', function () { g.open = false; }); });
+  });
+  document.addEventListener('click', function (e) { if (!e.target.closest('.nav-group')) { closeGroups(null); } });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') { return; }
+    var open = groups.filter(function (g) { return g.open; })[0];
+    if (open) { open.open = false; open.querySelector('summary').focus(); }
+  });
 
-  /* Masthead menu on narrow screens. */
-  var navT = $('navToggle'), nav = $('primary-nav');
-  if (navT && nav) {
-    navT.addEventListener('click', function () {
-      var open = nav.classList.toggle('open');
-      navT.setAttribute('aria-expanded', String(open));
-    });
+  /* Guidance in force: moves only when motion is welcome, pauses on hover, focus or the button (WCAG 2.2.2). */
+  var track = $('tickerTrack'), tbtn = $('tickerBtn');
+  if (track && tbtn) {
+    var vp = track.parentNode;
+    if (reduced) {
+      tbtn.hidden = true;
+    } else {
+      Array.prototype.forEach.call(track.querySelectorAll('li'), function (li) {
+        var c = li.cloneNode(true);
+        c.setAttribute('aria-hidden', 'true');
+        Array.prototype.forEach.call(c.querySelectorAll('a'), function (a) { a.tabIndex = -1; });
+        track.appendChild(c);
+      });
+      vp.classList.add('is-moving');
+      if (store.get('ticker', 'on') === 'off') { vp.classList.add('is-paused'); tbtn.setAttribute('aria-pressed', 'true'); tbtn.textContent = 'Play'; }
+      tbtn.addEventListener('click', function () {
+        var paused = vp.classList.toggle('is-paused');
+        tbtn.setAttribute('aria-pressed', String(paused));
+        tbtn.textContent = paused ? 'Play' : 'Pause';
+        store.set('ticker', paused ? 'off' : 'on');
+      });
+    }
   }
 
   /* Drawer: a labelled sliding switch retracts it; the choice is remembered. */
-  var layout = document.querySelector('.pb-layout'), sw = $('pbDrawerToggle');
+  var layout = $('layout'), sw = $('pbDrawerToggle');
   function setDrawer(open) {
     layout.classList.toggle('pb-closed', !open);
     sw.setAttribute('aria-checked', String(open));
@@ -124,17 +136,40 @@
     search.addEventListener('input', function () { window.clearTimeout(timer); timer = window.setTimeout(filter, 150); });
   }
 
-  /* Where am I: mark the chapter in view in the drawer. */
+  /* Where am I, and what have I read: mark the chapter in view, and remember chapters read in this browser. */
+  var read = {};
+  try { (store.get('read', '') || '').split(',').forEach(function (k) { if (/^[\w-]+$/.test(k)) { read[k] = true; } }); } catch { read = {}; }
+  function showRead() {
+    var total = chapters.length, done = 0;
+    chapters.forEach(function (c) {
+      var id = c.id.slice(3), a = links[id];
+      if (read[id]) { done += 1; }
+      if (a) { var dot = a.querySelector('.pb-read'); if (dot) { dot.setAttribute('data-read', String(!!read[id])); } }
+    });
+    var all = $('pbReadAll'), mos = $('pbReadMosaic');
+    if (all) { all.textContent = done + ' of ' + total + ' read'; }
+    if (mos) { mos.textContent = ' · ' + done + ' of ' + total + ' read'; }
+    Array.prototype.forEach.call(document.querySelectorAll('.pb-tile'), function (t) {
+      var part = t.getAttribute('data-part'), n = 0;
+      chapters.forEach(function (c) { if (c.getAttribute('data-part') === part && read[c.id.slice(3)]) { n += 1; } });
+      var r = t.querySelector('.pb-tile-read');
+      if (r) { r.textContent = ' · ' + n + ' read'; }
+    });
+  }
+  showRead();
   if ('IntersectionObserver' in window) {
     var current = null;
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
         if (!en.isIntersecting) { return; }
-        var a = links[en.target.id.slice(3)];
+        var id = en.target.id.slice(3), a = links[id];
+        if (!read[id]) { read[id] = true; store.set('read', Object.keys(read).join(',')); showRead(); }
         if (!a || a === current) { return; }
         if (current) { current.removeAttribute('aria-current'); }
         a.setAttribute('aria-current', 'location');
         current = a;
+        var sec = a.closest('details');
+        if (sec && !sec.open) { sec.open = true; }
       });
     }, { rootMargin: '-20% 0px -70% 0px' });
     chapters.forEach(function (c) { io.observe(c); });
@@ -142,7 +177,7 @@
 
   /* Counters: count up once, unless the reader prefers reduced motion. */
   if (!reduced) {
-    Array.prototype.forEach.call(document.querySelectorAll('.pb-statn[data-count]'), function (el) {
+    Array.prototype.forEach.call(document.querySelectorAll('.hero-statn[data-count]'), function (el) {
       var end = parseInt(el.getAttribute('data-count'), 10), start = null;
       if (!(end > 1)) { return; }
       el.textContent = '0';

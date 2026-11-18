@@ -1,6 +1,6 @@
 # AI Capability Governance and Implementation
 
-[![Version](https://img.shields.io/badge/version-3.2.0-0b3d91)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-3.3.0-1b41d8)](CHANGELOG.md)
 [![Checks](https://github.com/cyberdudeuk/ai-capability-governance/actions/workflows/checks.yml/badge.svg)](https://github.com/cyberdudeuk/ai-capability-governance/actions/workflows/checks.yml)
 [![Licence: MIT](https://img.shields.io/badge/code-MIT-green)](LICENSE)
 [![Content: OGL v3.0](https://img.shields.io/badge/content-OGL%20v3.0-blue)](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
@@ -16,7 +16,7 @@ Toolkit**; now the public edition of the BOT AI governance toolkit, in its own r
 | | |
 |---|---|
 | **Status** | Prototype. Not official GOV.UK guidance; it does not replace your organisation's policies, data protection officer, security team or legal advice |
-| **Version** | 3.2.0, 18 November 2026 ([changelog](CHANGELOG.md)) |
+| **Version** | 3.3.0, 18 November 2026 ([changelog](CHANGELOG.md)) |
 | **Review** | Last reviewed 13 November 2026 ([record](docs/content-review-2026-11-13.md)). Next review due 13 February 2027 |
 | **Contact** | By [contact form](https://github.com/cyberdudeuk/ai-capability-governance/issues/new?template=contact.yml) only. There is no email route |
 
@@ -162,10 +162,12 @@ cannot be reproduced is labelled modelled, estimated or unconfirmed.
 
 ## Agent governance playbook
 
-[`playbook.html`](playbook.html) is the public edition of an internal AI agent governance toolkit: 77 chapters in
-12 parts, a working “Can I use AI for this?” route tool and a knowledge map. It is generated from
-[`data/playbook.json`](data/playbook.json) by `tools/build_playbook.py`; never edit the page by hand. Ten chapters
-are withheld; the reasons are in [the content classification](docs/content-classification-2026-11-18.md).
+The portal includes the public edition of an internal AI agent governance toolkit: 76 chapters in 12 parts, a
+working “Can I use AI for this?” route tool and a knowledge map, inside the one portal page. The playbook, the
+contents drawer, the hero figures and the masthead menus are generated into [`index.html`](index.html) from
+[`data/playbook.json`](data/playbook.json) by `tools/build_playbook.py`; never edit those blocks by hand. Eleven
+source chapters are withheld or merged; the reasons are in
+[the content classification](docs/content-classification-2026-11-18.md).
 
 ## Part of a wider set of projects
 

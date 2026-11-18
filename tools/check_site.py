@@ -156,13 +156,28 @@ def problems(root):
         check(sorted(ids) == sorted(c for p in pbd['parts'] for c in p['chapters']), 'S23 parts and chapters disagree')
         check(pbd['meta']['version'] == re.search(r'<meta name="version" content="([^"]+)"', s).group(1),
               'S23 playbook version differs from the site version')
-        if pb.exists():
-            ph = pb.read_text(encoding='utf-8')
-            targets = set(re.findall(r'id="([\w-]+)"', ph))
-            pjs = (root / 'playbook.js').read_text(encoding='utf-8') if (root / 'playbook.js').exists() else ''
-            for h in sorted(set(re.findall(r'href="#([\w-]+)"', ph)) | set(re.findall(r"go: '#([\w-]+)'", pjs))):
-                check(h in targets, f'S23 playbook links to #{h}, which does not exist')
-            check('playbook.html' in s, 'S23 the home page does not link to the playbook')
+        # Since 3.3.0 the playbook is part of index.html (D-32): every link in the page and every route-tool target lands.
+        targets = set(re.findall(r'id="([\w-]+)"', s))
+        pjs = (root / 'playbook.js').read_text(encoding='utf-8') if (root / 'playbook.js').exists() else ''
+        for h in sorted(set(re.findall(r'href="#([\w-]+)"', s)) | set(re.findall(r"go: '#([\w-]+)'", pjs))):
+            check(h in targets, f'S23 the portal links to #{h}, which does not exist')
+        check('id="playbook"' in s, 'S23 the portal has no playbook section')
+    # S25 (D-32, 2026-11-18): the playbook was first published as a second page with its own shell, so the site was two
+    # portals side by side. One portal: playbook.html only redirects into it, the portal loads the playbook script and
+    # styles, the masthead keeps at most eight top-level items (grouped menus, never wider than the screen), and the
+    # typeface is self-hosted (no third-party font request).
+    if pb.exists():
+        ph = pb.read_text(encoding='utf-8')
+        check('url=index.html#playbook' in ph and '<article' not in ph and len(ph) < 2000, 'S25 playbook.html must only redirect into the portal')
+    check('<script src="playbook.js" defer></script>' in s and 'href="playbook.css"' in s, 'S25 the portal does not load playbook.js and playbook.css')
+    navm = re.search(r'<nav class="top-nav"[^>]*>(.*?)</nav>', s, re.S)
+    top = len(re.findall(r'<details class="nav-group', navm.group(1))) + len(re.findall(r'<a class="nav-cta"', navm.group(1))) if navm else 99
+    check(top <= 8, f'S25 the masthead has {top} top-level items; group them so it never overflows')
+    for name in ('index.html', 'styles.css', 'playbook.css'):
+        f = root / name
+        if f.exists():
+            check(re.search(r'fonts\.(googleapis|gstatic)\.com|use\.typekit', f.read_text(encoding='utf-8')) is None, f'S25 {name} requests a third-party font')
+    check((root / 'fonts' / 'OFL.txt').exists(), 'S25 the self-hosted typeface has no licence file (fonts/OFL.txt)')
     # S22 (D-26, 2026-11-18): the source of the playbook is an internal toolkit. No published file may name an
     # internal page, the former office name, the team, or carry an email address.
     banned = re.compile(r'\bOCDO\b|Office of the Chief Data Officer|Data Management Team|Work IQ|Private Office|\bPMO\b|Claude Portal|\.dc\.html', re.I)
@@ -186,7 +201,7 @@ def main(argv=None):
     root = (argv or sys.argv[1:] or ['.'])[0]
     p = problems(root)
     n = len(json.loads((Path(root) / 'data' / 'ai-data-governance-signals.json').read_text(encoding='utf-8'))['items'])
-    print('FAIL\n' + '\n'.join(p) if p else f'PASS: 24 checks, {n} signals')
+    print('FAIL\n' + '\n'.join(p) if p else f'PASS: 25 checks, {n} signals')
     return 1 if p else 0
 
 

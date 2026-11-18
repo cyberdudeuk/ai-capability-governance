@@ -1,6 +1,6 @@
 # Content classification: agent governance playbook, 18 November 2026
 
-The playbook (`playbook.html`) is the public edition of an internal AI agent governance toolkit of 87 chapters in 12 parts. This record says what was published, what was withheld and why. It is the decision record that check S23 holds the data to.
+The playbook (in `index.html` since 3.3.0; `playbook.html` redirects there) is the public edition of an internal AI agent governance toolkit of 87 chapters in 12 parts. This record says what was published, what was withheld and why. It is the decision record that check S23 holds the data to.
 
 ## Method
 
@@ -17,9 +17,9 @@ No source file, blueprint, deck or film is in this repository. The extraction sc
 
 | Decision | Chapters |
 | --- | --- |
-| Public | 65 |
+| Public | 64 |
 | Public with redaction | 12 |
-| Withheld | 10 |
+| Withheld or merged | 11 |
 
 ## Withheld
 
@@ -105,7 +105,6 @@ No source file, blueprint, deck or film is in this repository. The extraction sc
 | Product documentation | Theory of change | Public | None |
 | Product documentation | Personas & journeys | Public with redaction | Source attribution reworded as above. |
 | Product documentation | Gov.uk AI resources | Public with redaction | A pointer to the withheld sources chapter now points to the home page resource library. |
-| Knowledge and navigation | Glossary | Public | None |
 | Knowledge and navigation | Thesaurus | Public | None |
 | Knowledge and navigation | Taxonomies & ontology | Public | None |
 | Knowledge and navigation | Platforms & repositories | Public with redaction | Removed the claim that the guide's shell follows the GOV.UK Design System (the public site has its own design). |
@@ -127,3 +126,7 @@ No source file, blueprint, deck or film is in this repository. The extraction sc
 ## Review
 
 Reviewed with the rest of the site every quarter; next review 18 February 2027. Corrections: use the content correction issue form.
+
+## Update, 3.3.0
+
+The playbook glossary chapter is merged into the portal glossary, so the portal has one glossary (62 terms). It is listed with the withheld chapters as "merged", with its reason. 76 chapters are now published.
