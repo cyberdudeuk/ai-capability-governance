@@ -2,6 +2,22 @@
 
 The site's own changelog, with fuller wording, is in its Transparency section.
 
+## 3.3.0 — 18 November 2026
+
+### Changed: one portal, after the original portal's design
+
+- **One portal.** The playbook moved into `index.html`. One masthead with six grouped menus and a call to action,
+  so it never overflows; one contents drawer for the whole portal (a labelled switch retracts it; parts with icons,
+  counts, new flags and read marks); one glossary; one footer. `playbook.html` now redirects into the portal.
+- **Redesigned after the original AI Capability Governance portal**, its visuals used as the blueprint: the Figtree
+  typeface (self-hosted, SIL Open Font Licence, `fonts/`), the navy front page with the orbit illustration and glass
+  panels, the "guidance in force" ticker (pauses on hover, focus or its button; still when reduced motion is set),
+  white "what do you want to do?" cards with coloured top borders, tinted part cards for the contents, and the
+  chapter view with part chips, chapter numbers and progress bars. Dark and high-contrast themes kept.
+- **One glossary**: 39 playbook terms merged into the portal glossary (now 62); existing definitions kept (D-34).
+- Order of precedence: start, playbook, tools, assurance and delivery, knowledge, then about.
+- Check S25 (D-32); ticker overflow fixed (D-33).
+
 ## 3.2.0 — 18 November 2026
 
 Includes the repository-standards work listed below under "Since 3.1.0".

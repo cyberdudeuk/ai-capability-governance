@@ -14,7 +14,7 @@ sys.path.insert(0, str(ROOT / 'tools'))
 import check_site  # noqa: E402
 import health  # noqa: E402
 
-FILES = ['index.html', 'app.js', 'playbook.html', 'playbook.js', 'playbook.css', 'README.md', 'CHANGELOG.md', 'ACCESSIBILITY.md', 'SECURITY.md', 'CONTRIBUTING.md', 'LICENSE', 'data', '.github', 'docs', '.gitignore', 'CITATION.cff']
+FILES = ['index.html', 'app.js', 'playbook.html', 'playbook.js', 'playbook.css', 'styles.css', 'fonts', 'README.md', 'CHANGELOG.md', 'ACCESSIBILITY.md', 'SECURITY.md', 'CONTRIBUTING.md', 'LICENSE', 'data', '.github', 'docs', '.gitignore', 'CITATION.cff']
 
 
 class Site(unittest.TestCase):
@@ -44,7 +44,7 @@ class Site(unittest.TestCase):
         self.assertEqual(check_site.problems(ROOT), [])
 
     def test_S21_playbook_page_hand_edited(self):
-        self.edit('playbook.html', 'Agent governance playbook</h1>', 'Agent governance playbook (edited)</h1>')
+        self.edit('index.html', 'Every part, every chapter</h2>', 'Every part, every chapter (edited)</h2>')
         self.fails_with('S21')
 
     def test_S21_playbook_data_changed_without_rebuild(self):
@@ -55,11 +55,11 @@ class Site(unittest.TestCase):
         self.fails_with('S21')
 
     def test_S22_internal_page_named(self):
-        self.edit('playbook.html', '<h1 id="pbH1">', '<h1 id="pbH1">See the PMO portal ')
+        self.edit('index.html', '<h2 id="sec-h-pb">', '<h2 id="sec-h-pb">See the PMO portal ')
         self.fails_with('S22')
 
     def test_S22_former_office_name(self):
-        self.edit('index.html', 'Formerly the Public AI Utility Toolkit', 'Formerly the OCDO toolkit')
+        self.edit('index.html', 'Same principles · any tool', 'Formerly the OCDO toolkit')
         self.fails_with('S22')
 
     def test_S23_withheld_chapter_without_reason(self):
@@ -74,8 +74,20 @@ class Site(unittest.TestCase):
         self.fails_with('S23')
 
     def test_S24_masthead_repeats_old_name(self):
-        self.edit('index.html', 'Formerly the Public AI Utility Toolkit', 'Formerly the AI Capability Governance (formerly the Public AI Utility Toolkit)')
+        self.edit('index.html', 'Same principles · any tool', 'Formerly the AI Capability Governance (formerly the Public AI Utility Toolkit)')
         self.fails_with('S24')
+
+    def test_S25_second_portal_page_comes_back(self):
+        (self.tmp / 'playbook.html').write_text('<!DOCTYPE html><title>x</title><article>a second portal</article>', encoding='utf-8')
+        self.fails_with('S25')
+
+    def test_S25_masthead_grows_past_eight_items(self):
+        self.edit('index.html', '<a class="nav-cta"', '<details class="nav-group"><summary>a</summary></details><details class="nav-group"><summary>b</summary></details><details class="nav-group"><summary>c</summary></details><a class="nav-cta"')
+        self.fails_with('S25')
+
+    def test_S25_third_party_font(self):
+        self.edit('styles.css', '/* Figtree', '@import url(https://fonts.googleapis.com/css2?family=Figtree);\n/* Figtree')
+        self.fails_with('S25')
 
     def test_S19_doc_points_at_a_pending_pull_request(self):
         self.edit('docs/user-guide/advanced.md', 'function `certify`)', 'function `certify`, in pull request 18 until it merges)')

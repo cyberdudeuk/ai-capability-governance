@@ -403,9 +403,6 @@
    },
    "skos:narrower": [
     {
-     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-glossary"
-    },
-    {
      "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-thesaurus"
     },
     {
@@ -1639,24 +1636,6 @@
    },
    "skos:definition": {
     "@value": "This guide interprets and sequences; these resources supply engineering practice, worked examples and published evaluation. Link to them rather than copying them — they move faster than any document.",
-    "@language": "en-GB"
-   }
-  },
-  {
-   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-glossary",
-   "@type": "skos:Concept",
-   "skos:prefLabel": {
-    "@value": "Glossary",
-    "@language": "en-GB"
-   },
-   "skos:inScheme": {
-    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
-   },
-   "skos:broader": {
-    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-knowledge-and-navigation"
-   },
-   "skos:definition": {
-    "@value": "Every term as this guide uses it, with the chapter that explains it. Chapter numbers resolve live, so they stay correct when the guide is restructured.",
     "@language": "en-GB"
    }
   },

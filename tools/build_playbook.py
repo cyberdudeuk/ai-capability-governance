@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
-"""Build playbook.html and data/playbook-taxonomy.jsonld from data/playbook.json (D-25).
+"""Build the generated parts of the single portal page from data/playbook.json (D-25, D-32).
 
-The playbook page is generated, never edited by hand: check S21 rebuilds it and fails on any difference.
+index.html is one portal. This script owns five marked blocks in it (<!-- gen:name --> ... <!-- /gen:name -->):
+the masthead menus, the contents drawer, the hero figures, the playbook and the footer colophon. It also writes
+data/playbook-taxonomy.jsonld and playbook.html, retired to a redirect into the portal. Check S21 rebuilds them
+and fails on any difference.
 Every string from the data file is escaped on output. Only two inline marks are recognised:
 **bold** and [[https://url|link text]]; links must be absolute https URLs or they are dropped to text.
 
@@ -304,162 +307,6 @@ def route_tool():
 </div>'''
 
 
-def build(d):
-    meta = d['meta']
-    chs = {c['id']: c for c in d['chapters']}
-    n_ch, n_parts, n_w = len(d['chapters']), len(d['parts']), len(d['withheld'])
-    sprite = ('<svg class="pb-sprite" aria-hidden="true" focusable="false"><defs>'
-              + ''.join(f'<symbol id="i-{k}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" '
-                        f'stroke-linecap="round" stroke-linejoin="round">{v}</symbol>' for k, v in ICONS.items())
-              + '</defs></svg>')
-    drawer = []
-    body = []
-    for i, p in enumerate(d['parts']):
-        fam = PART_ICONS[i % len(PART_ICONS)]
-        links = ''.join(f'<li><a href="#ch-{esc(c)}" data-ch="{esc(c)}">{esc(chs[c]["title"])}</a></li>' for c in p['chapters'])
-        drawer.append(f'<details class="pb-dsec pb-p{i + 1}" open><summary>{svg_icon(fam)}<span class="pb-dname">{esc(p["name"])}</span>'
-                      f'<span class="pb-count" aria-label="{len(p["chapters"])} chapters">{len(p["chapters"])}</span>'
-                      f'<span class="pb-new" title="New in version {NEW_SINCE}">New</span></summary><ul>{links}</ul></details>')
-        cards = []
-        for cid in p['chapters']:
-            c = chs[cid]
-            r = Renderer(c['title'])
-            eb = f'<p class="pb-eyebrow">{inline(c["eyebrow"])}</p>' if c.get('eyebrow') else ''
-            lede = f'<p class="pb-lede">{inline(c["lede"])}</p>' if c.get('lede') else ''
-            cards.append(f'<article class="pb-ch" id="ch-{esc(cid)}" aria-labelledby="h-{esc(cid)}" data-part="{esc(p["id"])}">'
-                         f'{eb}<h3 id="h-{esc(cid)}">{svg_icon(icon_for(c.get("icon") or ""), "pb-ico pb-ico--h")}{inline(c["heading"])}</h3>'
-                         f'<p class="pb-chmeta">{esc(p["name"])} · {esc(c["title"])}</p>{lede}<div class="pb-body">{r.seq(c["body"])}</div>'
-                         f'<p class="pb-chfoot"><a href="#pb-top">Back to the top</a> · <a href="https://github.com/{REPO}/issues/new?template=content_correction.yml" rel="noopener noreferrer">Suggest a correction<span class="visually-hidden"> (opens GitHub)</span></a></p></article>')
-        body.append(f'<section class="pb-part pb-p{i + 1}" id="part-{esc(p["id"])}" aria-labelledby="ph-{esc(p["id"])}">'
-                    f'<div class="pb-parthead">{svg_icon(fam, "pb-ico pb-ico--part")}<div><p class="pb-eyebrow">Part {i + 1} of {n_parts}</p>'
-                    f'<h2 id="ph-{esc(p["id"])}">{esc(p["name"])}</h2><p class="pb-chmeta">{len(p["chapters"])} chapters</p></div></div>'
-                    + ''.join(cards) + '</section>')
-    mosaic = ''.join(f'<a class="pb-tile pb-p{i + 1}" href="#part-{esc(p["id"])}">{svg_icon(PART_ICONS[i % 12], "pb-ico pb-ico--tile")}'
-                     f'<span class="pb-tile-n">Part {i + 1}</span><span class="pb-tile-t">{esc(p["name"])}</span>'
-                     f'<span class="pb-tile-c">{len(p["chapters"])} chapters</span></a>' for i, p in enumerate(d['parts']))
-    mp, legend = knowledge_map(d)
-    withheld = ''.join(f'<tr><th scope="row">{esc(w["title"])}</th><td>{esc(w["part"])}</td><td>{esc(w["reason"])}</td></tr>' for w in d['withheld'])
-    cur = ' aria-current="page"'
-    nav = ''.join(f'<a href="{h}"{cur if h == "playbook.html" else ""}>{t}</a>' for h, t in (
-        ('index.html', 'Home'), ('playbook.html', 'Playbook'), ('index.html#tools', 'Tools'), ('index.html#resources', 'Resources'),
-        ('index.html#signals', 'Signals'), ('index.html#transparency', 'Transparency'), ('index.html#contact', 'Contact')))
-    jsonld = json.dumps({'@context': 'https://schema.org', '@type': 'Book', 'name': f'{meta["title"]} — {meta["edition"]}',
-                         'url': SITE + 'playbook.html', 'inLanguage': 'en-GB', 'version': meta['version'], 'dateModified': meta['published'],
-                         'license': 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/', 'isAccessibleForFree': True,
-                         'numberOfPages': n_ch, 'hasPart': [{'@type': 'Chapter', 'name': p['name'], 'position': i + 1} for i, p in enumerate(d['parts'])]},
-                        ensure_ascii=False)
-    return f'''<!DOCTYPE html>
-<html lang="en-GB" data-theme="light" data-contrast="normal" data-density="normal">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>{esc(meta["title"])} — AI Capability Governance and Implementation</title>
-  <meta name="description" content="{n_ch} chapters in {n_parts} parts on governing, assuring, funding and operating AI agents in public services, with a working route tool and a knowledge map.">
-  <meta name="version" content="{esc(meta["version"])}">
-  <meta name="last-reviewed" content="{esc(meta["published"])}">
-  <meta name="next-review" content="{esc(meta["nextReview"])}">
-  <meta name="color-scheme" content="light dark">
-  <link rel="canonical" href="{SITE}playbook.html">
-  <link rel="alternate" type="application/json" href="data/playbook.json" title="Playbook content (JSON)">
-  <link rel="alternate" type="application/ld+json" href="data/playbook-taxonomy.jsonld" title="Playbook taxonomy (SKOS, JSON-LD)">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="playbook.css">
-  <script type="application/ld+json">{jsonld}</script>
-</head>
-<body class="pb">
-  {sprite}
-  <a class="skip-link" href="#main">Skip to main content</a>
-  <header class="site-header">
-    <div class="wrap hdr">
-      <a class="brand" href="index.html"><span class="mark" aria-hidden="true">AI</span><span>AI Capability Governance<small>Agent governance playbook</small></span></a>
-      <button class="icon-btn nav-toggle js-only" id="navToggle" type="button" aria-expanded="false" aria-controls="primary-nav">☰ Menu</button>
-      <nav class="top-nav" id="primary-nav" aria-label="Primary">{nav}</nav>
-      <div class="hdr-tools js-only"><button class="icon-btn" id="pbTheme" type="button" aria-pressed="false">Dark mode</button></div>
-    </div>
-  </header>
-  <div class="pb-layout" id="pb-top">
-    <aside class="pb-drawer" id="pbDrawer" aria-label="Playbook contents">
-      <div class="pb-dtop">
-        <button class="pb-switch js-only" id="pbDrawerToggle" type="button" role="switch" aria-checked="true" aria-controls="pbDrawerBody">
-          <span class="pb-switch-track" aria-hidden="true"><span class="pb-switch-thumb"></span></span><span class="pb-switch-l">Contents drawer</span></button>
-      </div>
-      <div class="pb-dbody" id="pbDrawerBody">
-        <label class="pb-search js-only" for="pbSearch">{svg_icon("search")}<span class="visually-hidden">Filter chapters</span>
-          <input id="pbSearch" type="search" placeholder="Filter {n_ch} chapters" autocomplete="off" maxlength="80"></label>
-        <p class="pb-searchres js-only" id="pbSearchRes" role="status" aria-live="polite"></p>
-        <nav aria-label="Chapters">{"".join(drawer)}</nav>
-      </div>
-    </aside>
-    <main id="main" tabindex="-1">
-      <section class="pb-hero" aria-labelledby="pbH1">
-        <p class="eyebrow">{esc(meta["edition"])} · version {esc(meta["version"])} · reviewed {esc(meta["published"])}</p>
-        <h1 id="pbH1">{esc(meta["title"])}</h1>
-        <p class="lede">One route from “can I use AI for this?” to a governed, monitored and eventually retired AI agent: principles, criticality and tiers, registers and transparency records, oversight, cost and value, people and adoption, a live-pilot method and the delivery documents behind it.</p>
-        <ul class="pb-stats" aria-label="At a glance">
-          <li><span class="pb-statn" data-count="{n_ch}">{n_ch}</span> public chapters</li>
-          <li><span class="pb-statn" data-count="{n_parts}">{n_parts}</span> parts</li>
-          <li><span class="pb-statn" data-count="1">1</span> working route tool</li>
-          <li><span class="pb-statn" data-count="{n_w}">{n_w}</span> chapters withheld, with reasons</li>
-        </ul>
-        <div class="actions"><a class="btn btn-primary" href="#tool-route">Can I use AI for this?</a><a class="btn btn-secondary" href="#part-{esc(d["parts"][0]["id"])}">Start reading</a><a class="btn btn-secondary" href="#pb-method">How this edition was made</a></div>
-        <p class="pb-note">{svg_icon("info")} {esc(meta["provenance"])}</p>
-      </section>
-      <div class="pb-tabs js-only" role="tablist" aria-label="Playbook views">
-        <button role="tab" id="tab-read" aria-controls="pb-read" aria-selected="true" type="button">{svg_icon("book")} Read</button>
-        <button role="tab" id="tab-tool" aria-controls="pb-tool" aria-selected="false" tabindex="-1" type="button">{svg_icon("check")} Route tool</button>
-        <button role="tab" id="tab-map" aria-controls="pb-map" aria-selected="false" tabindex="-1" type="button">{svg_icon("link")} Knowledge map</button>
-        <button role="tab" id="tab-method" aria-controls="pb-method" aria-selected="false" tabindex="-1" type="button">{svg_icon("shield")} Method and withheld content</button>
-      </div>
-      <div class="pb-panel" id="pb-read" role="tabpanel" aria-labelledby="tab-read">
-        <h2 class="visually-hidden">Read the playbook</h2>
-        <div class="pb-mosaic">{mosaic}</div>
-        {"".join(body)}
-      </div>
-      <div class="pb-panel" id="pb-tool" role="tabpanel" aria-labelledby="tab-tool">
-        <section id="tool-route" aria-labelledby="h-route"><p class="pb-eyebrow">Working tool</p><h2 id="h-route">Can I use AI for this?</h2>
-        <p class="pb-lede">Five questions give a first route. Governance follows what the AI can see, create and do, not which company made it. Nothing you enter leaves your browser.</p>{route_tool()}</section>
-      </div>
-      <div class="pb-panel" id="pb-map" role="tabpanel" aria-labelledby="tab-map">
-        <section aria-labelledby="h-map"><p class="pb-eyebrow">Knowledge map</p><h2 id="h-map">How the playbook fits together</h2>
-        <p class="pb-lede">Parts on the inner ring, chapters on the outer ring; select any node to go to it. The taxonomy is published as SKOS in JSON-LD and the full content as JSON, so other portals can harvest it.</p>
-        <div class="pb-mapwrap">{mp}{legend}</div>
-        <p><a href="data/playbook-taxonomy.jsonld">Taxonomy (SKOS, JSON-LD)</a> · <a href="data/playbook.json">Content (JSON)</a> · <a href="index.html#glossary">Glossary</a></p></section>
-      </div>
-      <div class="pb-panel" id="pb-method" role="tabpanel" aria-labelledby="tab-method">
-        <section aria-labelledby="h-method"><p class="pb-eyebrow">Transparency</p><h2 id="h-method">How this edition was made</h2>
-        <p>The source is an internal AI agent governance toolkit of {n_ch + n_w} chapters. Every chapter was rendered, read and classified. {n_ch} are published here; {n_w} are withheld. Published chapters had internal links, internal document names and organisation-specific statuses removed; illustrative figures stay labelled illustrative. The full decision record is in <a href="https://github.com/{REPO}/blob/main/{esc(meta["classification"])}" rel="noopener noreferrer">the content classification<span class="visually-hidden"> (opens GitHub)</span></a>.</p>
-        <h3>Withheld chapters</h3>
-        <div class="pb-table-wrap" tabindex="0" role="region" aria-label="Withheld chapters"><table class="pb-table"><thead><tr><th scope="col">Chapter</th><th scope="col">Part</th><th scope="col">Why it is withheld</th></tr></thead><tbody>{withheld}</tbody></table></div>
-        <h3>Update schedule and how changes are tracked</h3>
-        <ul class="pb-list"><li>Reviewed every quarter; next review {esc(meta["nextReview"])}.</li><li>The page is generated from <a href="data/playbook.json">data/playbook.json</a> by <code>tools/build_playbook.py</code>; check S21 fails the build if the two drift.</li>
-        <li>Check S22 fails the build if any published file names an internal page, an internal team or an email address.</li>
-        <li>Corrections and requests go through <a href="https://github.com/{REPO}/issues/new/choose" rel="noopener noreferrer">GitHub issue forms<span class="visually-hidden"> (opens GitHub)</span></a>; the roadmap and backlog are on the <a href="index.html#roadmap">home page</a>.</li></ul></section>
-      </div>
-    </main>
-  </div>
-  <footer class="site-footer">
-    <div class="wrap">
-      <h2 class="visually-hidden">Site footer</h2>
-      <div class="footer-grid">
-        <div><h2>Playbook</h2><ul><li><a href="#part-{esc(d["parts"][0]["id"])}">Start reading</a></li><li><a href="#tool-route">Route tool</a></li><li><a href="#pb-map">Knowledge map</a></li><li><a href="#pb-method">Method and withheld content</a></li></ul></div>
-        <div><h2>Portal</h2><ul><li><a href="index.html">Home</a></li><li><a href="index.html#tools">Tools</a></li><li><a href="index.html#resources">Resource library</a></li><li><a href="index.html#glossary">Glossary</a></li></ul></div>
-        <div><h2>Disclaimers and disclosures</h2><ul><li>Not an official policy position of any department.</li><li>Illustrative figures are labelled illustrative.</li><li>Product names are examples, not endorsements or procurement decisions.</li><li>Built with AI assistance and reviewed against the checks in the repository.</li></ul></div>
-        <div><h2>Contact</h2><ul><li><a href="index.html#contact">Contact form</a></li><li><a href="https://github.com/{REPO}/issues/new?template=content_correction.yml" rel="noopener noreferrer">Suggest a correction<span class="visually-hidden"> (opens GitHub)</span></a></li><li><a href="https://github.com/{REPO}/issues/new?template=accessibility_issue.yml" rel="noopener noreferrer">Report an accessibility problem<span class="visually-hidden"> (opens GitHub)</span></a></li></ul></div>
-      </div>
-      <div class="pb-colophon">
-        {qr_svg(SITE + "playbook.html")}
-        {code128("AICG-PB-" + meta["version"])}
-        <p>Colophon: generated from data/playbook.json · version {esc(meta["version"])} · {esc(meta["published"])} · Open Government Licence v3.0 (content) / MIT (code)</p>
-      </div>
-      <div class="meta-bar"><span>{esc(meta["title"])} — {esc(meta["edition"])}</span><span>Version {esc(meta["version"])}</span><span>Next review {esc(meta["nextReview"])}</span><a href="#main">Return to main content</a></div>
-    </div>
-  </footer>
-  <script src="playbook.js" defer></script>
-</body>
-</html>
-'''
-
-
 def taxonomy(d):
     base = SITE + 'playbook.html#'
     graph = [{'@id': base + 'scheme', '@type': 'skos:ConceptScheme', 'skos:prefLabel': {'@value': d['meta']['title'], '@language': 'en-GB'},
@@ -477,9 +324,200 @@ def taxonomy(d):
     return json.dumps({'@context': {'skos': 'http://www.w3.org/2004/02/skos/core#'}, '@graph': graph}, ensure_ascii=False, indent=1) + '\n'
 
 
+
+# Portal sections outside the playbook, in page order: (group, icon, [(id, label)]).
+GROUPS = [
+    ('Start', 'flag', [('top', 'Overview'), ('start-here', 'Find your route')]),
+    ('Tools', 'check', [('tools', 'All working tools'), ('tool-route', 'Can I use AI for this?'), ('tool-triage', 'Human review triage'),
+                        ('tool-evidence', 'Evidence pack'), ('tool-deia', 'DEIA impact screen'), ('tool-atrs', 'Transparency record'),
+                        ('tool-pqc', 'Quantum readiness'), ('tool-readability', 'Plain language')]),
+    ('Assurance and delivery', 'shield', [('toolkit', 'Toolkit assets'), ('assurance', 'Assurance model'), ('catalogue', 'Asset catalogue'),
+                                          ('ucd', 'UCD and DEIA'), ('practice', 'Code of practice')]),
+    ('Knowledge', 'book', [('knowledge', 'Authority tiers'), ('resources', 'Resource library'), ('signals', 'Signals'), ('glossary', 'Glossary'),
+                           ('pb-map', 'Knowledge map')]),
+    ('About', 'info', [('transparency', 'Transparency'), ('pb-method', 'How the playbook was made'), ('roadmap', 'Roadmap'), ('contact', 'Contact')]),
+]
+
+
+def counts(root):
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import build_static
+    d, *_ = build_static.data((root / 'app.js').read_text(encoding='utf-8'))
+    sig = json.loads((root / 'data' / 'ai-data-governance-signals.json').read_text(encoding='utf-8'))
+    tools = len(GROUPS[1][2]) - 1
+    return {'resources': len(d['resources']), 'signals': len(sig['items']), 'glossary': len(d['glossary']), 'toolkit': len(d['toolkit']), 'tools': tools}
+
+
+def chapter_numbers(d):
+    out, k = {}, 0
+    for i, p in enumerate(d['parts']):
+        for j, c in enumerate(p['chapters']):
+            k += 1
+            out[c] = (f'{i + 1}.{j + 1}', k)
+    return out
+
+
+def _menu(name, items, extra=''):
+    return (f'<details class="nav-group{extra}"><summary>{esc(name)}</summary><div class="nav-menu">'
+            + ''.join(f'<a href="#{esc(i)}">{esc(t)}</a>' for i, t in items) + '</div></details>')
+
+
+def nav_block(d):
+    """Global navigation: cross-portal sections only, folded into grouped menus so it never overflows."""
+    parts = [('playbook', 'All parts and chapters')] + [(f'part-{p["id"]}', f'{i + 1}. {p["name"]}') for i, p in enumerate(d['parts'])]
+    out = [_menu(*GROUPS[0][::2]), _menu('Playbook', parts, ' nav-group--wide')]
+    out += [_menu(name, items) for name, _ic, items in GROUPS[1:]]
+    return ''.join(out)
+
+
+def drawer_block(d, n):
+    num = chapter_numbers(d)
+    cnt = {'resources': n['resources'], 'signals': n['signals'], 'glossary': n['glossary'], 'toolkit': n['toolkit']}
+    titles = {c['id']: c['title'] for c in d['chapters']}
+
+    def group(name, fam, items, new=False):
+        links = ''.join(f'<li><a href="#{esc(i)}"><span class="pb-dt">{esc(t)}</span>'
+                        + (f'<span class="pb-count">{cnt[i]}</span>' if i in cnt else '') + '</a></li>' for i, t in items)
+        flag = f'<span class="pb-new" title="New in version {NEW_SINCE}">New</span>' if new else ''
+        return (f'<details class="pb-dsec pb-dsec--portal" open><summary>{svg_icon(fam)}<span class="pb-dname">{esc(name)}</span>'
+                f'<span class="pb-count" aria-label="{len(items)} items">{len(items)}</span>{flag}</summary><ul>{links}</ul></details>')
+    out = [group(*GROUPS[0])]
+    out.append('<p class="pb-dhead">Agent governance playbook<span class="pb-dread js-only" id="pbReadAll"></span></p>')
+    for i, p in enumerate(d['parts']):
+        fam = PART_ICONS[i % len(PART_ICONS)]
+        links = ''.join(f'<li><a href="#ch-{esc(c)}" data-ch="{esc(c)}"><span class="pb-dnum">{num[c][0]}</span><span class="pb-dt">{esc(titles[c])}</span>'
+                        '<span class="pb-read" aria-hidden="true"></span></a></li>' for c in p['chapters'])
+        out.append(f'<details class="pb-dsec pb-p{i + 1}"><summary>{svg_icon(fam)}<span class="pb-dname"><span class="pb-dpart">Part {i + 1}</span>{esc(p["name"])}</span>'
+                   f'<span class="pb-count" aria-label="{len(p["chapters"])} chapters">{len(p["chapters"])}</span>'
+                   f'<span class="pb-new" title="New in version {NEW_SINCE}">New</span></summary><ul>{links}</ul></details>')
+    for name, fam, items in GROUPS[1:]:
+        out.append(group(name, fam, items, new=(name == 'Tools')))
+    return ''.join(out)
+
+
+def stats_block(d, n):
+    items = [(len(d['chapters']), 'chapters'), (len(d['parts']), 'parts'), (n['tools'], 'working tools'), (n['resources'], 'tiered sources'),
+             (n['signals'], 'signals'), (n['glossary'], 'glossary terms')]
+    return '<ul class="hero-stats" aria-label="At a glance">' + ''.join(
+        f'<li><span class="hero-statn" data-count="{v}">{v}</span><span class="hero-statl">{esc(t)}</span></li>' for v, t in items) + '</ul>'
+
+
+def playbook_block(d):
+    meta = d['meta']
+    chs = {c['id']: c for c in d['chapters']}
+    num = chapter_numbers(d)
+    total, n_parts, n_w = len(d['chapters']), len(d['parts']), len(d['withheld'])
+    sprite = ('<svg class="pb-sprite" aria-hidden="true" focusable="false"><defs>'
+              + ''.join(f'<symbol id="i-{k}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" '
+                        f'stroke-linecap="round" stroke-linejoin="round">{v}</symbol>' for k, v in ICONS.items())
+              + '</defs></svg>')
+    body = []
+    for i, p in enumerate(d['parts']):
+        fam = PART_ICONS[i % len(PART_ICONS)]
+        cards = []
+        for cid in p['chapters']:
+            c = chs[cid]
+            r = Renderer(c['title'])
+            n_label, n_abs = num[cid]
+            eb = f'<p class="pb-eyebrow">{inline(c["eyebrow"])}</p>' if c.get('eyebrow') else ''
+            lede = f'<p class="pb-lede">{inline(c["lede"])}</p>' if c.get('lede') else ''
+            pct = round(100 * n_abs / total)
+            cards.append(f'<article class="pb-ch" id="ch-{esc(cid)}" aria-labelledby="h-{esc(cid)}" data-part="{esc(p["id"])}">'
+                         f'<div class="pb-chhead"><span class="pb-partchip">{svg_icon(fam)}Part {i + 1} · {esc(p["name"])}</span>'
+                         f'<span class="pb-chnum">Chapter {n_label} · {n_abs} of {total}</span>'
+                         f'<span class="pb-bar" aria-hidden="true"><span style="width:{pct}%"></span></span></div>'
+                         f'{eb}<h3 id="h-{esc(cid)}">{inline(c["heading"])}</h3>{lede}<div class="pb-body">{r.seq(c["body"])}</div>'
+                         f'<p class="pb-chfoot"><a href="#playbook">Back to the contents</a> · <a href="https://github.com/{REPO}/issues/new?template=content_correction.yml" '
+                         'rel="noopener noreferrer">Suggest a correction<span class="visually-hidden"> (opens GitHub)</span></a></p></article>')
+        body.append(f'<section class="pb-part pb-p{i + 1}" id="part-{esc(p["id"])}" aria-labelledby="ph-{esc(p["id"])}">'
+                    f'<div class="pb-parthead">{svg_icon(fam, "pb-ico pb-ico--part")}<div><p class="pb-eyebrow">Part {i + 1} of {n_parts} · {len(p["chapters"])} chapters</p>'
+                    f'<h2 id="ph-{esc(p["id"])}">{esc(p["name"])}</h2></div></div>' + ''.join(cards) + '</section>')
+    mosaic = ''.join(
+        f'<details class="pb-tile pb-p{i + 1}" data-part="{esc(p["id"])}"><summary>{svg_icon(PART_ICONS[i % 12], "pb-ico pb-ico--tile")}'
+        f'<span class="pb-tile-meta"><span class="pb-tile-n">Part {i + 1} · {len(p["chapters"])} chapters<span class="pb-tile-read js-only"></span></span>'
+        f'<span class="pb-tile-t">{esc(p["name"])}</span><span class="pb-tile-c">From {esc(chs[p["chapters"][0]]["title"])} to {esc(chs[p["chapters"][-1]]["title"])}</span></span></summary>'
+        '<ol>' + ''.join(f'<li><a href="#ch-{esc(c)}"><span class="pb-dnum">{num[c][0]}</span> {esc(chs[c]["title"])}</a></li>' for c in p['chapters']) + '</ol></details>'
+        for i, p in enumerate(d['parts']))
+    mp, legend = knowledge_map(d)
+    withheld = ''.join(f'<tr><th scope="row">{esc(w["title"])}</th><td>{esc(w["part"])}</td><td>{esc(w["reason"])}</td></tr>' for w in d['withheld'])
+    tabs = (f'<div class="pb-tabs js-only" role="tablist" aria-label="Playbook views">'
+            f'<button role="tab" id="tab-read" aria-controls="pb-read" aria-selected="true" type="button">{svg_icon("book")} Read</button>'
+            f'<button role="tab" id="tab-tool" aria-controls="pb-tool" aria-selected="false" tabindex="-1" type="button">{svg_icon("check")} Route tool</button>'
+            f'<button role="tab" id="tab-map" aria-controls="pb-map" aria-selected="false" tabindex="-1" type="button">{svg_icon("link")} Knowledge map</button>'
+            f'<button role="tab" id="tab-method" aria-controls="pb-method" aria-selected="false" tabindex="-1" type="button">{svg_icon("shield")} Method and withheld content</button></div>')
+    method = (f'<section aria-labelledby="h-method"><p class="pb-eyebrow">Transparency</p><h2 id="h-method">How the playbook was made</h2>'
+              f'<p>{esc(meta["provenance"])} The source has {total + n_w} chapters: {total} are published here and {n_w} are withheld or merged into the rest of the portal. '
+              f'The decision for every chapter is in <a href="https://github.com/{REPO}/blob/main/{esc(meta["classification"])}" rel="noopener noreferrer">the content classification'
+              '<span class="visually-hidden"> (opens GitHub)</span></a>.</p><h3>Withheld or merged chapters</h3>'
+              '<div class="pb-table-wrap" tabindex="0" role="region" aria-label="Withheld or merged chapters"><table class="pb-table"><thead><tr><th scope="col">Chapter</th>'
+              f'<th scope="col">Part</th><th scope="col">Decision and reason</th></tr></thead><tbody>{withheld}</tbody></table></div>'
+              f'<h3>How changes are made and tracked</h3><ul class="pb-list"><li>Reviewed every quarter; next review {esc(meta["nextReview"])}.</li>'
+              '<li>The playbook, the contents drawer, the hero figures and the masthead menus are generated from <a href="data/playbook.json">data/playbook.json</a> '
+              'by <code>tools/build_playbook.py</code>; check S21 fails the build if they drift.</li>'
+              '<li>Check S22 fails the build if any published file names an internal page, an internal team or an email address.</li>'
+              f'<li>Corrections and requests go through <a href="https://github.com/{REPO}/issues/new/choose" rel="noopener noreferrer">GitHub issue forms'
+              '<span class="visually-hidden"> (opens GitHub)</span></a>; the <a href="#roadmap">roadmap</a> lists what is next.</li></ul></section>')
+    return (f'{sprite}<section id="playbook" class="section pb-section" aria-labelledby="sec-h-pb"><div class="wrap">'
+            f'<p class="eyebrow">Contents · {total} chapters in {n_parts} parts<span class="js-only" id="pbReadMosaic"></span></p>'
+            '<h2 id="sec-h-pb">Every part, every chapter</h2>'
+            '<p class="lede">The agent governance playbook takes a team from “can I use AI for this?” to a governed, monitored and eventually retired AI agent. '
+            'Open a part to see its chapters, or use the contents drawer.</p>'
+            f'<div class="pb-mosaic">{mosaic}</div>{tabs}'
+            f'<div class="pb-panel" id="pb-read" role="tabpanel" aria-labelledby="tab-read">{"".join(body)}</div>'
+            '<div class="pb-panel" id="pb-tool" role="tabpanel" aria-labelledby="tab-tool"><section id="tool-route" aria-labelledby="h-route">'
+            '<p class="pb-eyebrow">Working tool</p><h2 id="h-route">Can I use AI for this?</h2>'
+            '<p class="pb-lede">Five questions give a first route. Governance follows what the AI can see, create and do, not which company made it. '
+            f'Nothing you enter leaves your browser.</p>{route_tool()}</section></div>'
+            '<div class="pb-panel" id="pb-map" role="tabpanel" aria-labelledby="tab-map"><section aria-labelledby="h-map">'
+            '<p class="pb-eyebrow">Knowledge map</p><h2 id="h-map">How the playbook fits together</h2>'
+            '<p class="pb-lede">Parts on the inner ring, chapters on the outer ring; select any node to go to it. The taxonomy is published as SKOS in JSON-LD '
+            'and the content as JSON, so other portals can harvest both.</p>'
+            f'<div class="pb-mapwrap">{mp}{legend}</div>'
+            '<p><a href="data/playbook-taxonomy.jsonld">Taxonomy (SKOS, JSON-LD)</a> · <a href="data/playbook.json">Content (JSON)</a> · <a href="#glossary">Glossary</a></p></section></div>'
+            f'<div class="pb-panel" id="pb-method" role="tabpanel" aria-labelledby="tab-method">{method}</div></div></section>')
+
+
+def colophon_block(d):
+    v = d['meta']['version']
+    return (f'<div class="colophon">{qr_svg(SITE)}{code128("AICG-" + v)}'
+            f'<p>Colophon: one portal, generated in part from data/playbook.json · version {esc(v)} · {esc(d["meta"]["published"])} · '
+            'Figtree typeface under the SIL Open Font Licence · Open Government Licence v3.0 (content) / MIT (code)</p></div>')
+
+
+REDIRECT = """<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The playbook is now part of the portal — AI Capability Governance and Implementation</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="SITE#playbook">
+  <meta http-equiv="refresh" content="0; url=index.html#playbook">
+</head>
+<body>
+  <p>The agent governance playbook is now part of the single portal. <a href="index.html#playbook">Go to the playbook</a>.</p>
+</body>
+</html>
+"""
+
+
+def fill(page, name, content):
+    pat = re.compile(r'(<!-- gen:' + name + r' -->).*?(<!-- /gen:' + name + r' -->)', re.S)
+    page, k = pat.subn(lambda m: m.group(1) + content + m.group(2), page, count=1)
+    if k != 1:
+        raise SystemExit(f'build_playbook: block {name} not found in index.html')
+    return page
+
+
 def outputs(root=ROOT):
     d = json.loads((root / 'data' / 'playbook.json').read_text(encoding='utf-8'))
-    return {root / 'playbook.html': build(d), root / 'data' / 'playbook-taxonomy.jsonld': taxonomy(d)}
+    n = counts(root)
+    page = (root / 'index.html').read_text(encoding='utf-8')
+    for name, content in (('nav', nav_block(d)), ('drawer', drawer_block(d, n)), ('stats', stats_block(d, n)),
+                          ('playbook', playbook_block(d)), ('colophon', colophon_block(d))):
+        page = fill(page, name, content)
+    return {root / 'index.html': page, root / 'data' / 'playbook-taxonomy.jsonld': taxonomy(d),
+            root / 'playbook.html': REDIRECT.replace('SITE', SITE)}
 
 
 def main(argv):

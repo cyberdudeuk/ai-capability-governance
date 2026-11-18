@@ -6,7 +6,7 @@ publiccodeYmlVersion: '0'
 name: AI Capability Governance and Implementation
 url: https://github.com/cyberdudeuk/ai-capability-governance
 landingURL: https://cyberdudeuk.github.io/ai-capability-governance/
-softwareVersion: 3.2.0
+softwareVersion: 3.3.0
 releaseDate: '2026-11-18'
 platforms:
 - web
