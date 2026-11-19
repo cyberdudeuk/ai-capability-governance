@@ -106,6 +106,11 @@ def problems(root):
     lic = (root / 'LICENSE').read_text(encoding='utf-8')
     m = re.search(r'Copyright \(c\) \d{4} (.+)', lic)
     check(m is not None and len(m.group(1).strip()) >= 4, 'S14 LICENSE copyright holder is missing or cut off')
+    # S26 (D-35): a personal project, so its own content is CC BY 4.0; the Open Government Licence applies only to the
+    # Crown copyright material it quotes.
+    own = {f: (root / f).read_text(encoding='utf-8') for f in ('README.md', 'index.html', 'app.js', 'publiccode.yml') if (root / f).exists()}
+    check(all('Open Government Licence v3.0 (content)' not in t and 'OGL-UK-3.0' not in t and 'content-OGL' not in t for t in own.values())
+          and 'CC BY 4.0' in own.get('README.md', ''), 'S26 own content must be CC BY 4.0, not the Open Government Licence (a personal project)')
     # S16 (D-14): on the launchpad, Dependabot pull requests merged one after another left two pins per package and
     # pip refused to install. One pin per package.
     req = root / 'requirements.txt'

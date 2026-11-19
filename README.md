@@ -3,7 +3,7 @@
 [![Version](https://img.shields.io/badge/version-3.3.0-1b41d8)](CHANGELOG.md)
 [![Checks](https://github.com/cyberdudeuk/ai-capability-governance/actions/workflows/checks.yml/badge.svg)](https://github.com/cyberdudeuk/ai-capability-governance/actions/workflows/checks.yml)
 [![Licence: MIT](https://img.shields.io/badge/code-MIT-green)](LICENSE)
-[![Content: OGL v3.0](https://img.shields.io/badge/content-OGL%20v3.0-blue)](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+[![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-blue)](https://creativecommons.org/licenses/by/4.0/)
 [![WCAG 2.2 AA target](https://img.shields.io/badge/accessibility-WCAG%202.2%20AA%20target-00703c)](ACCESSIBILITY.md)
 
 **Govern AI, and the data it uses, in public services: guidance you can act on, working tools, and a weekly read of what is changing.**
@@ -181,7 +181,7 @@ the [GitHub Repos Asset Catalogue](https://cyberdudeuk.github.io/github-repos-as
 | | |
 | --- | --- |
 | Owner | AI Capability Governance working group |
-| Content licence | [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) |
+| Content licence | [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/) (CC BY 4.0). Crown copyright material quoted in it stays under the Open Government Licence v3.0. |
 | Code licence | [MIT](LICENSE) |
 | Accessibility | [Accessibility statement](ACCESSIBILITY.md) (designed to WCAG 2.2 AA; not independently audited) |
 | Security | [SECURITY.md](SECURITY.md) |

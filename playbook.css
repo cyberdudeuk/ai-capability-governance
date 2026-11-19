@@ -4,7 +4,7 @@
  * Blueprint: the original portal's hub view (white drawer with tinted part headers, numbered chapters with read
  * circles, part chips and progress bars, cards with coloured top borders). Builds on the tokens in styles.css.
  * Targets WCAG 2.2 AA: 4.5:1 text, 3:1 non-text, visible focus, reflow to 320px, reduced motion respected.
- * Licence: MIT (code) / Open Government Licence v3.0 (content).
+ * Licence: MIT (code) / CC BY 4.0 (content).
  */
 .pb-sprite{position:absolute;width:0;height:0;overflow:hidden}
 .pb-ico{width:1.15em;height:1.15em;flex:0 0 auto;vertical-align:-.2em;color:var(--pc,var(--c-brand))}

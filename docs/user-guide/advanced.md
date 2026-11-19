@@ -7,7 +7,7 @@ For you if you build, assure, integrate or reuse this guidance, including in cod
 - The page is one HTML file; every piece of content is readable without JavaScript.
 - `data/ai-data-governance-signals.json` is the open signals register (also on the page as schema.org JSON-LD).
 - The [metadata schema](https://cyberdudeuk.github.io/ai-capability-governance/#catalogue) has a worked YAML example for any AI asset.
-- Content is under the Open Government Licence v3.0; code under MIT.
+- Content is under CC BY 4.0 (Crown copyright material quoted in it stays under the Open Government Licence v3.0); code under MIT.
 
 ## How the repository works
 

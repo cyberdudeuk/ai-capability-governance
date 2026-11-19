@@ -209,6 +209,10 @@ class Site(unittest.TestCase):
         p.write_text(json.dumps(d), encoding='utf-8')
         self.fails_with('S4')
 
+    def test_S26_own_content_back_under_ogl(self):
+        self.edit('README.md', '[![Content: CC BY 4.0]', '[![Content: OGL v3.0](https://img.shields.io/badge/content-OGL%20v3.0-blue)] [![x]')
+        self.fails_with('S26')
+
     def test_S14_truncated_licence(self):
         self.edit('LICENSE', 'Copyright (c) 2026 cyberdudeuk and contributors', 'Copyright (c) 2026 Em')
         self.fails_with('S14')

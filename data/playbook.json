@@ -5,7 +5,7 @@
 "version": "3.3.0",
 "published": "2026-11-18",
 "nextReview": "2027-02-18",
-"licence": "Open Government Licence v3.0",
+"licence": "CC BY 4.0",
 "provenance": "Ported from an internal AI agent governance toolkit on 18 November 2026. Each chapter was rendered, classified as public or withheld, redacted where needed and rebuilt as plain semantic content. Figures the source labels illustrative stay labelled illustrative; nothing here is an official policy position.",
 "classification": "docs/content-classification-2026-11-18.md"
 },

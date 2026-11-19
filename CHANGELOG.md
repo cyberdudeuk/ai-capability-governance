@@ -2,6 +2,12 @@
 
 The site's own changelog, with fuller wording, is in its Transparency section.
 
+## Unreleased
+
+### Changed: content licence
+
+- The portal's own content is now under Creative Commons Attribution 4.0 (CC BY 4.0), not the Open Government Licence: this is a personal project, not government work. Crown copyright material quoted in it stays under OGL v3.0. Code stays MIT. New check S26 (D-35).
+
 ## 3.3.0 — 18 November 2026
 
 ### Changed: one portal, after the original portal's design
