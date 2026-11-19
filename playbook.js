@@ -3,7 +3,7 @@
  * Progressive enhancement for the portal shell and the playbook: everything is in the HTML and readable without JavaScript.
  * Adds the masthead menus, the guidance ticker, the drawer switch, the chapter filter, tabs, position and read marks,
  * counters and the route tool. Preferences, theme and the mobile menu are in app.js.
- * No network calls; nothing typed leaves the browser. Licence: MIT (code) / Open Government Licence v3.0 (content).
+ * No network calls; nothing typed leaves the browser. Licence: MIT (code) / CC BY 4.0 (content).
  */
 (function () {
   'use strict';

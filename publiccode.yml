@@ -29,7 +29,7 @@ description:
     - Weekly signals scan
     - Agent governance playbook with a route tool and SKOS taxonomy
 legal:
-  license: MIT AND OGL-UK-3.0
+  license: MIT AND CC-BY-4.0
 maintenance:
   type: community
   contacts:

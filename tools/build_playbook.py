@@ -481,7 +481,7 @@ def colophon_block(d):
     v = d['meta']['version']
     return (f'<div class="colophon">{qr_svg(SITE)}{code128("AICG-" + v)}'
             f'<p>Colophon: one portal, generated in part from data/playbook.json · version {esc(v)} · {esc(d["meta"]["published"])} · '
-            'Figtree typeface under the SIL Open Font Licence · Open Government Licence v3.0 (content) / MIT (code)</p></div>')
+            'Figtree typeface under the SIL Open Font Licence · CC BY 4.0 (content) / MIT (code)</p></div>')
 
 
 REDIRECT = """<!DOCTYPE html>
