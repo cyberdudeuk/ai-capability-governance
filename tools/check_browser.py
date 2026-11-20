@@ -4,7 +4,9 @@
 - a console error or uncaught exception,
 - the contact form not opening the GitHub contact form,
 - the playbook page scrolling sideways or erroring (B5), or its route tool giving the wrong route (B6),
-- any serious or critical axe-core WCAG 2.2 AA failure on the portal in light or dark mode (B7).
+- any serious or critical axe-core WCAG 2.2 AA failure on the portal in light or dark mode (B7),
+- page search not reaching sections below the hero (B8, D-36), or Escape not closing the menu (B9, D-37),
+- the masthead wrapping its menu labels or tagline on a laptop screen (B10, D-39).
 
 Run: python3 tools/check_browser.py [--break overflow|consoleerror|contact|evidence]
 --break injects a deliberate fault so CI proves each check fails when it should (a vaccination).
@@ -30,6 +32,9 @@ BREAKS = {
     'pboverflow': "document.querySelector('#playbook').insertAdjacentHTML('beforeend','<div style=\"width:2000px;height:2px\"></div>')",
 }
 PB_BREAKS = {'route', 'pboverflow'}
+BREAKS['search'] = "document.getElementById('siteSearch').replaceWith(document.getElementById('siteSearch').cloneNode(true))"
+BREAKS['menuescape'] = "document.addEventListener('keydown', e => { if (e.key === 'Escape') e.stopImmediatePropagation(); }, true)"
+BREAKS['mastwrap'] = "document.head.insertAdjacentHTML('beforeend','<style>.top-nav a,.nav-group>summary{white-space:normal!important;padding:0 18px!important}</style>')"
 BREAKS['contrast'] = "document.querySelector('.btn-primary').style.color = '#d9e5ff'"
 AXE = ROOT / 'node_modules' / 'axe-core' / 'axe.min.js'
 AXE_RUN = ("async () => (await axe.run(document, {runOnly: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']}))"
@@ -81,6 +86,34 @@ async def run(brk):
                 given = await pg.inner_text('#evOut')
                 if 'Data definitions relied on' in empty or 'Household' not in given or 'not certified' not in given:
                     found.append('B4 evidence pack does not record the data definitions relied on')
+                # B8 (D-36): page search reaches sections below the hero. Each term lives only in a lower section.
+                await pg.click('#searchBtn')
+                for term in ('toolkit', 'triage', 'roadmap'):
+                    await pg.fill('#siteSearch', term)
+                    msg = await pg.inner_text('#ssCount')
+                    if not msg or msg.startswith('0 '):
+                        found.append(f'B8 page search found nothing for "{term}": {msg[:60] or "no answer"}')
+                await pg.fill('#siteSearch', '')
+                await pg.click('#searchBtn')
+            if name == 'phone':
+                # B9 (D-37): Escape closes the open menu and hands focus back to the Menu button.
+                await pg.click('#navToggle')
+                await pg.keyboard.press('Escape')
+                state = await pg.evaluate("[navToggle.getAttribute('aria-expanded'), document.activeElement.id]")
+                if state != ['false', 'navToggle']:
+                    found.append(f'B9 Escape did not close the menu (aria-expanded={state[0]}, focus on #{state[1]})')
+            await pg.close()
+        # B10 (D-39): on laptop and desktop screens the masthead stays on one line: no menu label or tagline wraps.
+        for w in (1180, 1280, 1366, 1440):
+            pg = await b.new_page(viewport={'width': w, 'height': 800})
+            await pg.goto(url, wait_until='load')
+            if brk == 'mastwrap':
+                await pg.evaluate(BREAKS[brk])
+            m = await pg.evaluate("""(() => ({hdr: document.querySelector('.hdr').getBoundingClientRect().height,
+                brand: document.querySelector('.brand').getBoundingClientRect().height,
+                tall: [...document.querySelectorAll('.top-nav > a, .nav-group > summary')].filter(e => e.getBoundingClientRect().height > 48).map(e => e.textContent.trim())}))()""")
+            if m['hdr'] > 72 or m['brand'] > 44 or m['tall']:
+                found.append(f"B10 masthead wraps at {w}px: height {m['hdr']:.0f}px, wrapped {m['tall'][:3] or 'tagline'}")
             await pg.close()
         # The playbook inside the portal (D-29, D-32): no sideways scroll, no console errors, and the route tool answers.
         for w, h, name in ((1280, 900, 'desktop'), (390, 844, 'phone'), (320, 640, 'small phone')):
@@ -132,11 +165,11 @@ def main(argv=None):
     a = ap.parse_args(argv)
     found = asyncio.run(run(a.brk))
     if a.brk:
-        code = {'overflow': 'B1', 'consoleerror': 'B2', 'contact': 'B3', 'evidence': 'B4', 'route': 'B6', 'pboverflow': 'B5', 'contrast': 'B7'}[a.brk]
+        code = {'overflow': 'B1', 'consoleerror': 'B2', 'contact': 'B3', 'evidence': 'B4', 'route': 'B6', 'pboverflow': 'B5', 'contrast': 'B7', 'search': 'B8', 'menuescape': 'B9', 'mastwrap': 'B10'}[a.brk]
         ok = any(x.startswith(code) for x in found)
         print(f'Vaccination {a.brk}: {"caught" if ok else "NOT CAUGHT"}')
         return 0 if ok else 1
-    print('FAIL\n' + '\n'.join(found) if found else 'PASS: 7 browser checks at 3 widths')
+    print('FAIL\n' + '\n'.join(found) if found else 'PASS: 10 browser checks at 3 widths')
     return 1 if found else 0
 
 

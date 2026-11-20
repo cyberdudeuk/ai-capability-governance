@@ -101,6 +101,13 @@
       Array.prototype.forEach.call(nav.querySelectorAll('a'), function (a) {
         on(a, 'click', function () { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); });
       });
+      /* D-37: Escape closes the open menu and returns focus to the Menu button (WCAG 2.1.2, 1.4.13). */
+      document.addEventListener('keydown', function (e) {
+        if (e.key !== 'Escape' || !nav.classList.contains('open')) return;
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.focus();
+      });
     }
     var bar = document.createElement('div');
     bar.id = 'read-progress'; bar.setAttribute('aria-hidden', 'true');
@@ -184,7 +191,11 @@
     var input = $('siteSearch'), btn = $('searchBtn');
     function runSearch() {
       var q = input.value.trim().toLowerCase();
-      var secs = document.querySelectorAll('main > section');
+      /* D-36: the top-level sections of the page, wherever the layout nests them. "main > section" stopped
+       * matching anything but the hero once the drawer layout wrapped the content (D-32). */
+      var secs = Array.prototype.filter.call(document.querySelectorAll('main section'), function (s) {
+        return !s.parentElement.closest('section');
+      });
       if (q.length < 2) {
         Array.prototype.forEach.call(secs, function (s) { s.hidden = false; });
         $('ssCount').textContent = '';
