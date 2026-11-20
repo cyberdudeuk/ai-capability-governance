@@ -262,9 +262,17 @@ mark{background:var(--c-focus);color:#0b0c0c;padding:0 2px}
 .moscow-W{border-left:6px solid var(--c-border-strong)}
 .status-live{color:var(--c-accent);font-weight:700}
 .count-note{font-size:.88rem;color:var(--c-text-muted);margin:8px 0}
-@media (max-width:900px){
- .layout-side{grid-template-columns:1fr}
- .toc{position:static}
+/* D-39: the masthead wrapped its menu labels and tagline on laptop screens (1280px). Labels never wrap; between
+   1180 and 1365px the masthead is compact; below 1180px the menus fold behind the Menu button. */
+.top-nav a,.nav-group>summary{white-space:nowrap}
+@media (max-width:1365px){
+ .hdr{gap:10px;padding:8px 16px}
+ .top-nav a,.nav-group>summary{padding:0 8px;font-size:.82rem}
+ .top-nav .nav-cta{padding:0 12px;margin-left:4px}
+ .brand{font-size:.94rem}
+ .brand small{font-size:.6rem;letter-spacing:.06em}
+}
+@media (max-width:1179px){
  .hdr{flex-wrap:wrap;padding:8px 16px}
  .nav-toggle{display:inline-flex;align-items:center}
  .top-nav{width:100%;order:5;flex-direction:column;align-items:stretch;display:none;margin:4px 0 8px}
@@ -272,6 +280,11 @@ mark{background:var(--c-focus);color:#0b0c0c;padding:0 2px}
  .nav-menu{position:static;box-shadow:none;margin:4px 0 8px;min-width:0}
  .nav-menu--cols,.nav-group--wide .nav-menu{grid-template-columns:1fr;min-width:0}
  .top-nav .nav-cta{margin:6px 0 0;justify-content:center}
+ .top-nav a,.nav-group>summary{white-space:normal}
+}
+@media (max-width:900px){
+ .layout-side{grid-template-columns:1fr}
+ .toc{position:static}
  .hero-inner,.hero-card{grid-template-columns:1fr}
  .hero-card{margin:0 16px 26px}
  .orbit{display:none}

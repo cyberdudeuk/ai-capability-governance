@@ -196,6 +196,13 @@ def problems(root):
     # the Public AI Utility Toolkit)" - the old name was pasted into itself. The brand line names the old name once.
     bm = re.search(r'class="brand".*?<small>(.*?)</small>', s, re.S)
     check(bm is not None and bm.group(1).lower().count('formerly') <= 1, 'S24 the masthead brand line repeats "formerly"')
+    # S27 (D-38, 2026-11-20): four hand-typed counts said 68 sources while the library held 69 and the generated hero
+    # said 69. Every prose count of sources must equal the resources in app.js. Change-log rows are history and exempt.
+    n_res = len(build_static.data(js)[0]['resources'])
+    live = re.sub(r'<tr><td>\d+\.\d+\.\d+</td>.*?</tr>', '', s, flags=re.S)
+    stale = sorted({m.group(0) for m in re.finditer(r'\b(\d+) (?:tiered|curated|indexed) (?:guidance )?(?:sources|laws|resources)', live)
+                    if int(m.group(1)) != n_res})
+    check(not stale, f'S27 source counts disagree with the {n_res} resources in app.js: {stale}')
     # S12: the workflow inventory matches the files.
     wf = {p.name for p in (root / '.github' / 'workflows').glob('*.y*ml')} if (root / '.github' / 'workflows').exists() else set()
     check(wf == EXPECTED_WORKFLOWS, f'S12 workflows differ from the inventory: {sorted(wf ^ EXPECTED_WORKFLOWS)}')
@@ -206,7 +213,7 @@ def main(argv=None):
     root = (argv or sys.argv[1:] or ['.'])[0]
     p = problems(root)
     n = len(json.loads((Path(root) / 'data' / 'ai-data-governance-signals.json').read_text(encoding='utf-8'))['items'])
-    print('FAIL\n' + '\n'.join(p) if p else f'PASS: 25 checks, {n} signals')
+    print('FAIL\n' + '\n'.join(p) if p else f'PASS: 26 checks, {n} signals')
     return 1 if p else 0
 
 

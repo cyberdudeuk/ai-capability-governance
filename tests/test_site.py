@@ -213,6 +213,14 @@ class Site(unittest.TestCase):
         self.edit('README.md', '[![Content: CC BY 4.0]', '[![Content: OGL v3.0](https://img.shields.io/badge/content-OGL%20v3.0-blue)] [![x]')
         self.fails_with('S26')
 
+    def test_S27_hand_typed_source_count_goes_stale(self):
+        self.edit('index.html', '<p class="lede">69 curated sources', '<p class="lede">68 curated sources')
+        self.fails_with('S27')
+
+    def test_S27_changelog_history_is_exempt(self):
+        self.assertFalse([x for x in check_site.problems(ROOT) if x.startswith('S27')])
+        self.assertIn('automated check of all 68', (ROOT / 'index.html').read_text(encoding='utf-8'))
+
     def test_S14_truncated_licence(self):
         self.edit('LICENSE', 'Copyright (c) 2026 cyberdudeuk and contributors', 'Copyright (c) 2026 Em')
         self.fails_with('S14')

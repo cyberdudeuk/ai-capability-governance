@@ -4,6 +4,18 @@ The site's own changelog, with fuller wording, is in its Transparency section.
 
 ## Unreleased
 
+### Fixed: found in the visual inspection of 20 November 2026
+
+- **Page search works again.** It looked only at sections that were direct children of `main`, so after the 3.3.0
+  drawer layout it searched the front page alone: "toolkit", "triage" and "roadmap" found nothing. It now searches
+  every top-level section, wherever the layout nests it. Browser check B8 (D-36).
+- **Escape closes the menu** and returns focus to the Menu button; before, only choosing a link closed it
+  (WCAG 2.1.2). Browser check B9 (D-37).
+- **Source counts agree.** Four hand-typed counts (description, start-here task, knowledge layer, resource library)
+  said 68 sources; the library holds 69, as the front-page figure already said. Check S27 (D-38).
+- **The masthead stays on one line on laptops.** At 1280px menu labels and the tagline wrapped; labels now never wrap,
+  1180 to 1365px is a compact masthead, and below 1180px the menus fold behind the Menu button. Browser check B10 (D-39).
+
 ### Changed: content licence
 
 - The portal's own content is now under Creative Commons Attribution 4.0 (CC BY 4.0), not the Open Government Licence: this is a personal project, not government work. Crown copyright material quoted in it stays under OGL v3.0. Code stays MIT. New check S26 (D-35).
