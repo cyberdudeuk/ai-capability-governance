@@ -12,7 +12,7 @@ from pathlib import Path
 
 SITE_URL = 'https://cyberdudeuk.github.io/ai-capability-governance/'
 REPO = 'cyberdudeuk/ai-capability-governance'
-EXPECTED_WORKFLOWS = {'pages.yml', 'checks.yml', 'release.yml', 'triage.yml', 'digest.yml', 'labels.yml', 'codeql.yml', 'scorecard.yml', 'dependency-review.yml'}
+EXPECTED_WORKFLOWS = {'pages.yml', 'checks.yml', 'release.yml', 'triage.yml', 'digest.yml', 'labels.yml', 'codeql.yml', 'scorecard.yml', 'dependency-review.yml', 'artefacts.yml'}
 LEVELS = ('beginner', 'intermediate', 'advanced')
 EMAIL = re.compile(r'[\w.+-]+@[A-Za-z][\w-]*(\.[\w-]+)*\.[A-Za-z]{2,}\b')
 
