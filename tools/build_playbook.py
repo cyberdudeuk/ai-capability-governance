@@ -374,6 +374,8 @@ def drawer_block(d, n):
     num = chapter_numbers(d)
     cnt = {'resources': n['resources'], 'signals': n['signals'], 'glossary': n['glossary'], 'toolkit': n['toolkit']}
     titles = {c['id']: c['title'] for c in d['chapters']}
+    cur = d['meta']['version']
+    fresh = {c['id'] for c in d['chapters'] if c.get('since') == cur}
 
     def group(name, fam, items, new=False):
         links = ''.join(f'<li><a href="#{esc(i)}"><span class="pb-dt">{esc(t)}</span>'
@@ -386,10 +388,15 @@ def drawer_block(d, n):
     for i, p in enumerate(d['parts']):
         fam = PART_ICONS[i % len(PART_ICONS)]
         links = ''.join(f'<li><a href="#ch-{esc(c)}" data-ch="{esc(c)}"><span class="pb-dnum">{num[c][0]}</span><span class="pb-dt">{esc(titles[c])}</span>'
-                        '<span class="pb-read" aria-hidden="true"></span></a></li>' for c in p['chapters'])
+                        + (f'<span class="pb-new" title="New in version {esc(cur)}">New</span>' if c in fresh else '')
+                        + '<span class="pb-read" aria-hidden="true"></span></a></li>' for c in p['chapters'])
+        # D-43: every part carried a hard-coded New flag, so the drawer never said what had changed. A part is
+        # flagged only when it holds a chapter whose "since" is the current version.
+        n_new = sum(c in fresh for c in p['chapters'])
+        flag = (f'<span class="pb-new" title="{n_new} new in version {esc(cur)}">New</span>' if n_new else '')
         out.append(f'<details class="pb-dsec pb-p{i + 1}"><summary>{svg_icon(fam)}<span class="pb-dname"><span class="pb-dpart">Part {i + 1}</span>{esc(p["name"])}</span>'
                    f'<span class="pb-count" aria-label="{len(p["chapters"])} chapters">{len(p["chapters"])}</span>'
-                   f'<span class="pb-new" title="New in version {NEW_SINCE}">New</span></summary><ul>{links}</ul></details>')
+                   f'{flag}</summary><ul>{links}</ul></details>')
     for name, fam, items in GROUPS[1:]:
         out.append(group(name, fam, items, new=(name == 'Tools')))
     return ''.join(out)
