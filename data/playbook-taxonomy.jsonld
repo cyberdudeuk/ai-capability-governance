@@ -191,6 +191,21 @@
     },
     {
      "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-recovery"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-ho-principles"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-ho-controls"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-ho-telemetry"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-ho-risks"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-ho-verification"
     }
    ]
   },
@@ -225,6 +240,9 @@
     },
     {
      "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-observatory"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-ho-runbook"
     }
    ]
   },
@@ -302,6 +320,9 @@
     },
     {
      "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-raiadoption"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-ho-neuro"
     }
    ]
   },
@@ -466,6 +487,12 @@
     },
     {
      "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-pace"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-ho-crosswalk"
+    },
+    {
+     "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-ho-obligations"
     }
    ]
   },
@@ -956,6 +983,96 @@
    }
   },
   {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-ho-principles",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Human oversight principles",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-assure-and-govern"
+   },
+   "skos:definition": {
+    "@value": "Ten principles for keeping people in charge of AI-assisted work: oversight is a competence to build and measure, not a box to tick. From the Responsible AI and Data Use (RAIDU) work, merged into this playbook on 22 November 2026. Each item keeps its evidence grade: Proposed items are design proposals for review, not policy or established practice.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-ho-controls",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Oversight controls",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-assure-and-govern"
+   },
+   "skos:definition": {
+    "@value": "30 controls, each placed by who applies it (layer), what it does (prevent, detect, recover) and the lowest class of deployment it applies to: assist, recommend or determine. From the Responsible AI and Data Use (RAIDU) work, merged into this playbook on 22 November 2026. Each item keeps its evidence grade: Proposed items are design proposals for review, not policy or established practice.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-ho-telemetry",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Measuring oversight",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-assure-and-govern"
+   },
+   "skos:definition": {
+    "@value": "Signals that show whether human oversight is working, read across the service rather than used to rate individuals. Rubber-stamping, drift and lost skill show up in the shape of the data before they show up in incidents. From the Responsible AI and Data Use (RAIDU) work, merged into this playbook on 22 November 2026. Each item keeps its evidence grade: Proposed items are design proposals for review, not policy or established practice.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-ho-risks",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Human-side risks and priorities",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-assure-and-govern"
+   },
+   "skos:definition": {
+    "@value": "The risks sit on the human side of AI use: skills fading through disuse, trust drifting into rubber-stamping, and oversight schemes failing because they are built as staff surveillance or as a brake on delivery. The priorities say what to do first. From the Responsible AI and Data Use (RAIDU) work, merged into this playbook on 22 November 2026. Each item keeps its evidence grade: Proposed items are design proposals for review, not policy or established practice.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-ho-verification",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Verifying AI-assisted work",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-assure-and-govern"
+   },
+   "skos:definition": {
+    "@value": "Practices for checking AI-assisted research, analysis and artefacts before they are relied on, and failure patterns seen in public sector work. From the Responsible AI and Data Use (RAIDU) work, merged into this playbook on 22 November 2026. Each item keeps its evidence grade: Proposed items are design proposals for review, not policy or established practice.",
+    "@language": "en-GB"
+   }
+  },
+  {
    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-tower",
    "@type": "skos:Concept",
    "skos:prefLabel": {
@@ -1060,6 +1177,24 @@
    },
    "skos:definition": {
     "@value": "The observatory tracks published signals of UK public-sector AI adoption; the model is the OECD.AI Policy Observatory, applied at home. Each figure carries its publisher and date. The barometer is your own assessment, stored on this device only.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-ho-runbook",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Oversight runbook and templates",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-operate-and-oversee"
+   },
+   "skos:definition": {
+    "@value": "A runbook for a service or department starting human oversight of AI, with starting positions for the governance documents it will need. The templates are skeletons, not legal advice: take them to your data protection officer, equality lead and legal adviser. From the Responsible AI and Data Use (RAIDU) work, merged into this playbook on 22 November 2026. Each item keeps its evidence grade: Proposed items are design proposals for review, not policy or established practice.",
     "@language": "en-GB"
    }
   },
@@ -1330,6 +1465,24 @@
    },
    "skos:definition": {
     "@value": "Eight segments that turn responsible AI into lasting value, with accessibility, guest access and ways-of-working impact. Teams, roles, the academy and the adoption journey in this part go deeper on each.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-ho-neuro",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Neuroinclusive AI at work",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-people-and-adoption"
+   },
+   "skos:definition": {
+    "@value": "How AI tools help and hinder people across neurotypes at work, how to talk about them without a deficit framing, and the questions that are still open. Build one version that works for everyone, layered, rather than a separate one. From the Responsible AI and Data Use (RAIDU) work, merged into this playbook on 22 November 2026. Each item keeps its evidence grade: Proposed items are design proposals for review, not policy or established practice.",
     "@language": "en-GB"
    }
   },
@@ -1834,6 +1987,42 @@
    },
    "skos:definition": {
     "@value": "Skill atrophy appears in this guide as a single sentence in the evidence chapter, credited to Canada. Nothing sits behind it: no control, no metric, no register field, no gate criterion, no owner. That is the honest answer to the question, and it is now backlog item PACE-01. This chapter closes it, then applies the same test to everything else the world has built that we have not.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-ho-crosswalk",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Oversight crosswalk",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-reference"
+   },
+   "skos:definition": {
+    "@value": "Each line maps an oversight measure to a UK or international standard, and states what that standard assumes. From the Responsible AI and Data Use (RAIDU) work, merged into this playbook on 22 November 2026. Each item keeps its evidence grade: Proposed items are design proposals for review, not policy or established practice.",
+    "@language": "en-GB"
+   }
+  },
+  {
+   "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#ch-ho-obligations",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Obligations register",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#scheme"
+   },
+   "skos:broader": {
+    "@id": "https://cyberdudeuk.github.io/ai-capability-governance/playbook.html#part-reference"
+   },
+   "skos:definition": {
+    "@value": "Law, policy and guidance that apply when public servants use AI, across the four nations: data protection and transfers, records and FOI, security, equality, transparency, procurement, financial control, sustainability and more. Researched from primary sources in October 2026 and link-checked on 22 November 2026; check the source before you rely on any entry, because guidance changes. Not legal advice.",
     "@language": "en-GB"
    }
   }

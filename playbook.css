@@ -117,7 +117,7 @@ html.js .pb-panel[hidden]{display:none}
 .pb-c2{grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}
 .pb-c3{grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr))}
 .pb-c4{grid-template-columns:repeat(auto-fit,minmax(min(210px,100%),1fr))}
-.pb-card{background:var(--c-surface);border:1px solid var(--c-border);border-top:4px solid var(--pc,var(--c-brand));border-radius:12px;padding:14px 16px;box-shadow:var(--shadow);min-width:0}
+.pb-card{background:var(--c-surface);border:1px solid var(--c-border);border-top:4px solid var(--pc,var(--c-brand));border-radius:12px;padding:14px 16px;box-shadow:var(--shadow);min-width:0;overflow-wrap:anywhere}
 .pb-grid>.pb-card:nth-child(4n+2){border-top-color:#00703c}.pb-grid>.pb-card:nth-child(4n+3){border-top-color:#0f766e}.pb-grid>.pb-card:nth-child(4n+4){border-top-color:#6f2dbd}
 html[data-theme="dark"] .pb-grid>.pb-card:nth-child(4n+2){border-top-color:#6fd39c}html[data-theme="dark"] .pb-grid>.pb-card:nth-child(4n+3){border-top-color:#62d1c6}html[data-theme="dark"] .pb-grid>.pb-card:nth-child(4n+4){border-top-color:#c39cf5}
 html[data-contrast="high"] .pb-grid>.pb-card{border-top-color:#ffff00}
@@ -127,8 +127,14 @@ html[data-contrast="high"] .pb-grid>.pb-card{border-top-color:#ffff00}
 .pb-chips li{font-size:.82rem;background:var(--c-bg-alt);border:1px solid var(--c-border);border-radius:999px;padding:3px 10px}
 .pb-list{padding-left:1.3em}
 .pb-list li{margin:.25em 0}
-.pb-table-wrap{overflow-x:auto;margin:12px 0;border:1px solid var(--c-border);border-radius:10px;background:var(--c-surface)}
+.pb-table-wrap{position:relative;overflow-x:auto;margin:12px 0;border:1px solid var(--c-border);border-radius:10px;background:var(--c-surface)}
 .pb-table{border-collapse:collapse;width:100%;font-size:.9rem}
+/* D-44: on phones a table of three or more columns crushed its text to one word a line; it keeps a readable width and scrolls in its frame instead */
+.pb-table:has(tr > :nth-child(3)){min-width:30rem}
+.pb-table:has(tr > :nth-child(4)){min-width:40rem}
+.pb-table:has(tr > :nth-child(5)){min-width:54rem}
+.pb-table:has(tr > :nth-child(7)){min-width:66rem}
+.pb-table:has(tr > :nth-child(9)){min-width:84rem}
 .pb-table th,.pb-table td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--c-border)}
 .pb-table thead th{background:var(--c-bg-alt);position:static}
 

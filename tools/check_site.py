@@ -17,6 +17,12 @@ LEVELS = ('beginner', 'intermediate', 'advanced')
 EMAIL = re.compile(r'[\w.+-]+@[A-Za-z][\w-]*(\.[\w-]+)*\.[A-Za-z]{2,}\b')
 
 
+
+def check_count():
+    """How many distinct S-numbered checks this file runs, counted from their messages, not typed by hand."""
+    src = Path(__file__).read_text(encoding='utf-8')
+    return len(set(re.findall(r"f?'S(\d+) ", src)))
+
 def problems(root):
     root = Path(root)
     s = (root / 'index.html').read_text(encoding='utf-8')
@@ -185,7 +191,9 @@ def problems(root):
     check((root / 'fonts' / 'OFL.txt').exists(), 'S25 the self-hosted typeface has no licence file (fonts/OFL.txt)')
     # S22 (D-26, 2026-11-18): the source of the playbook is an internal toolkit. No published file may name an
     # internal page, the former office name, the team, or carry an email address.
-    banned = re.compile(r'\bOCDO\b|Office of the Chief Data Officer|Data Management Team|Work IQ|Private Office|\bPMO\b|Claude Portal|\.dc\.html', re.I)
+    banned = re.compile(r'\bOCDO\b|Office of the Chief Data Officer|Data Management Team|Work IQ|Private Office|\bPMO\b|Claude Portal|\.dc\.html|\(Insight I\d+|Claude’s reading|the chat’s own|RAIDU oversight chat|\bthis build\b', re.I)
+    # D-40 (2026-11-22): a RAIDU risk row carried its conversation provenance ("the chat's own warning. (Insight I21,
+    # Claude's reading)") into the published playbook. Conversation and build provenance is now banned too.
     for name in ('index.html', 'playbook.html', 'app.js', 'playbook.js', 'data/playbook.json', 'data/playbook-taxonomy.jsonld', 'README.md'):
         f = root / name
         if f.exists():
@@ -196,6 +204,17 @@ def problems(root):
     # the Public AI Utility Toolkit)" - the old name was pasted into itself. The brand line names the old name once.
     bm = re.search(r'class="brand".*?<small>(.*?)</small>', s, re.S)
     check(bm is not None and bm.group(1).lower().count('formerly') <= 1, 'S24 the masthead brand line repeats "formerly"')
+    # S28 (D-43, 2026-11-22): every playbook part carried a hard-coded New flag, so the drawer never said what changed.
+    # A part is flagged New exactly when it holds a chapter whose "since" is the current version.
+    pbj = root / 'data' / 'playbook.json'
+    if pbj.exists():
+        pd = json.loads(pbj.read_text(encoding='utf-8'))
+        fresh = {x['id'] for x in pd['chapters'] if x.get('since') == pd['meta']['version']}
+        for i, part in enumerate(pd['parts'], 1):
+            m = re.search(rf'<details class="pb-dsec pb-p{i}"><summary>(.*?)</summary>', s, re.S)
+            want = any(x in fresh for x in part['chapters'])
+            check(m is not None and ('class="pb-new"' in m.group(1)) == want,
+                  f'S28 part {i} New flag does not match its chapters (expected {"a flag" if want else "none"})')
     # S27 (D-38, 2026-11-20): four hand-typed counts said 68 sources while the library held 69 and the generated hero
     # said 69. Every prose count of sources must equal the resources in app.js. Change-log rows are history and exempt.
     n_res = len(build_static.data(js)[0]['resources'])
@@ -213,7 +232,7 @@ def main(argv=None):
     root = (argv or sys.argv[1:] or ['.'])[0]
     p = problems(root)
     n = len(json.loads((Path(root) / 'data' / 'ai-data-governance-signals.json').read_text(encoding='utf-8'))['items'])
-    print('FAIL\n' + '\n'.join(p) if p else f'PASS: 26 checks, {n} signals')
+    print('FAIL\n' + '\n'.join(p) if p else f'PASS: {check_count()} checks, {n} signals')
     return 1 if p else 0
 
 

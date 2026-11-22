@@ -62,6 +62,23 @@ class Site(unittest.TestCase):
         self.edit('index.html', 'Same principles · any tool', 'Formerly the OCDO toolkit')
         self.fails_with('S22')
 
+    def test_S22_conversation_provenance_is_banned(self):
+        # D-40: a merged row ended "(Insight I21, Claude's reading)".
+        self.edit('index.html', '<h2 id="sec-h-pb">', '<h2 id="sec-h-pb">(Insight I21, Claude’s reading) ')
+        self.fails_with('S22')
+
+    def test_S28_new_flag_on_unchanged_part(self):
+        # D-43: Part 1 has no chapter new in this version, so a New flag on it is wrong.
+        self.edit('index.html', '<details class="pb-dsec pb-p1"><summary>', '<details class="pb-dsec pb-p1"><summary><span class="pb-new">New</span>')
+        self.fails_with('S28')
+
+    def test_S28_missing_new_flag_on_changed_part(self):
+        p = self.tmp / 'data' / 'playbook.json'
+        d = json.loads(p.read_text(encoding='utf-8'))
+        d['chapters'][0]['since'] = d['meta']['version']
+        p.write_text(json.dumps(d, ensure_ascii=False), encoding='utf-8')
+        self.fails_with('S28')
+
     def test_S23_withheld_chapter_without_reason(self):
         p = self.tmp / 'data' / 'playbook.json'
         d = json.loads(p.read_text(encoding='utf-8'))

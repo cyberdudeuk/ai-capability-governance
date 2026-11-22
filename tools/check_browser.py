@@ -31,7 +31,15 @@ BREAKS = {
     'route': "document.getElementById('routeForm').replaceWith(document.getElementById('routeForm').cloneNode(true))",
     'pboverflow': "document.querySelector('#playbook').insertAdjacentHTML('beforeend','<div style=\"width:2000px;height:2px\"></div>')",
 }
-PB_BREAKS = {'route', 'pboverflow'}
+PB_BREAKS = {'route', 'pboverflow', 'tablecrush'}
+CRUSHED_JS = '''[...document.querySelectorAll('.pb-table td')].filter(c => {
+  const w = c.getBoundingClientRect().width; if (!w || w >= 6 * parseFloat(getComputedStyle(c).fontSize)) return false;  // crushed means under six characters wide
+  const words = c.textContent.trim().split(/\\s+/).length; if (words < 3) return false;
+  const rg = document.createRange(); rg.selectNodeContents(c);
+  const lines = new Set([...rg.getClientRects()].map(r => Math.round(r.top))).size;  // the text's own lines, not the row height
+  return lines >= words; }).map(c => c.textContent.trim().slice(0, 30))'''
+# D-44: wide tables shrank to fit a phone, one word a line. The break removes the minimum width.
+BREAKS['tablecrush'] = "document.head.insertAdjacentHTML('beforeend','<style>.pb-table{min-width:0!important}</style>')"
 BREAKS['search'] = "document.getElementById('siteSearch').replaceWith(document.getElementById('siteSearch').cloneNode(true))"
 BREAKS['menuescape'] = "document.addEventListener('keydown', e => { if (e.key === 'Escape') e.stopImmediatePropagation(); }, true)"
 BREAKS['mastwrap'] = "document.head.insertAdjacentHTML('beforeend','<style>.top-nav a,.nav-group>summary{white-space:normal!important;padding:0 18px!important}</style>')"
@@ -129,6 +137,12 @@ async def run(brk):
                 found.append(f'B5 playbook {name}: page is {sw}px wide on a {w}px screen (scrolls sideways)')
             if errs:
                 found.append(f'B5 playbook {name}: console errors: {errs[:3]}')
+            # B11 (D-44): no playbook table cell of three or more words is squeezed to one word a line; a wide table
+            # scrolls in its frame instead. Short cells (a grade, "UK-wide") may be narrow, and a wide column may wrap normally.
+            if name != 'desktop':
+                thin = await pg.evaluate(CRUSHED_JS)
+                if thin:
+                    found.append(f'B11 playbook {name}: {len(thin)} table cells are one word a line, e.g. {thin[:2]}')
             if name == 'desktop':
                 await pg.click('#tab-tool')
                 for i, v in enumerate('nnnyn'):
@@ -165,11 +179,11 @@ def main(argv=None):
     a = ap.parse_args(argv)
     found = asyncio.run(run(a.brk))
     if a.brk:
-        code = {'overflow': 'B1', 'consoleerror': 'B2', 'contact': 'B3', 'evidence': 'B4', 'route': 'B6', 'pboverflow': 'B5', 'contrast': 'B7', 'search': 'B8', 'menuescape': 'B9', 'mastwrap': 'B10'}[a.brk]
+        code = {'overflow': 'B1', 'consoleerror': 'B2', 'contact': 'B3', 'evidence': 'B4', 'route': 'B6', 'pboverflow': 'B5', 'contrast': 'B7', 'search': 'B8', 'menuescape': 'B9', 'mastwrap': 'B10', 'tablecrush': 'B11'}[a.brk]
         ok = any(x.startswith(code) for x in found)
         print(f'Vaccination {a.brk}: {"caught" if ok else "NOT CAUGHT"}')
         return 0 if ok else 1
-    print('FAIL\n' + '\n'.join(found) if found else 'PASS: 10 browser checks at 3 widths')
+    print('FAIL\n' + '\n'.join(found) if found else 'PASS: 11 browser checks at 3 widths')
     return 1 if found else 0
 
 

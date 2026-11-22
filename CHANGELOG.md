@@ -2,6 +2,26 @@
 
 The site's own changelog, with fuller wording, is in its Transparency section.
 
+
+## 3.4.0, 22 November 2026: human oversight, from the RAIDU work
+
+- Nine new playbook chapters from the public parts of the Responsible AI and Data Use (RAIDU) work. In *Assure and
+  govern*: human oversight principles, oversight controls, measuring oversight, human-side risks and priorities,
+  verifying AI-assisted work. In *Operate and oversee*: an oversight runbook with governance templates. In *People and
+  adoption*: neuroinclusive AI at work. In *Reference*: an oversight crosswalk and an obligations register of 164 entries
+  across the four nations.
+- 112 glossary terms added (62 to 174), only where the term was not already defined.
+- Every item keeps its evidence grade; proposals are labelled as proposals. Unresolved items, and everything resting
+  only on internal sources (meeting and community-call notes, working papers, project records, the vendor tool
+  catalogue), are withheld. Every cited source was link-checked: 145 of 155 answer and the one that has gone is unlinked.
+  See [the classification record](docs/content-classification-2026-11-22-raidu.md).
+- Fixed, each with a check that fails without the fix (see the [defect register](docs/defect-register.md)):
+  - D-40: conversation provenance in one merged row; check S22 now bans it.
+  - D-41 and D-42: sideways scroll on phones from hidden link text in tables and from long field names in cards.
+  - D-43: every part was flagged New; now only the chapters and parts added in this release are (check S28).
+  - D-44: tables shrank to one word a line on phones; they now keep a readable width and scroll in their frame
+    (check B11).
+- The site check now counts its own checks instead of printing a typed number.
 ## Unreleased
 
 ### Fixed: found in the visual inspection of 20 November 2026

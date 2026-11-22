@@ -1,6 +1,6 @@
 # AI Capability Governance and Implementation
 
-[![Version](https://img.shields.io/badge/version-3.3.0-1b41d8)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-3.4.0-1b41d8)](CHANGELOG.md)
 [![Checks](https://github.com/cyberdudeuk/ai-capability-governance/actions/workflows/checks.yml/badge.svg)](https://github.com/cyberdudeuk/ai-capability-governance/actions/workflows/checks.yml)
 [![Licence: MIT](https://img.shields.io/badge/code-MIT-green)](LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-blue)](https://creativecommons.org/licenses/by/4.0/)
@@ -16,7 +16,7 @@ Toolkit**; now the public edition of the BOT AI governance toolkit, in its own r
 | | |
 |---|---|
 | **Status** | Prototype. Not official GOV.UK guidance; it does not replace your organisation's policies, data protection officer, security team or legal advice |
-| **Version** | 3.3.0, 18 November 2026 ([changelog](CHANGELOG.md)) |
+| **Version** | 3.4.0, 22 November 2026 ([changelog](CHANGELOG.md)) |
 | **Review** | Last reviewed 13 November 2026 ([record](docs/content-review-2026-11-13.md)). Next review due 13 February 2027 |
 | **Contact** | By [contact form](https://github.com/cyberdudeuk/ai-capability-governance/issues/new?template=contact.yml) only. There is no email route |
 
