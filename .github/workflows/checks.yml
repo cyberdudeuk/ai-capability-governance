@@ -15,7 +15,7 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 25   # D-45: twelve browser runs at about a minute each; the check in tests/test_automation.py keeps it above that
     permissions:
       contents: read
       issues: write
