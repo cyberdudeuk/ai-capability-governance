@@ -25,6 +25,14 @@ import trials  # noqa: E402
 CONTRACT_LABELS = {'routine', 'digest', 'health', 'review due', 'owner action', 'needs-reply', 'overdue', 'occurrence', 'trial', 'contact', 'accessibility', 'content', 'bug', 'feature', 'signal'}
 
 
+def timeout_covers_browser_runs(wf, seconds_per_run=75, setup_seconds=180):
+    """True if the check job's timeout covers one browser check plus every vaccination in its loop (D-45)."""
+    timeout = int(re.search(r'timeout-minutes: (\d+)', wf).group(1))
+    loop = re.search(r'for b in ([^;]+); do python tools/check_browser.py --break', wf)
+    runs = 1 + (len(loop.group(1).split()) if loop else 0)
+    return timeout * 60 >= runs * seconds_per_run + setup_seconds
+
+
 class Linters(unittest.TestCase):
     # D-24: no linter ran in CI (only node --check), so eleven findings went unflagged. OpenSSF warnings criterion.
     def test_checks_workflow_runs_both_linters(self):
@@ -32,6 +40,15 @@ class Linters(unittest.TestCase):
         self.assertIn('ruff check .', wf)
         self.assertIn('npx eslint .', wf)
         self.assertIn('ruff==', (ROOT / 'requirements.txt').read_text(encoding='utf-8'))
+
+    # D-45: the Checks job timed out once a twelfth browser run (vaccination tablecrush) took it past ten minutes,
+    # so main showed "cancelled" instead of a result. Budget: about 75 seconds a browser run on the runner, plus setup.
+    def test_checks_job_timeout_covers_the_browser_runs(self):
+        self.assertTrue(timeout_covers_browser_runs((WF / 'checks.yml').read_text(encoding='utf-8')))
+
+    def test_checks_job_timeout_check_can_fail(self):
+        wf = (WF / 'checks.yml').read_text(encoding='utf-8')
+        self.assertFalse(timeout_covers_browser_runs(re.sub(r'timeout-minutes: \d+', 'timeout-minutes: 10', wf, count=1)))
 
     def test_linter_configs_exist(self):
         self.assertTrue((ROOT / 'ruff.toml').exists())
