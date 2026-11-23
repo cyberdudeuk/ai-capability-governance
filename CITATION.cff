@@ -13,3 +13,7 @@ license: MIT
 repository-code: https://github.com/cyberdudeuk/ai-capability-governance
 url: https://cyberdudeuk.github.io/ai-capability-governance/
 keywords: [AI governance, AI assurance, AI agents, human review, transparency, data governance, public sector, UK government]
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.24243503
+    description: "Concept DOI on Zenodo: resolves to the latest archived release"
