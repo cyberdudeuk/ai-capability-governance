@@ -11,7 +11,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SIGNALS_MAX_AGE_DAYS = 14  # the scan is weekly; two missed runs is a problem
+SIGNALS_MAX_AGE_DAYS = 8  # D-46: the scan is weekly, so one missed run here means this copy has stopped receiving it
 REVIEW_WARN_DAYS = 14
 
 

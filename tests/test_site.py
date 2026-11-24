@@ -301,6 +301,13 @@ class Health(unittest.TestCase):
         self.assertTrue(any('last scanned' in x for x in p))
         self.assertTrue(any('pending' in x for x in p))
 
+    def test_one_missed_weekly_scan_is_flagged(self):
+        # D-46: on 23 November the copy was 14 days old and the 14-day limit did not fire.
+        import datetime as dt
+        self.assertEqual(health.problems(self.HTML, {'scanned': '2026-11-09', 'pending': []}, dt.date(2026, 11, 17)), [])
+        p = health.problems(self.HTML, {'scanned': '2026-11-09', 'pending': []}, dt.date(2026, 11, 18))
+        self.assertTrue(any('last scanned' in x for x in p))
+
 
 if __name__ == '__main__':
     unittest.main()
