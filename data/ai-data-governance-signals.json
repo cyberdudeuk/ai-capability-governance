@@ -1,7 +1,7 @@
 {
   "register": "BOT AI and data governance signals",
-  "version": "1.2.0",
-  "scanned": "2026-11-09",
+  "version": "1.5.0",
+  "scanned": "2026-11-23",
   "method": "WebSearch restricted to linkedin.com; LinkedIn refuses automated page fetches, so every entry is drawn from search-indexed text of a public profile, post or article, not from the opened post. Exception: an item whose evidence field says it was read at its own source (S28) was.",
   "pending": [],
   "items": [
@@ -500,6 +500,234 @@
       "caution": "A practitioner's opinion post that also promotes the author's newsletter. The legal points (for example AI literacy as an EU duty) and the standards named should be checked against the primary texts before citing.",
       "commercialInterest": true,
       "evidence": "post read in full in the owner's signed-in browser on 17 November 2026"
+    },
+    {
+      "id": "S29",
+      "title": "UK AI policy: the case for a Cabinet-level AI minister",
+      "who": "Steve Rigby",
+      "org": "Post introducing an episode of The Policy Fix (per the post's address); organisation not shown",
+      "date": "21 July 2026 (derived from the post's activity ID)",
+      "themes": [
+        "Regulation & policy",
+        "UK public sector"
+      ],
+      "region": "UK",
+      "url": "https://www.linkedin.com/posts/steverigby-_the-new-episode-of-the-policy-fix-looks-a-activity-7485328953637900288-lBLk",
+      "summary": "Post promoting a policy podcast episode that argues UK AI policy needs a minister at Cabinet level.",
+      "relevance": "Bears on where accountability for AI sits in UK government, which shapes who owns cross-government agent and data governance that BOT supports.",
+      "caution": "Only the headline and URL were indexed; LinkedIn refuses page fetches, so the body was not read. The argument is an opinion; the episode itself was not heard. Organisation not shown in the indexed text.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S30",
+      "title": "AI Act transparency duties and deepfakes: a civil liberties view",
+      "who": "Civil Liberties Union for Europe (Liberties)",
+      "org": "Civil Liberties Union for Europe",
+      "date": "4 August 2026 (derived from the post's activity ID)",
+      "themes": [
+        "Regulation & policy"
+      ],
+      "region": "EU",
+      "url": "https://www.linkedin.com/posts/civil-liberties-union-for-europe_aiact-ai-artificialintelligence-activity-7490311114979868673-cU_c",
+      "summary": "Post from a European civil liberties organisation on the EU AI Act, tagged for transparency and deepfakes.",
+      "relevance": "A civil society view of the AI Act's transparency obligations, useful context for BOT's disclosure and labelling guidance when UK services interact with EU users.",
+      "caution": "Only the headline and URL were indexed; LinkedIn refuses page fetches, so the body was not read. Content inferred from the post's hashtags only; read the post before citing its position.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S31",
+      "title": "How to make government data accessible for AI",
+      "who": "Lars Malmqvist",
+      "org": "LinkedIn article (organisation not shown)",
+      "date": "Undated",
+      "themes": [
+        "Data foundations"
+      ],
+      "region": "International",
+      "url": "https://www.linkedin.com/pulse/how-make-government-data-accessible-ai-lars-malmqvist/",
+      "summary": "Article on making government data usable by AI systems.",
+      "relevance": "Speaks directly to BOT's data-foundations pillar: AI-ready public data as a precondition for governed agents.",
+      "caution": "Only the headline and URL were indexed; LinkedIn refuses page fetches, so the body was not read. Author name taken from the article URL; organisation, country and date not confirmed, so region is provisional. Check for vendor interest before citing. A tracking parameter was removed from the address.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S32",
+      "title": "Framework components for AI governance",
+      "who": "Rob Davidson",
+      "org": "LinkedIn article (organisation not shown)",
+      "date": "Undated",
+      "themes": [
+        "Assurance & standards"
+      ],
+      "region": "International",
+      "url": "https://www.linkedin.com/pulse/framework-components-ai-governance-rob-davidson-",
+      "summary": "Article setting out the building blocks of an AI governance framework.",
+      "relevance": "A practitioner checklist to compare against BOT's own framework components and spot gaps.",
+      "caution": "Only the headline and URL were indexed; LinkedIn refuses page fetches, so the body was not read. Author name taken from the article URL; organisation, region and date not confirmed.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S33",
+      "title": "The ICO's guidance on AI, machine learning and privacy",
+      "who": "Shawn R Flaherty",
+      "org": "LinkedIn article (organisation not shown)",
+      "date": "Undated",
+      "themes": [
+        "Regulation & policy",
+        "Data foundations"
+      ],
+      "region": "UK",
+      "url": "https://www.linkedin.com/pulse/ico-launches-guidance-aiml-privacy-shawn-r-flaherty",
+      "summary": "Article on the Information Commissioner's Office launching guidance on AI, machine learning and privacy.",
+      "relevance": "Points to the UK data protection regulator's AI guidance, which BOT's data-governance controls for agents should cite.",
+      "caution": "Only the headline and URL were indexed; LinkedIn refuses page fetches, so the body was not read. Author name taken from the article URL; date unknown, so the guidance described may since have been updated. Read the current guidance on ico.org.uk before citing.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S34",
+      "title": "The UK wants to be an AI superpower, but goes easy on ethics",
+      "who": "Luca Sambucci",
+      "org": "LinkedIn article (organisation not shown)",
+      "date": "Undated",
+      "themes": [
+        "Regulation & policy"
+      ],
+      "region": "UK",
+      "url": "https://www.linkedin.com/pulse/uk-wants-ai-superpower-goes-easy-ethics-luca-sambucci",
+      "summary": "Opinion article arguing that the UK's ambition on AI is not matched by its approach to ethics.",
+      "relevance": "A critical outside view of the UK's light-touch stance, useful when BOT explains why departments need their own governance rather than relying on regulation.",
+      "caution": "Only the headline and URL were indexed; LinkedIn refuses page fetches, so the body was not read. Opinion piece; author name taken from the article URL; date unknown, so it may predate current UK policy.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S35",
+      "title": "Guidance to civil servants on the use of generative AI",
+      "who": "Paul Excell",
+      "org": "LinkedIn post (organisation not shown)",
+      "date": "21 July 2023 (derived from the post's activity ID)",
+      "themes": [
+        "UK public sector",
+        "Regulation & policy"
+      ],
+      "region": "UK",
+      "url": "https://www.linkedin.com/posts/paul-excell-8a41001_guidance-to-civil-servants-on-use-of-generative-activity-7088139598056284160-R28k",
+      "summary": "Post sharing the UK government's guidance to civil servants on using generative AI.",
+      "relevance": "The early baseline for civil service AI use that BOT's agent guidance builds on.",
+      "caution": "Only the headline and URL were indexed; LinkedIn refuses page fetches, so the body was not read. Dated 2023, so background rather than new signal; the guidance has since been superseded by later government material, so check GOV.UK. A post by Ren Reynolds on the same guidance (30 June 2023) was also indexed and not added as a near-duplicate.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S36",
+      "title": "The UK government publishes a pro-innovation approach to AI regulation",
+      "who": "Emre Kazim",
+      "org": "LinkedIn post (organisation not shown)",
+      "date": "29 March 2023 (derived from the post's activity ID)",
+      "themes": [
+        "Regulation & policy"
+      ],
+      "region": "UK",
+      "url": "https://www.linkedin.com/posts/emre-kazim-21784b21_the-uk-government-publishes-a-pro-innovation-activity-7046824307506745344-ZiMz",
+      "summary": "Post on the UK government's publication of its pro-innovation approach to AI regulation.",
+      "relevance": "The founding UK regulatory stance (principles applied by existing regulators) that frames BOT's regulation and policy material.",
+      "caution": "Only the headline and URL were indexed; LinkedIn refuses page fetches, so the body was not read. Dated 2023, so background rather than new signal. Indexed under fi.linkedin.com; the same post path is given here at www.linkedin.com. Affiliation not shown; check for commercial interest before citing.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S37",
+      "title": "A practical guide to auditing AI and autonomous agents for internal audit and GRC teams",
+      "who": "Khan (first name not shown in the indexed text)",
+      "org": "LinkedIn article (organisation not shown)",
+      "date": "Undated",
+      "themes": [
+        "Agent governance",
+        "Assurance & standards"
+      ],
+      "region": "International",
+      "url": "https://www.linkedin.com/pulse/how-audit-ai-autonomous-agents-practical-guide-internal-khan-av3mf",
+      "summary": "Article offering internal auditors and governance, risk and compliance teams a practical method for auditing AI systems and autonomous agents.",
+      "relevance": "Speaks to the third line of assurance over agents, which BOT's evidence pack and agent registry are meant to make auditable.",
+      "caution": "Only the headline and URL were indexed; LinkedIn refuses page fetches, so the body was not read. Surname taken from the article URL; first name, organisation, region and date not confirmed. Check for commercial interest before citing.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S38",
+      "title": "Observability for AI agents",
+      "who": "LinkedIn member with the profile handle karkera (name not confirmed)",
+      "org": "LinkedIn post (organisation not shown)",
+      "date": "24 March 2026 (derived from the post's activity ID)",
+      "themes": [
+        "Agent governance"
+      ],
+      "region": "International",
+      "url": "https://www.linkedin.com/posts/karkera_observability-for-ai-agents-activity-7442212240864231425-dUS5",
+      "summary": "Post on observability for AI agents: seeing what agents do once they are running.",
+      "relevance": "Runtime visibility is the evidence base for BOT's 'the app is the leash' controls and incident reporting; complements S11 on runtime enforcement.",
+      "caution": "Only the headline and URL were indexed; LinkedIn refuses page fetches, so the body was not read. Author name and organisation not shown; check for vendor interest before citing.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S39",
+      "title": "UK government to set out tests for deciding whether new AI laws are needed",
+      "who": "Edward Machin",
+      "org": "LinkedIn post (organisation not shown)",
+      "date": "16 January 2024 (derived from the post's activity ID)",
+      "themes": [
+        "Regulation & policy"
+      ],
+      "region": "UK",
+      "url": "https://www.linkedin.com/posts/edward-machin-62745015_uk-government-to-publish-tests-on-whether-activity-7152984754240331776-1Fi6",
+      "summary": "Post sharing a report that the UK government would publish tests for when it would legislate on AI rather than rely on existing regulators.",
+      "relevance": "Background to the UK's principles-first stance (S36): the threshold for moving from guidance to law shapes how much governance departments must build themselves.",
+      "caution": "Only the headline and URL were indexed; LinkedIn refuses page fetches, so the body was not read. Dated 2024, so background rather than new signal; check current UK policy before citing. Affiliation not shown; check for commercial interest.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S40",
+      "title": "ISO/IEC 42001, the AI management system standard, published with little notice",
+      "who": "Thomas Dehaene",
+      "org": "LinkedIn post (organisation not shown)",
+      "date": "3 January 2024 (derived from the post's activity ID)",
+      "themes": [
+        "Assurance & standards"
+      ],
+      "region": "International",
+      "url": "https://www.linkedin.com/posts/thomasdehaene_the-recent-publishing-of-the-iso42001-standard-activity-7148182353436176384-14K6",
+      "summary": "Post noting that the publication of ISO/IEC 42001 had passed largely unnoticed.",
+      "relevance": "ISO/IEC 42001 is a reference standard for BOT's assurance crosswalk (also cited in S11).",
+      "caution": "Only the headline and URL were indexed; LinkedIn refuses page fetches, so the body was not read. Dated 2024, so background rather than new signal. A post by Anders W. Tell on the same standard (15 January 2024) was also indexed and not added as a near-duplicate. Affiliation not shown.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S41",
+      "title": "AI assurance: a temperature check",
+      "who": "Shea Brown",
+      "org": "LinkedIn post (organisation not shown)",
+      "date": "13 December 2022 (derived from the post's activity ID)",
+      "themes": [
+        "Assurance & standards"
+      ],
+      "region": "International",
+      "url": "https://www.linkedin.com/posts/shea-brown-26050465_ai-assurance-temperature-check-activity-7008416218445484032-crVB",
+      "summary": "Post taking stock of the state of the AI assurance field.",
+      "relevance": "Early outside view of the AI assurance market that the UK roadmap (S02) and DSIT guidance (S26) later built on.",
+      "caution": "Only the headline and URL were indexed; LinkedIn refuses page fetches, so the body was not read. Dated 2022, so background rather than new signal. Indexed under ng.linkedin.com; the same post path is given here at www.linkedin.com. Affiliation not shown; check for commercial interest before citing.",
+      "commercialInterest": false
+    },
+    {
+      "id": "S42",
+      "title": "How ISO 27001 speeds up ISO 42001 implementation",
+      "who": "Olanrele Ogundipe",
+      "org": "LinkedIn article (organisation not shown)",
+      "date": "Undated",
+      "themes": [
+        "Assurance & standards"
+      ],
+      "region": "International",
+      "url": "https://www.linkedin.com/pulse/how-iso-27001-accelerates-42001-implementation-olanrele-ogundipe-h0ahe",
+      "summary": "Article arguing that an existing ISO 27001 information security management system gives a head start on an ISO 42001 AI management system.",
+      "relevance": "Supports building AI governance on existing management systems rather than a new silo, the same logic BOT applies to data governance.",
+      "caution": "Only the headline and URL were indexed; LinkedIn refuses page fetches, so the body was not read. Author name taken from the article URL; organisation, region and date not confirmed. Check for consultancy interest before citing.",
+      "commercialInterest": false
     }
   ],
   "scanLog": [
@@ -523,9 +751,27 @@
     },
     {
       "run": "4",
+      "date": "16 November 2026",
+      "added": "8",
+      "note": "Weekly scan, 11 LinkedIn-restricted extended searches (6 set queries plus 5 on current angles: AI Playbook and agents, National Data Library, EU AI Act omnibus, ICO and agentic AI, agent identity and inventory). Search returned titles and URLs only (no snippets), so entries are headline-level; most hits were profiles or already in the register and were skipped. Of the eight additions, two are dated 2026, two are 2023 background and four are undated. S00 still pending."
+    },
+    {
+      "run": "5",
       "date": "17 November 2026",
       "added": "0",
       "note": "Not a full scan. S00 completed: the post was read in full in the owner's signed-in browser (no security check this time) and moved from pending to the register."
+    },
+    {
+      "run": "6",
+      "date": "23 November 2026",
+      "added": "6",
+      "note": "Weekly scan, 12 LinkedIn-restricted extended searches (6 set queries plus 6 on current angles: GDS and AI agents, the Algorithmic Transparency Recording Standard, DSIT and AISI agentic guidance, AI-ready government data, agent inventories, ISO/IEC 42001). Search returned titles and URLs only (no snippets), so entries are headline-level; most hits were profiles or already in the register and were skipped. Of the six additions, one is dated 2026, three are 2022 to 2024 background and two are undated. S00 still pending. (This scan worked from BOT's copy, which had not yet received the 17 November update: S00 was in fact already complete.)"
+    },
+    {
+      "run": "7",
+      "date": "24 November 2026",
+      "added": "0",
+      "note": "Not a scan. The two copies had diverged (D-23 again): BOT's copy held runs 4 and 6, the public site's copy held the S00 completion. Merged into one register in date order; run numbers 5 and 6 reassigned so they follow the dates."
     }
   ]
 }
