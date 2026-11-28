@@ -1,5 +1,7 @@
 # AI Capability Governance and Implementation
 
+[![gds-dtx readiness: ready with exceptions, 10 of 10 GDS Way MUST checks met](docs/conformance/badge.svg)](docs/conformance/report.md)
+
 [![Version](https://img.shields.io/badge/version-3.4.0-1b41d8)](CHANGELOG.md)
 [![Checks](https://github.com/cyberdudeuk/ai-capability-governance/actions/workflows/checks.yml/badge.svg)](https://github.com/cyberdudeuk/ai-capability-governance/actions/workflows/checks.yml)
 [![Licence: MIT](https://img.shields.io/badge/code-MIT-green)](LICENSE)
